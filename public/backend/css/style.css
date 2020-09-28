@@ -1,0 +1,219 @@
+:root {
+    --main-color: #6d82a9;
+}
+
+/**************** Scroll *************/
+
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/**************** End Scroll *************/
+
+
+/***************** Table ***************/
+.tableFixHead {
+    overflow-y: auto;
+}
+
+.tableFixHead table {
+    position: relative;
+    font-size: 12px;
+    color: #000;
+}
+
+.tableFixHead thead th {
+    position: sticky;
+    top: 0;
+    background: var(--main-color);
+    color: #fff;
+    vertical-align: middle;
+    white-space: normal;
+    z-index: 1;
+}
+
+.bg-main {
+    background: var(--main-color);
+}
+
+.table-custom td{
+    padding: 5px 5px !important;
+}
+.table-custom th, .table-custom td{
+    vertical-align: middle;
+    padding: 0.75rem 1rem;
+}
+/***************** End Table ***************/
+
+/***************** Select2 *****************/
+[class^='select2'] {
+    border-radius: 0px !important;
+}
+
+.select2-container *:focus {
+    outline: none;
+}
+
+/***************** End Select2 *****************/
+
+/***************** Pagination *****************/
+.pagination .page-item .page-link {
+    color: #3c8dbc !important;
+}
+
+.pagination .page-item.active .page-link {
+    background: #3c8dbc !important;
+    color: #fff !important;
+}
+
+/***************** End Pagination *****************/
+
+/***************** Custom ******************/
+input.error {
+    border-color: red;
+}
+
+input.error:focus {
+    border-color: red;
+}
+
+label.error {
+    color: red;
+}
+
+.loading-custom {
+    background-color: rgba(0, 0, 0, .4);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    z-index: 1060;
+    position: fixed;
+    left: 0;
+    right: 0;
+}
+
+.height-30 {
+    height: 30px;
+}
+
+.height-35 {
+    height: 35px;
+}
+
+.btn-primary {
+    background: #3c8dbc !important;
+    border-color: unset !important;
+}
+
+.btn-primary:focus {
+    background: #367fa9 !important;
+}
+
+.btn-primary:hover {
+    background: #367fa9 !important;
+}
+
+.fix-header {
+    padding: 10px 1.5rem;
+}
+
+.table-responsive {
+    height: 70vh;
+}
+
+.content-wrapper {
+    padding: 0 !important;
+}
+
+.card-body {
+    padding-top: 0 !important;
+}
+
+.btn {
+    font-size: 11px;
+}
+
+.bottom-card {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.modal-title {
+    color: #fff;
+}
+
+input {
+    height: 35px !important;
+}
+select {
+    height: 35px !important;
+}
+
+.select2-container .select2-selection--single {
+    height: 35px !important;
+    border: 1px solid #ccd6e6;
+    color: #3f587e;
+}
+
+span.select2-selection__placeholder {
+    color: #3f587e !important;
+}
+
+.required:after {
+    content: " (*)";
+    color: red;
+}
+
+a.menu-item {
+    font-size: 12px !important;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.action-control{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 5px;
+    font-size: 9px;
+}
+.small-tip{
+    font-size: 11px;
+    color: #999;
+}
+.select2-close-mask{
+    z-index: 2099;
+}
+.select2-dropdown{
+    z-index: 3051;
+}
+.fz-12{
+    font-size: 12px;
+}
+
+a[data-show="false"]{
+    display: none;
+}
+
+.nowrap{
+    white-space: nowrap !important;
+}
+/***************** EndCustom ******************/
