@@ -33,7 +33,7 @@
                         <div class="card-content collapse show">
                             <div class="card-body">
                                 <div class="table-responsive tableFixHead table-bordered table-hover"
-                                     style="width: 100%; overflow: hidden; overflow-x: auto;">
+                                     style="width: 100%; overflow-x: auto;">
                                     <table class="table table-custom">
                                         <thead>
                                         <tr>

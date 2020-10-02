@@ -20,4 +20,6 @@ class DirectoryConstant
     const UPLOAD_PATH = '/public';
 
     const UPLOAD_FOLDER_NEW = '/backend/images/news/';
+    const UPLOAD_FOLDER_PRODUCT = '/backend/images/products/';
+    const UPLOAD_FOLDER_PRODUCT_THUMB = '/backend/images/products/thumb/';
 }

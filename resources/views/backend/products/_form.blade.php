@@ -1,115 +1,346 @@
 @extends('backend.layouts.master')
 @section('content')
-<style>
-    .ck.ck-content.ck-editor__editable {
-        height: 300px;
-    }
-</style>
-<div class="content-body">
-    <!-- card actions section start -->
-    <section id="card-actions">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <form action="{{isset($product) ? '/admin/work/products/'.$news->id : '/admin/work/products'}}" method="post" id="myFormId" enctype="multipart/form-data">
-                        @csrf
-                        @if(isset($product))
-                            @method('PUT')
-                        @endif
-                        <div class="card-header fix-header bottom-card">
-                            <div class="row" style="align-items: baseline">
-                                <h4 class="col-lg-3">{{isset($product) ? 'Cập nhật ' : 'Thêm mới '}}sản phẩm</h4>
-                            </div>
-                            <div class="heading-elements">
-                                <ul class="list-inline mb-0">
-                                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card-content collapse show">
-                            <div class="card-body">
-                                <div class="row mt-2">
-                                    <div class="col-6 form-group">
-                                        <label for="squareText" class="required">Danh mục</label>
-                                        <input type="text" id="category_id" name="category_id" class="form-control square">
-                                    </div>
-                                    <div class="col-6 form-group">
-                                        <label for="squareText" class="required">Hình ảnh</label>
-                                        <input type="text" id="images" name="images[]" class="form-control square">
-                                    </div>
+    <style>
+        .ck.ck-content.ck-editor__editable {
+            height: 300px;
+        }
+    </style>
+    <div class="content-body">
+        <!-- card actions section start -->
+        <section id="card-actions">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <form action="{{isset($product) ? '/admin/work/products/'.$product->id : '/admin/work/products'}}"
+                              method="post" id="myFormId" enctype="multipart/form-data">
+                            @csrf
+                            @if(isset($product))
+                                @method('PUT')
+                            @endif
+                            <div class="card-header fix-header bottom-card">
+                                <div class="row" style="align-items: baseline">
+                                    <h4 class="col-lg-3">{{isset($product) ? 'Cập nhật ' : 'Thêm mới '}}dự án</h4>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-6 form-group">
-                                        <label for="squareText" class="required">Tiêu đề VN</label>
-                                        <input type="text" id="title_vn" name="title_vn" class="form-control square">
-                                    </div>
-                                    <div class="col-6 form-group">
-                                        <label for="squareText" class="required">Tiêu đề EN</label>
-                                        <input type="text" id="title_en" name="title_en" class="form-control square">
-                                    </div>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                    </ul>
                                 </div>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+                                    <div class="row mt-2">
+                                        <div class="col-6 form-group">
+                                            <label for="squareText" class="required">Danh mục</label>
+                                            {{--<input type="text" id="category_id" name="category_id" class="form-control square">--}}
+                                            <select name="category_id" class="select2 form-control" id=""
+                                                    data-placeholder="--chọn danh mục--">
+                                                <option></option>
+                                                @if(count($categories))
+                                                    @foreach($categories as $item)
+                                                        <option value="{{$item->id}}" {{isset($product->category_id) && $product->category_id == $item->id ? 'selected':''}}>{{$item->title_vn}}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                @php
+                                                    $images = isset($product) && isset($product->images) && $product->images !='' ? json_decode($product->images) : json_decode('[]');
+                                                @endphp
+                                                <label for="images"
+                                                       class="control-label alt-flex"><span>Ảnh dự án</span><a
+                                                            class="addImages"><i class="fa fa-plus"></i> Upload
+                                                        ảnh</a></label>
+                                                <input type="file" class="hidden images" multiple="multiple" id="images"
+                                                       name="images[]">
+                                                <input type="hidden" id="images_json" name="images_json" value="{{json_encode($images)}}">
+                                                <div class="">
+                                                    <div class="imagesUploadBox product-images">
+                                                        <div class="thumb-list product-photo-grid__item">
+                                                            @foreach($images as $k => $image)
+                                                                <div class="thumb-image">
+                                                                    <img class="" data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$image->url}}"
+                                                                         src="{{url(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$image->url)}}">
+                                                                    <div class="overlay">
+                                                                        <div class="alter-button" data-toggle="modal"
+                                                                             data-target="#modal-alt">Alt
+                                                                        </div>
+                                                                        <div class="remove-button"><i
+                                                                                    class="fa fa-trash"></i></div>
+                                                                    </div>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                <div class="row mt-1">
-                                    <div class="col-6 form-group">
-                                        <label for="squareText" class="required">Nội dung VN</label>
-                                        <textarea name="content_vn" class="editor" id="content_vn" style="height: 300px;">
-                                            </p>This is some sample content.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-6 form-group">
+                                            <label for="squareText" class="required">Tiêu đề VN</label>
+                                            <input type="text" id="title_vn" name="title_vn"
+                                                   class="form-control square" value="{{ $product->title_vn ?? old('title_vn') }}">
+                                        </div>
+                                        <div class="col-6 form-group">
+                                            <label for="squareText" class="required">Tiêu đề EN</label>
+                                            <input type="text" id="title_en" name="title_en"
+                                                   class="form-control square" value="{{ $product->title_en ?? old('title_en') }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-1">
+                                        <div class="col-6 form-group">
+                                            <label for="squareText" class="required">Nội dung VN</label>
+                                            <textarea name="content_vn" class="editor" id="content_vn"
+                                                      style="height: 300px;">
+                                           {!! $product->title_vn ?? old('title_vn') !!}
                                         </textarea>
-                                    </div>
-                                    <div class="col-6 form-group">
-                                        <label for="squareText" class="required">Nội dung EN</label>
-                                        <textarea name="content_en" class="editor1" id="content_en" style="height: 300px;">
-                                            <p>This is some sample content.</p>
+                                        </div>
+                                        <div class="col-6 form-group">
+                                            <label for="squareText" class="required">Nội dung EN</label>
+                                            <textarea name="content_en" class="editor1" id="content_en"
+                                                      style="height: 300px;">
+                                            {!! $product->title_en ?? old('title_en') !!}
                                         </textarea>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-6 form-group">
-                                        <label for="squareText" class="required">vị trí lat</label>
-                                        <input type="text" id="lat" name="lat" class="form-control square">
+                                    <div class="row">
+                                        <div class="col-6 form-group">
+                                            <label for="squareText">Tên dự án VN</label>
+                                            <input type="text" id="project_name_vn" name="project_name_vn" class="form-control square" value="{{ $product->project_name_vn ?? old('project_name_vn') }}">
+                                        </div>
+                                        <div class="col-6 form-group">
+                                            <label for="squareText">Tên dự án EN</label>
+                                            <input type="text" id="project_name_en" name="project_name_en" class="form-control square" value="{{ $product->project_name_en ?? old('project_name_en') }}">
+                                        </div>
                                     </div>
-                                    <div class="col-6 form-group">
-                                        <label for="squareText" class="required">vị trí long</label>
-                                        <input type="text" id="long" name="long" class="form-control square">
+                                    <div class="row">
+                                        <div class="col-6 form-group">
+                                            <label for="squareText">Phân loại VN</label>
+                                            <input type="text" id="typology_vn" name="typology_vn" class="form-control square" value="{{ $product->typology_vn ?? old('typology_vn') }}">
+                                        </div>
+                                        <div class="col-6 form-group">
+                                            <label for="squareText">Phân loại EN</label>
+                                            <input type="text" id="typology_en" name="typology_en" class="form-control square" value="{{ $product->typology_en ?? old('typology_en') }}">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary" style="width: 200px;">Save</button>
+                                    <div class="row">
+                                        <div class="col-6 form-group">
+                                            <label for="squareText" class="required">vị trí lat</label>
+                                            <input type="text" id="lat" name="lat" class="form-control square" value="{{ $product->lat ?? old('lat') }}">
+                                        </div>
+                                        <div class="col-6 form-group">
+                                            <label for="squareText" class="required">vị trí long</label>
+                                            <input type="text" id="long" name="long" class="form-control square" value="{{ $product->long ?? old('long') }}">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 form-group">
+                                            <label for="squareText">Vị trí VN</label>
+                                            <input type="text" id="location_vn" name="location_vn" class="form-control square" value="{{ $product->location_vn ?? old('location_vn') }}">
+                                        </div>
+                                        <div class="col-6 form-group">
+                                            <label for="squareText">Vị trí EN</label>
+                                            <input type="text" id="location_en" name="location_en" class="form-control square" value="{{ $product->location_en ?? old('location_en') }}">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 form-group">
+                                            <label for="squareText">Trạng thái VN</label>
+                                            <input type="text" id="status_vn" name="status_vn" class="form-control square" value="{{ $product->status_vn ?? old('status_vn') }}">
+                                        </div>
+                                        <div class="col-6 form-group">
+                                            <label for="squareText">Trạng thái EN</label>
+                                            <input type="text" id="status_en" name="status_en" class="form-control square" value="{{ $product->status_en ?? old('status_en') }}">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 form-group">
+                                            <label for="squareText">Kích thước VN</label>
+                                            <input type="text" id="size_vn" name="size_vn" class="form-control square" value="{{ $product->size_vn ?? old('size_vn') }}">
+                                        </div>
+                                        <div class="col-6 form-group">
+                                            <label for="squareText">Kích thước EN</label>
+                                            <input type="text" id="size_en" name="size_en" class="form-control square" value="{{ $product->size_en ?? old('size_en') }}">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 form-group">
+                                            <label for="squareText">Khách hàng VN</label>
+                                            <input type="text" id="client_vn" name="client_vn" class="form-control square" value="{{ $product->client_vn ?? old('client_vn') }}">
+                                        </div>
+                                        <div class="col-6 form-group">
+                                            <label for="squareText">Khách hàng EN</label>
+                                            <input type="text" id="client_en" name="client_en" class="form-control square" value="{{ $product->client_en ?? old('client_en') }}">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 form-group">
+                                            <label for="squareText">Cộng tác viên VN</label>
+                                            <input type="text" id="collaborator_vn" name="collaborator_vn" class="form-control square" value="{{ $product->collaborator_vn ?? old('collaborator_vn') }}">
+                                        </div>
+                                        <div class="col-6 form-group">
+                                            <label for="squareText">Cộng tác viên EN</label>
+                                            <input type="text" id="collaborator_en" name="collaborator_en" class="form-control square" value="{{ $product->collaborator_en ?? old('collaborator_en') }}">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 form-group">
+                                            <label for="squareText">Năm làm dự án</label>
+                                            <input type="number" id="year" name="year" class="form-control square" value="{{ $product->year ?? old('year') }}">
+                                        </div>
+                                        <div class="col-6 form-group">
+                                            <label for="squareText">Nhóm thiết kế</label>
+                                            <select name="design_team[]" id="design_team" class="select2" multiple>
+                                                <option></option>
+                                                @if(count($people))
+                                                    @foreach($people as $item)
+                                                <option value="{{$item->id}}">{{$item->full_name}}</option>
+                                                    @endforeach
+                                                    @endif
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary" style="width: 200px;">Save
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-</div>
+        </section>
+    </div>
 @endsection
 @section('script')
-@include('backend.layouts.script')
-<script src="{{asset('backend/plugins/ckeditor/ckeditor.js')}}"></script>
-<script>
-    $("#myFormId").validate({
-        rules: {
-            category_id: "required",
-            title_vn: "required",
-            content_vn: "required",
-            lat: "required",
-            long: "required"
-        },
-    })
+    @include('backend.layouts.script')
+    <script src="{{asset('backend/plugins/ckeditor/ckeditor.js')}}"></script>
+    <script>
+        $("#myFormId").validate({
+            rules: {
+                category_id: "required",
+                title_vn: "required",
+                content_vn: "required",
+                lat: "required",
+                long: "required"
+            },
+        })
 
-    ClassicEditor
-        .create(document.querySelector('.editor'))
-        .catch(error => {
-            console.error(error);
-        });
-    ClassicEditor
-        .create(document.querySelector('.editor1'))
-        .catch(error => {
-            console.error(error);
-        });
-</script>
+        ClassicEditor
+            .create(document.querySelector('.editor'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('.editor1'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+    <script>
+        readURL = async function (input, callback) {
+            var fileList = []
+            for (var i = 0; i < input.files.length; i++) {
+                var reader = new FileReader();
+                var count = 0;
+                reader.onload = function (e) {
+                    fileList.push({
+                        src: e.target.result,
+                        name: input.files[count].name
+                    })
+                    count++
+                    if (count == input.files.length) {
+                        callback(fileList)
+                    }
+                }
+                reader.readAsDataURL(input.files[i]);
+            }
+        }
+        $(document).ready(function () {
+            $('#modal-alt').on('show.bs.modal', function (e) {
+                $(e.target).find('#altText').val('')
+                $(e.target).find('.btn-primary').removeAttr('data-pos')
+
+                var alt = $(e.relatedTarget).closest('.thumb-image').find('img').attr('alt')
+                var pos = $(e.relatedTarget).closest('.thumb-image').index('.imagesUploadBox .thumb-image')
+                $(e.target).find('#altText').val(alt)
+                $(e.target).find('.btn-primary').attr('data-pos', pos)
+            })
+            $('#modal-alt .btn-primary').on('click', function () {
+                var pos = $(this).attr('data-pos')
+                var value = $(this).closest('#modal-alt').find('#altText').val()
+                $('.imagesUploadBox .thumb-image').eq(pos).find('img').attr('alt', value)
+                $('#modal-alt').modal('hide')
+                updateImagesJSON()
+            })
+
+            function updateImagesJSON() {
+                var list = [];
+                $('.thumb-image').each(function (index, image) {
+                    list.push({
+                        url: $(image).find('img').attr('data-src'),
+                        alt: $(image).find('img').attr('alt')
+                    })
+                })
+                $('#images_json').val(JSON.stringify(list))
+            }
+
+            $('body').on('click', '.imagesUploadBox .remove-button', function () {
+                $(this).closest('.thumb-image').remove()
+                updateImagesJSON()
+            });
+            $('input.images').on('change', function () {
+                readURL(this, function (fileList) {
+                    var curList = JSON.parse($('#images_json').val())
+                    var totallyNew = $('.thumb-image:not(.new)').length == 0 ? true : false
+                    curList = curList.filter((item) => typeof item.new === 'undefined')
+
+                    fileList.forEach((file) => {
+                        curList.push({
+                            url: file.src,
+                            alt: '',
+                            new: true,
+                            fileName: file.name
+                        })
+                    })
+                    var html = '',
+                        html_main = ''
+                    $('.product-images').find('.thumb-image.new').remove();
+                    curList.forEach((item, index) => {
+                        if (item.new) {
+                            html += `<div class="thumb-image new">
+                        <img class="" src="` + item.url + `" alt="` + item.alt + `">
+                        <div class="overlay">
+                            <div class="alter-button">Alt</div>
+                            <div class="remove-button"><i class="fa fa-trash"></i></div>
+                        </div>
+                    </div>`
+                        }
+                        if (index == 0) {
+                            html_main = `<div class="thumb-image new">
+                        <img class="" src="` + item.url + `" alt="` + item.alt + `">
+                        <div class="overlay">
+                            <div class="alter-button">Alt</div>
+                            <div class="remove-button"><i class="fa fa-trash"></i></div>
+                        </div>
+                    </div>`
+                        }
+                    })
+                    if (totallyNew) {
+                        $('.main-image').append(html_main)
+                    }
+                    $('.thumb-list').append(html)
+                    $('#images_json').val(JSON.stringify(curList))
+                });
+            })
+        })
+    </script>
 @endsection

@@ -216,4 +216,71 @@ a[data-show="false"]{
 .nowrap{
     white-space: nowrap !important;
 }
+
+.alt-flex{
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
+.imagesUploadBox.product-images{
+    width: 100%;
+    height: 255px;
+    border: 1px solid #d2d6de;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+.imagesUploadBox .main-image{
+    width: 40%;
+    height: 100%;
+}
+.imagesUploadBox .thumb-list{
+    width: 60%;
+    display: flex;
+    height: 100%;
+    flex-wrap: wrap;
+}
+.thumb-image{
+    border: 1px solid #d2d6de;
+    position: relative;
+}
+.thumb-image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.thumb-image .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    opacity: 0;
+    transition: opacity .3s;
+    color: #FFF;
+    align-items: flex-end;
+}
+.thumb-image .overlay > * {
+    text-align: center;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+.thumb-image:hover .overlay{
+    opacity: .8;
+}
+.thumb-image .overlay{
+
+}
+.main-image .thumb-image {
+    height: 100%;
+}
+.thumb-list .thumb-image {
+    height: 50%;
+    width: 33.33%;
+}
 /***************** EndCustom ******************/

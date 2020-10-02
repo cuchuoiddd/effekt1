@@ -94,7 +94,7 @@
 
                                             <div class="fileupload-new thumbnail"
                                                  style="border-radius: 5px;width: 200px; height: 150px;">
-                                                @if($news->image)
+                                                @if(isset($news->image))
                                                     <img class="viewImage" src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$news->image}}" alt="Hình ảnh tin tức" style="width: 65%">
                                                     @else
                                                     <img class="viewImage"
