@@ -23,8 +23,8 @@
                             </div>
                         </div>
                         <div class="card-header fix-header">
-                            <a href="/admin/news/create">
-                                <button class="btn btn-primary btnAddNew"><i
+                            <a href="/admin/offices/peoples/create">
+                                <button class="btn btn-primary"><i
                                             class="fa fa-plus"></i> Thêm mới
                                 </button>
                             </a>

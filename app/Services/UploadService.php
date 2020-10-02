@@ -65,6 +65,19 @@ class UploadService
         return $images;
     }
 
+
+    public function uploadImage1($path, $file)
+    {
+
+        if (!is_dir($path)) {
+            @mkdir($path, 0777, true);
+        }
+        $images = $this->fileUpload->uploadImage($path, $file);
+
+        return $images;
+    }
+
+
     /**
      * @param $path , $file
      *

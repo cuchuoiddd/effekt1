@@ -24,7 +24,7 @@ class PeopleController extends Controller
      */
     public function create()
     {
-        return view('backend.list_people.create');
+        return view('backend.list_people._form');
     }
 
     /**
