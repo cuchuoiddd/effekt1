@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Slide;
 use App\Constants\DirectoryConstant;
-use App\Helpers\Functions;
-use App\People;
 use App\Services\UploadService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Arr;
 
-class PeopleController extends Controller
+class SlideController extends Controller
 {
     private $fileUpload;
 
@@ -30,8 +28,8 @@ class PeopleController extends Controller
      */
     public function index()
     {
-        $people = People::orderByDesc('id')->paginate(50);
-        return view('backend.list_people.index',compact('people'));
+        $slide = Slide::all();
+        return view('backend.slide.index',compact('slide'));
     }
 
     /**
@@ -41,7 +39,7 @@ class PeopleController extends Controller
      */
     public function create()
     {
-        return view('backend.list_people._form');
+        return view('backend.slide._form');
     }
 
     /**
@@ -54,13 +52,12 @@ class PeopleController extends Controller
     {
         $data = $request->all();
         if ($request->image != "null") {
-            $url_thumb = $this->fileUpload->uploadImage1(DirectoryConstant::UPLOAD_FOLDER_PEOPLE,
+            $url_thumb = $this->fileUpload->uploadImage(DirectoryConstant::UPLOAD_FOLDER_SLIDE,
                 $request->image);
-            $data['avatar'] = $url_thumb;
+            $data['image'] = $url_thumb;
         }
-        $data = Arr::except($data, 'image');
-        People::create($data);
-        return redirect('/admin/offices/people');
+        Slide::create($data);
+        return redirect('/admin/slide');
     }
 
     /**
@@ -82,8 +79,7 @@ class PeopleController extends Controller
      */
     public function edit($id)
     {
-        $people = People::find($id);
-        return view('backend.list_people._form', compact('people'));
+        //
     }
 
     /**
@@ -95,19 +91,7 @@ class PeopleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $people = People::find($id);
-        $data = $request->all();
-        if ($request->hasFile('image')) {
-            $url_thumb = $this->fileUpload->uploadImage(DirectoryConstant::UPLOAD_FOLDER_PEOPLE,
-                $request->image);
-            $data['avatar'] = $url_thumb;
-            Functions::unlinkUpload(DirectoryConstant::UPLOAD_FOLDER_PEOPLE , $people->avatar);
-        } else {
-            unset($data['image']);
-        }
-        $data = Arr::except($data, 'image');
-        $people->update($data);
-        return redirect('/admin/offices/people');
+        //
     }
 
     /**
@@ -118,7 +102,7 @@ class PeopleController extends Controller
      */
     public function destroy($id)
     {
-        People::find($id)->delete();
+        Slide::find($id)->delete();
         return 1;
     }
 }

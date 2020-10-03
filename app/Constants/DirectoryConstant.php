@@ -26,4 +26,6 @@ class DirectoryConstant
     const UPLOAD_FOLDER_OFFICE = '/backend/images/office/';
     const UPLOAD_FOLDER_OFFICE_LOGO = '/backend/images/office/client_logo/';
     const UPLOAD_FOLDER_OFFICE_THUMB = '/backend/images/office/thumb/';
+    const UPLOAD_FOLDER_PEOPLE = '/backend/images/people/';
+    const UPLOAD_FOLDER_SLIDE = '/backend/images/slide/';
 }

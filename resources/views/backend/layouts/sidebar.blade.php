@@ -34,10 +34,15 @@
                 <li class="{{ \Request::is('admin/offices/contents*') ? 'active' : '' }}">
                     <a class="menu-item" href="/admin/offices/contents">3.1 Content</a>
                 </li>
-                <li class="{{ \Request::is('admin/offices/peoples*') ? 'active' : '' }}">
-                    <a class="menu-item" href="/admin/offices/peoples">3.2 List People</a>
+                <li class="{{ \Request::is('admin/offices/people*') ? 'active' : '' }}">
+                    <a class="menu-item" href="/admin/offices/people">3.2 List People</a>
                 </li>
             </ul>
+        </li>
+        <li class="nav-item {{ \Request::is('admin/slide*') ? 'open' : '' }}">
+            <a class="menu-item bold" href="/admin/slide"><i class="ft-home"></i>
+                <span class="menu-title" data-i18n="">4. Slide</span>
+            </a>
         </li>
     </ul>
 </div>

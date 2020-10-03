@@ -32,7 +32,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::paginate(StatusCode::PAGINATE_20);
+        $news = News::orderByDesc('id')->paginate(StatusCode::PAGINATE_20);
         return view('backend.news.index',compact('news'));
     }
 

@@ -25,10 +25,11 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::group(['namespace' => 'Backend','prefix'=>'admin', 'as' => 'admin.'], function () {
 
     Route::resource('news','NewsController');
+    Route::resource('slide','SlideController');
     Route::resource('work/categories','CategoryController');
     Route::resource('work/products','ProductController');
     Route::resource('offices/contents','OfficeController');
-    Route::resource('offices/peoples','PeopleController');
+    Route::resource('offices/people','PeopleController');
     Route::post('work/categories/serialize', 'CategoryController@serialize');
 
 
