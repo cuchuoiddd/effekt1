@@ -26,8 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $pagi = User::paginate(1);
-        return view('home', compact('pagi'));
+        return view('frontend.index');
     }
 
 
