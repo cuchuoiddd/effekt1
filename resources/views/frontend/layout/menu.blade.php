@@ -16,13 +16,13 @@
 </li>
 @if(App::isLocale('vi'))
     <li>
-        <a href="/news">News</a>
+        <a href="/news">Tin tức</a>
     </li>
     <li>
-        <a href="/work">Work</a>
+        <a href="/work">Công việc</a>
     </li>
     <li>
-        <a href="/office">Office</a>
+        <a href="/office">Văn phòng</a>
     </li>
 @else
     <li>

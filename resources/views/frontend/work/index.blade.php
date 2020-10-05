@@ -48,20 +48,24 @@
 
             <ul class="category-nav">
 
-                <li>
-                    <a href="#" class="iso-btn" title="All">All</a>
-                </li>
+
                 @if(count($categories))
                     @if(App::isLocale('vi'))
+                        <li>
+                            <a href="#" class="iso-btn" title="All">Tất cả</a>
+                        </li>
                         @foreach($categories as $item)
                             <li>
-                                <a href="#category={{$item->id}}" class="iso-btn" title="{{$item->title_vn}}">{{$item->title_vn}}</a>
+                                <a href="#category={{$item->title_en}}" class="iso-btn" title="{{$item->title_vn}}">{{$item->title_vn}}</a>
                             </li>
                         @endforeach
                     @else
+                        <li>
+                            <a href="#" class="iso-btn" title="All">All</a>
+                        </li>
                         @foreach($categories as $item)
                             <li>
-                                <a href="#category={{$item->id}}" class="iso-btn" title="{{$item->title_en}}">{{$item->title_en}}</a>
+                                <a href="#category={{$item->title_en}}" class="iso-btn" title="{{$item->title_en}}">{{$item->title_en}}</a>
                             </li>
                         @endforeach
                     @endif
@@ -81,7 +85,7 @@
             @if(App::isLocale('vi'))
                 @foreach($works as $item)
                     <div
-                            class="gallery-item iso-item hentry {{$item->category_id}} author-lucrezia-biasutti post-type-image article-index-1">
+                            class="gallery-item iso-item hentry category-{{$item->category->title_en}} author-lucrezia-biasutti post-type-image article-index-1">
                         <a href="work/{{$item->slug}}" title="Rosenhøj Youth Housing">
                             <div class="iso-image img-wrap cover">
                                 <img alt="Rosenhøj Youth Housing" data-sizes="auto"

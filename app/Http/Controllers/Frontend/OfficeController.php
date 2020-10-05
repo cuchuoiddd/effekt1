@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Office;
+use App\People;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +17,9 @@ class OfficeController extends Controller
     public function index()
     {
         $office = Office::first();
-        return view('frontend.office.index',compact('office'));
+        $office['image_client_logo'] = json_decode($office['image_client_logo']);
+        $people = People::orderByDesc('id')->get();
+        return view('frontend.office.index',compact('office','people'));
     }
 
     /**
