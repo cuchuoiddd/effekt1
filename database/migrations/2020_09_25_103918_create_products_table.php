@@ -27,7 +27,7 @@ class CreateProductsTable extends Migration
             $table->string('typology_en')->comment('Phân loại')->nullable();
             $table->string('location_vn')->nullable();
             $table->string('location_en')->comment('vị trí')->nullable();
-            $table->integer('year')->comment('năm')->nullable();
+            $table->string('year')->comment('năm')->nullable();
             $table->string('status_vn')->comment()->nullable();
             $table->string('status_en')->comment('trạng thái')->nullable();
             $table->string('size_vn')->comment()->nullable();

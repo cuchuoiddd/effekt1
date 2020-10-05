@@ -59,7 +59,7 @@
 
 
 <main class="site-content" role="main" data-content-field="main-content">
-    @if(App::isLocale('vn'))
+    @if(App::isLocale('vi'))
     <article class="blog-post" data-item-id="5f5a0279e5b3165d0c219890">
         <div class="post-content has-banner">
             <div class="post-banner">

@@ -192,7 +192,7 @@
                          id="block-yui_3_17_2_3_1509109870318_86563">
                         <div class="sqs-block-content">&nbsp;</div>
                     </div>
-                    @if(App::isLocale('vn'))
+                    @if(App::isLocale('vi'))
                         <div class="row sqs-row">
                             {!! $office->content_profile_vn !!}
                         </div>
@@ -222,10 +222,12 @@
                     </div>
                     <div class="sqs-block spacer-block sqs-block-spacer sized vsize-1" data-block-type="21"
                          id="block-yui_3_17_2_3_1509370795243_23617">
-                        <div class="sqs-block-content">&nbsp;</div>
+                        {{--<div class="sqs-block-content">&nbsp;</div>--}}
+                        <iframe src="https://maps.google.com/maps?q=21.0365442,105.8125174&hl=es;z=14&amp;output=embed"
+                                width="100%" height="400px"></iframe>
                     </div>
                     <div class="row sqs-row">
-                        @if(App::isLocale('vn'))
+                        @if(App::isLocale('vi'))
                             <div class="row sqs-row">
                                 {!! $office->content_contact_vn !!}
                             </div>

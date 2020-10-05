@@ -74,6 +74,11 @@ class OfficeController extends Controller
                 $request->image_award);
             $data['image_award'] = $url_thumb;
         }
+        if ($request->has('image_client')){
+            $url_thumb = $this->fileUpload->uploadImage(DirectoryConstant::UPLOAD_FOLDER_OFFICE,
+                $request->image_client);
+            $data['image_client'] = $url_thumb;
+        }
         if ($request->has('images')){
             $result = [];
             foreach ($request->images as $k=> $item){
@@ -194,6 +199,14 @@ class OfficeController extends Controller
             $url_thumb = $this->fileUpload->uploadImage(DirectoryConstant::UPLOAD_FOLDER_OFFICE,
                 $request->image_award);
             $data['image_award'] = $url_thumb;
+            if ($office->image_award){
+                self::removeImage($office->image_award);
+            }
+        }
+        if ($request->has('image_client')){
+            $url_thumb = $this->fileUpload->uploadImage(DirectoryConstant::UPLOAD_FOLDER_OFFICE,
+                $request->image_client);
+            $data['image_client'] = $url_thumb;
             if ($office->image_award){
                 self::removeImage($office->image_award);
             }

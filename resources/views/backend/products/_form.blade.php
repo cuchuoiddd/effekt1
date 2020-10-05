@@ -192,7 +192,7 @@
                                     <div class="row">
                                         <div class="col-6 form-group">
                                             <label for="squareText">Năm làm dự án</label>
-                                            <input type="number" id="year" name="year" class="form-control square" value="{{ $product->year ?? old('year') }}">
+                                            <input type="text" id="year" name="year" class="form-control square" value="{{ $product->year ?? old('year') }}">
                                         </div>
                                         <div class="col-6 form-group">
                                             <label for="squareText">Nhóm thiết kế</label>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,7 +17,12 @@ class WorkController extends Controller
     public function index()
     {
         $works = Product::orderByDesc('id')->get();
-        return view('frontend.work.index',compact('works'));
+        $works = $works->map(function ($item){
+           $item['images'] = json_decode($item['images']);
+           return $item;
+        });
+        $categories = Category::all();
+        return view('frontend.work.index',compact('works','categories'));
     }
 
     /**

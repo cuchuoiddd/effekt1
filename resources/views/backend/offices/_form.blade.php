@@ -252,11 +252,11 @@
                                                 @if(isset($office->image_award))
                                                     <img class="viewImage"
                                                          src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_award}}"
-                                                         alt="Hình ảnh tin tức" style="width: 65%">
+                                                         alt="Hình ảnh giải thưởng" style="width: 65%">
                                                 @else
                                                     <img class="viewImage"
                                                          src="{{asset('images/default-image-300x225.jpg')}}"
-                                                         alt="Hình ảnh tin tức"
+                                                         alt="Hình ảnh giải thưởng"
                                                          style="width: 65%">
                                                 @endif
                                             </div>
@@ -280,21 +280,21 @@
                                                             class="fa fa-picture-o"></i> Chọn ảnh</span>
                                                     <span class="fileupload-exists"><i
                                                                 class="fa fa-undo"></i> Thay đổi</span>
-                                                    <input type="file" id="image_award" name="image_award"
+                                                    <input type="file" id="image_client" name="image_client"
                                                            class="btn-secondary">
                                                 </button>
                                             </div>
 
                                             <div class="fileupload-new thumbnail"
                                                  style="border-radius: 5px;width: 200px; height: 150px;">
-                                                @if(isset($office->image_award))
+                                                @if(isset($office->image_client))
                                                     <img class="viewImage"
-                                                         src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_award}}"
-                                                         alt="Hình ảnh tin tức" style="width: 65%">
+                                                         src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_client}}"
+                                                         alt="Hình ảnh khách hàng" style="width: 65%">
                                                 @else
                                                     <img class="viewImage"
                                                          src="{{asset('images/default-image-300x225.jpg')}}"
-                                                         alt="Hình ảnh tin tức"
+                                                         alt="Hình ảnh khách hàng"
                                                          style="width: 65%">
                                                 @endif
                                             </div>

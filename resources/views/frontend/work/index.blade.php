@@ -51,54 +51,22 @@
                 <li>
                     <a href="#" class="iso-btn" title="All">All</a>
                 </li>
+                @if(count($categories))
+                    @if(App::isLocale('vi'))
+                        @foreach($categories as $item)
+                            <li>
+                                <a href="#category={{$item->id}}" class="iso-btn" title="{{$item->title_vn}}">{{$item->title_vn}}</a>
+                            </li>
+                        @endforeach
+                    @else
+                        @foreach($categories as $item)
+                            <li>
+                                <a href="#category={{$item->id}}" class="iso-btn" title="{{$item->title_en}}">{{$item->title_en}}</a>
+                            </li>
+                        @endforeach
+                    @endif
+                @endif
 
-                <li>
-                    <a href="#category=built" class="iso-btn" title="Built">Built</a>
-                </li>
-
-                <li>
-                    <a href="#category=commercial" class="iso-btn" title="Commercial">Commercial</a>
-                </li>
-
-                <li>
-                    <a href="#category=culture" class="iso-btn" title="Culture">Culture</a>
-                </li>
-
-                <li>
-                    <a href="#category=education" class="iso-btn" title="Education">Education</a>
-                </li>
-
-                <li>
-                    <a href="#category=healthcare" class="iso-btn" title="Healthcare">Healthcare</a>
-                </li>
-
-                <li>
-                    <a href="#category=infrastructure" class="iso-btn" title="Infrastructure">Infrastructure</a>
-                </li>
-
-                <li>
-                    <a href="#category=landscape" class="iso-btn" title="Landscape">Landscape</a>
-                </li>
-
-                <li>
-                    <a href="#category=masterplan" class="iso-btn" title="Masterplan">Masterplan</a>
-                </li>
-
-                <li>
-                    <a href="#category=research" class="iso-btn" title="Research">Research</a>
-                </li>
-
-                <li>
-                    <a href="#category=residential" class="iso-btn" title="Residential">Residential</a>
-                </li>
-
-                <li>
-                    <a href="#category=sports" class="iso-btn" title="Sports">Sports</a>
-                </li>
-
-                <li>
-                    <a href="#category=transformation" class="iso-btn" title="Transformation">Transformation</a>
-                </li>
             </ul>
 
 
@@ -118,9 +86,9 @@
                             <div class="iso-image img-wrap cover">
                                 <img alt="Rosenhøj Youth Housing" data-sizes="auto"
                                      data-srcset="
-	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT_THUMB.$item->image}}?format=750w 750w,
-      {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->image}}?format=2500w 2500w"
-                                      class="lazyload"/>
+	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT_THUMB.$item->images[0]->url}}?format=750w 750w,
+      {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=2500w 2500w"
+                                     class="lazyload"/>
                             </div>
                             <div class="item-meta-wrapper">
                                 <div class="item-meta">
@@ -137,6 +105,32 @@
                     </div>
                 @endforeach
             @else
+
+                @foreach($works as $item)
+                    <div
+                            class="gallery-item iso-item hentry {{$item->category_id}} author-lucrezia-biasutti post-type-image article-index-1">
+                        <a href="work/{{$item->slug}}" title="Rosenhøj Youth Housing">
+                            <div class="iso-image img-wrap cover">
+                                <img alt="Rosenhøj Youth Housing" data-sizes="auto"
+                                     data-srcset="
+	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT_THUMB.$item->images[0]->url}}?format=750w 750w,
+      {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=2500w 2500w"
+                                     class="lazyload"/>
+                            </div>
+                            <div class="item-meta-wrapper">
+                                <div class="item-meta">
+
+                                    <div class="item-title">{{$item->title_en}}</div>
+
+
+                                    <p>{{$item->year}}</p>
+                                    <p>{{$item->category->title_en}}</p>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
             @endif
         @endif
 
@@ -172,51 +166,51 @@
                         </div>
                     </div>
                     {{--<div class="sqs-block socialaccountlinks-v2-block sqs-block-socialaccountlinks-v2"--}}
-                         {{--data-block-type="54"--}}
-                         {{--id="block-yui_3_17_2_80_1508967373173_6221">--}}
-                        {{--<div class="sqs-block-content">--}}
+                    {{--data-block-type="54"--}}
+                    {{--id="block-yui_3_17_2_80_1508967373173_6221">--}}
+                    {{--<div class="sqs-block-content">--}}
 
 
-                            {{--<div--}}
-                                    {{--class="sqs-svg-icon--outer social-icon-alignment-center social-icons-color-black social-icons-size-small social-icons-style-regular ">--}}
-                                {{--<nav class="sqs-svg-icon--list">--}}
-                                    {{--<a href="http://www.linkedin.com/company/effekt" target="_blank"--}}
-                                       {{--class="sqs-svg-icon--wrapper linkedin" aria-label="Mikkel Bøgh">--}}
-                                        {{--<div>--}}
-                                            {{--<svg class="sqs-svg-icon--social" viewBox="0 0 64 64">--}}
-                                                {{--<use class="sqs-use--icon" xlink:href="#linkedin-icon"></use>--}}
-                                                {{--<use class="sqs-use--mask" xlink:href="#linkedin-mask"></use>--}}
-                                            {{--</svg>--}}
-                                        {{--</div>--}}
-                                    {{--</a><a href="http://www.facebook.com/effekt.dk" target="_blank"--}}
-                                           {{--class="sqs-svg-icon--wrapper facebook" aria-label="EFFEKT">--}}
-                                        {{--<div>--}}
-                                            {{--<svg class="sqs-svg-icon--social" viewBox="0 0 64 64">--}}
-                                                {{--<use class="sqs-use--icon" xlink:href="#facebook-icon"></use>--}}
-                                                {{--<use class="sqs-use--mask" xlink:href="#facebook-mask"></use>--}}
-                                            {{--</svg>--}}
-                                        {{--</div>--}}
-                                    {{--</a><a href="https://twitter.com/EffektArch" target="_blank"--}}
-                                           {{--class="sqs-svg-icon--wrapper twitter"--}}
-                                           {{--aria-label="EFFEKT Architects">--}}
-                                        {{--<div>--}}
-                                            {{--<svg class="sqs-svg-icon--social" viewBox="0 0 64 64">--}}
-                                                {{--<use class="sqs-use--icon" xlink:href="#twitter-icon"></use>--}}
-                                                {{--<use class="sqs-use--mask" xlink:href="#twitter-mask"></use>--}}
-                                            {{--</svg>--}}
-                                        {{--</div>--}}
-                                    {{--</a><a href="http://instagram.com/effektarchitects" target="_blank"--}}
-                                           {{--class="sqs-svg-icon--wrapper instagram" aria-label="EFFEKT Architects">--}}
-                                        {{--<div>--}}
-                                            {{--<svg class="sqs-svg-icon--social" viewBox="0 0 64 64">--}}
-                                                {{--<use class="sqs-use--icon" xlink:href="#instagram-icon"></use>--}}
-                                                {{--<use class="sqs-use--mask" xlink:href="#instagram-mask"></use>--}}
-                                            {{--</svg>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                {{--</nav>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
+                    {{--<div--}}
+                    {{--class="sqs-svg-icon--outer social-icon-alignment-center social-icons-color-black social-icons-size-small social-icons-style-regular ">--}}
+                    {{--<nav class="sqs-svg-icon--list">--}}
+                    {{--<a href="http://www.linkedin.com/company/effekt" target="_blank"--}}
+                    {{--class="sqs-svg-icon--wrapper linkedin" aria-label="Mikkel Bøgh">--}}
+                    {{--<div>--}}
+                    {{--<svg class="sqs-svg-icon--social" viewBox="0 0 64 64">--}}
+                    {{--<use class="sqs-use--icon" xlink:href="#linkedin-icon"></use>--}}
+                    {{--<use class="sqs-use--mask" xlink:href="#linkedin-mask"></use>--}}
+                    {{--</svg>--}}
+                    {{--</div>--}}
+                    {{--</a><a href="http://www.facebook.com/effekt.dk" target="_blank"--}}
+                    {{--class="sqs-svg-icon--wrapper facebook" aria-label="EFFEKT">--}}
+                    {{--<div>--}}
+                    {{--<svg class="sqs-svg-icon--social" viewBox="0 0 64 64">--}}
+                    {{--<use class="sqs-use--icon" xlink:href="#facebook-icon"></use>--}}
+                    {{--<use class="sqs-use--mask" xlink:href="#facebook-mask"></use>--}}
+                    {{--</svg>--}}
+                    {{--</div>--}}
+                    {{--</a><a href="https://twitter.com/EffektArch" target="_blank"--}}
+                    {{--class="sqs-svg-icon--wrapper twitter"--}}
+                    {{--aria-label="EFFEKT Architects">--}}
+                    {{--<div>--}}
+                    {{--<svg class="sqs-svg-icon--social" viewBox="0 0 64 64">--}}
+                    {{--<use class="sqs-use--icon" xlink:href="#twitter-icon"></use>--}}
+                    {{--<use class="sqs-use--mask" xlink:href="#twitter-mask"></use>--}}
+                    {{--</svg>--}}
+                    {{--</div>--}}
+                    {{--</a><a href="http://instagram.com/effektarchitects" target="_blank"--}}
+                    {{--class="sqs-svg-icon--wrapper instagram" aria-label="EFFEKT Architects">--}}
+                    {{--<div>--}}
+                    {{--<svg class="sqs-svg-icon--social" viewBox="0 0 64 64">--}}
+                    {{--<use class="sqs-use--icon" xlink:href="#instagram-icon"></use>--}}
+                    {{--<use class="sqs-use--mask" xlink:href="#instagram-mask"></use>--}}
+                    {{--</svg>--}}
+                    {{--</div>--}}
+                    {{--</a>--}}
+                    {{--</nav>--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
                     {{--</div>--}}
                 </div>
             </div>

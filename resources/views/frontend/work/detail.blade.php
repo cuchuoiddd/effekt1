@@ -181,9 +181,9 @@
             </div>
             <div class="project-list-items">
 
-                <div class="project-item">
-                    @if(count(json_decode($work->images)))
-                        @foreach(json_decode($work->images) as $item)
+                @if(count(json_decode($work->images)))
+                    @foreach(json_decode($work->images) as $item)
+                    <div class="project-item">
                             <div class="project-image img-wrap cover p-ratio">
                                     <img alt="{{$work->title_vn}}" data-sizes="auto"
                                          data-srcset="
@@ -191,9 +191,9 @@
       {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}?format=2500w 2500w"
                                          class="lazyload"/>
                             </div>
-                        @endforeach
-                    @endif
-                </div>
+                        </div>
+                    @endforeach
+                @endif
 
 
             </div>
@@ -264,7 +264,7 @@
                             <!-- <div id="googleMap" style="width:100%;height:400px; margin-top: 30px;"></div> -->
                             <!-- <div id="googleMap"></div> -->
                             <div style="margin-top: 30px;">
-                                <iframe src="https://maps.google.com/maps?q=21.0365442,105.8125174&hl=es;z=14&amp;output=embed"
+                                <iframe src="https://maps.google.com/maps?q={{$work->lat.','.$work->long}}&hl=es;z=14&amp;output=embed"
                                         width="100%" height="400px"></iframe>
                             </div>
                         </class>
@@ -327,7 +327,7 @@
                             <!-- <div id="googleMap" style="width:100%;height:400px; margin-top: 30px;"></div> -->
                             <!-- <div id="googleMap"></div> -->
                             <div style="margin-top: 30px;">
-                                <iframe src="https://maps.google.com/maps?q=21.0365442,105.8125174&hl=es;z=14&amp;output=embed"
+                                <iframe src="https://maps.google.com/maps?q={{$work->lat.','.$work->long}}&hl=es;z=14&amp;output=embed"
                                         width="100%" height="400px"></iframe>
                             </div>
                         </class>
