@@ -1,9 +1,37 @@
 <li>
-    <a href="/news">News</a>
+    <div class="btn-group show" style="z-index: 1000;position:relative">
+        <button class="btn btn-secondary btn-lg dropdown-toggle" style="border: none;background:none">
+            <img class=" lazyloaded" src="{{asset('images/flag-vietnam.png')}}" width="30" height="60">
+        </button>
+        <div class="dropdown-menu" x-placement="bottom-start"
+             style="position: absolute; transform: translate3d(0px, 48px, 0px); top: 0px; left: 7px; will-change: transform;display: none;">
+            <a class="dropdown-item" href="{{ App\Helpers\Functions::linkLanguage('') }}">
+                <img class=" lazyloaded" src="{{asset('images/flag-vietnam.png')}}" width="30" height="60">
+            </a>
+            <a class="dropdown-item" href="{{ App\Helpers\Functions::linkLanguage('en') }}">
+                <img class=" lazyloaded" src="{{asset('images/flag-england.png')}}" width="30" height="60">
+            </a>
+        </div>
+    </div>
 </li>
-<li>
-    <a href="/work">Work</a>
-</li>
-<li>
-    <a href="/office">Office</a>
-</li>
+@if(App::isLocale('vi'))
+    <li>
+        <a href="/news">News</a>
+    </li>
+    <li>
+        <a href="/work">Work</a>
+    </li>
+    <li>
+        <a href="/office">Office</a>
+    </li>
+@else
+    <li>
+        <a href="/en/news">News</a>
+    </li>
+    <li>
+        <a href="/en/work">Work</a>
+    </li>
+    <li>
+        <a href="/en/office">Office</a>
+    </li>
+@endif

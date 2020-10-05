@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,13 @@ class NewsController extends Controller
      */
     public function index()
     {
-        return view('frontend.news.index');
+        $news = News::orderByDesc('id')->get();
+        $news = $news->map(function ($m){
+            $m['year'] = \Carbon\Carbon::parse($m->date);
+            $m['year'] = $m['year']->year;
+            return $m;
+        });
+        return view('frontend.news.index',compact('news'));
     }
 
     /**
@@ -46,7 +53,8 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        return view('frontend.news.detail');
+        $news = News::where('slug',$id)->first();
+        return view('frontend.news.detail',compact('news'));
     }
 
     /**

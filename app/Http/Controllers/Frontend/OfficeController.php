@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Office;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class OfficeController extends Controller
      */
     public function index()
     {
-        return view('frontend.office.index');
+        $office = Office::first();
+        return view('frontend.office.index',compact('office'));
     }
 
     /**

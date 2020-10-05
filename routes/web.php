@@ -14,15 +14,24 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('news', 'Frontend\NewsController@index');
-Route::get('news/{slug}', 'Frontend\NewsController@show');
-Route::get('work', 'Frontend\WorkController@index');
-Route::get('work/{slug}', 'Frontend\WorkController@show');
-Route::get('office', 'Frontend\OfficeController@index');
+$checkLang = request()->segment(1);
+if ($checkLang == 'en') {
+    $language = 'en';
+} else {
+    $language = '';
+}
+Route::group(['prefix' => $language,'middleware' => 'set_locale'],function (){
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('news', 'Frontend\NewsController@index');
+    Route::get('news/{slug}', 'Frontend\NewsController@show');
+    Route::get('work', 'Frontend\WorkController@index');
+    Route::get('work/{slug}', 'Frontend\WorkController@show');
+    Route::get('office', 'Frontend\OfficeController@index');
+});
+Route::get('set-locale/{slug}','HomeController@setLocate');
 
 
-Route::group(['namespace' => 'Backend','prefix'=>'admin', 'as' => 'admin.'], function () {
+Route::group(['middleware'=>'auth','namespace' => 'Backend','prefix'=>'admin', 'as' => 'admin.'], function () {
 
     Route::resource('news','NewsController');
     Route::resource('slide','SlideController');

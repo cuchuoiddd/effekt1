@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class WorkController extends Controller
      */
     public function index()
     {
-        return view('frontend.work.index');
+        $works = Product::orderByDesc('id')->get();
+        return view('frontend.work.index',compact('works'));
     }
 
     /**
@@ -46,7 +48,8 @@ class WorkController extends Controller
      */
     public function show($id)
     {
-        return view('frontend.work.detail');
+        $work = Product::where('slug',$id)->first();
+        return view('frontend.work.detail',compact('work'));
     }
 
     /**

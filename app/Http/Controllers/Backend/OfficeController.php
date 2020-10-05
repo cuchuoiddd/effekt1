@@ -76,10 +76,10 @@ class OfficeController extends Controller
         }
         if ($request->has('images')){
             $result = [];
-            foreach ($request->images as $item){
+            foreach ($request->images as $k=> $item){
                 $url_thumb = $this->fileUpload->uploadImage(DirectoryConstant::UPLOAD_FOLDER_OFFICE,
                     $item);
-                $result[] = $url_thumb;
+                $result[$k]['url'] = $url_thumb;
 //                $data['images'] = $url_thumb;
             }
             $data['image_client_logo'] = json_encode($result);

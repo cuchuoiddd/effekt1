@@ -252,9 +252,42 @@ class Functions
 
     }
 
-    public static function getUserId()
+    /**
+     *
+     * Get link language
+     *
+     */
+
+    public static function linkLanguage($locale = 'en')
     {
-        $user_id = 1;
-        return $user_id;
+        $url = \URL::full();
+        if (substr_count($url, '?') > 0 && substr_count($url, '/?') <= 0) {
+            $url = str_replace("?", "/?", $url);
+        }
+
+        $domain = request()->root();
+        $lang = \Request::segment(1);
+        $segment_2 = \Request::segment(2);
+        if ($lang && $locale != $lang) {
+
+            if ($lang != 'en') {
+                if($locale){
+                    $convert = 'en/';
+                    $url = str_replace($domain . '/' . $lang, $domain . '/' . $convert . $lang, $url);
+                }
+            } else {
+                $convert = '';
+                if ($segment_2) {
+                    $lang .= '/';
+                }
+                $url = str_replace($domain . '/' . $lang, $domain . '/' . $convert, $url);
+            }
+        } elseif ($lang == null) {
+            $convert = '/en';
+            $url .= $convert;
+        }
+//        dd($locale, $lang, $url, 222);
+        return $url;
     }
+
 }

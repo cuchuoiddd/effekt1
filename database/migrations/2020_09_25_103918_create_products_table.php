@@ -39,6 +39,7 @@ class CreateProductsTable extends Migration
             $table->string('design_team')->comment('team thiết kế')->nullable();
             $table->string('lat')->comment('vị trí bản đồ')->nullable();
             $table->string('long')->comment('vị trí bản đồ')->nullable();
+            $table->string('slug');
             $table->timestamps();
         });
     }

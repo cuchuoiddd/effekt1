@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Depot;
+use App\Slide;
 use App\User;
 use Illuminate\Http\Request;
 use Socialite;
@@ -26,9 +27,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('frontend.index');
+        $slides = Slide::orderByDesc('id')->get();
+        return view('frontend.index',compact('slides'));
     }
 
+    public function setLocate($slug){
+        app()->setLocale($slug);
+        return back();
+    }
 
 
 }
