@@ -30,3 +30,4 @@
     Squarespace.load(window);
 </script>
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/site8696.css')}}?&amp;filterFeatures=false"/>
+<link rel="stylesheet" href="{{asset('frontend/css/custom.css')}}">
