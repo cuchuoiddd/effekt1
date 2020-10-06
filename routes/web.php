@@ -41,6 +41,7 @@ Route::group(['middleware'=>'auth','namespace' => 'Backend','prefix'=>'admin', '
     Route::resource('offices/people','PeopleController');
     Route::post('work/categories/serialize', 'CategoryController@serialize');
     Route::resource('san-pham', 'ProductController');
+    Route::resource('setting','SettingController');
 
 
 //    Route::group(['prefix' => 'depots', 'as' => 'depots.'], function () {

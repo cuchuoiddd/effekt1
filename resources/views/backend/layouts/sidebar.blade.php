@@ -44,5 +44,10 @@
                 <span class="menu-title" data-i18n="">4. Slide</span>
             </a>
         </li>
+        <li class="nav-item {{ \Request::is('admin/setting*') ? 'open' : '' }}">
+            <a class="menu-item bold" href="/admin/setting"><i class="ft-home"></i>
+                <span class="menu-title" data-i18n="">5. Setting</span>
+            </a>
+        </li>
     </ul>
 </div>

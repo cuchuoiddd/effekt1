@@ -1,7 +1,5 @@
 <!doctype html>
-
 <head>
-
     <base #href="">
     <meta charset="utf-8"/>
     <title>News | EFFEKT welcomes Jennifer Zitner as new Director of Business Development</title>

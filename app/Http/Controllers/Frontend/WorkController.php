@@ -9,6 +9,12 @@ use App\Http\Controllers\Controller;
 
 class WorkController extends Controller
 {
+    public function __construct()
+    {
+        view()->share([
+            'active_menu' => 'work',
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *

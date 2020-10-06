@@ -10,6 +10,7 @@ use Socialite;
 
 class HomeController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
@@ -17,6 +18,9 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        view()->share([
+            'active_menu' => '',
+        ]);
 //        $this->middleware('auth');
     }
 

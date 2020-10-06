@@ -8,6 +8,13 @@ use App\Http\Controllers\Controller;
 
 class NewsController extends Controller
 {
+    public function __construct()
+    {
+        view()->share([
+            'active_menu' => 'news',
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *

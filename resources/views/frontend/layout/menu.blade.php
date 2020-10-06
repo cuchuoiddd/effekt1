@@ -15,23 +15,23 @@
     </div>
 </li>
 @if(App::isLocale('vi'))
-    <li>
-        <a href="/news">Tin tức</a>
+    <li class="{{$active_menu == 'news' ? 'active':''}}" >
+        <a href="/news" >Tin tức</a>
     </li>
-    <li>
+    <li class="{{$active_menu == 'work' ? 'active':''}}" >
         <a href="/work">Công việc</a>
     </li>
-    <li>
+    <li class="{{$active_menu == 'office' ? 'active':''}}" >
         <a href="/office">Văn phòng</a>
     </li>
 @else
-    <li>
-        <a href="/en/news">News</a>
+    <li class="{{$active_menu == 'news' ? 'active':''}}">
+        <a  href="/en/news">News</a>
     </li>
-    <li>
-        <a href="/en/work">Work</a>
+    <li class="{{$active_menu == 'work' ? 'active':''}}">
+        <a  href="/en/work">Work</a>
     </li>
-    <li>
+    <li class="{{$active_menu == 'office' ? 'active':''}}">
         <a href="/en/office">Office</a>
     </li>
 @endif

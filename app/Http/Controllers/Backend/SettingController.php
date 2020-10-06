@@ -1,20 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Backend;
 
-use App\Office;
-use App\People;
+use App\Setting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class OfficeController extends Controller
+class SettingController extends Controller
 {
-    public function __construct()
-    {
-        view()->share([
-            'active_menu' => 'office',
-        ]);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -22,10 +15,8 @@ class OfficeController extends Controller
      */
     public function index()
     {
-        $office = Office::first();
-        $office['image_client_logo'] = json_decode($office['image_client_logo']);
-        $people = People::orderByDesc('id')->get();
-        return view('frontend.office.index',compact('office','people'));
+        Setting::first();
+        return view('backend.setting._form');
     }
 
     /**
