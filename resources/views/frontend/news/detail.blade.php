@@ -89,16 +89,16 @@
                     </div>
                 </div>
             </div>
-            <div class="pagination">
-                <a class="next" href="sinus-lynge-invited-speaker-at-habitats-2020.html" title="Next">
-                    <svg viewBox="0 0 17 10" xmlns="http://www.w3.org/2000/svg">
-                        <g fill="none" fill-rule="evenodd">
-                            <path class="fill" d="M16.06865 4.86426L11.5784 9.5272V.2013"/>
-                            <path class="stroke" d="M1 5h12.51922" stroke-width="2" stroke-linecap="square"/>
-                        </g>
-                    </svg>
-                </a>
-            </div>
+            {{--<div class="pagination">--}}
+                {{--<a class="next" href="sinus-lynge-invited-speaker-at-habitats-2020.html" title="Next">--}}
+                    {{--<svg viewBox="0 0 17 10" xmlns="http://www.w3.org/2000/svg">--}}
+                        {{--<g fill="none" fill-rule="evenodd">--}}
+                            {{--<path class="fill" d="M16.06865 4.86426L11.5784 9.5272V.2013"/>--}}
+                            {{--<path class="stroke" d="M1 5h12.51922" stroke-width="2" stroke-linecap="square"/>--}}
+                        {{--</g>--}}
+                    {{--</svg>--}}
+                {{--</a>--}}
+            {{--</div>--}}
         </div>
     </article>
         @else
