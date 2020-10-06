@@ -162,10 +162,13 @@
 
 
                                         <div class="image-title-wrapper">
-                                            <div class="image-title sqs-dynamic-text"
-
-
-                                            ><p>Profile</p></div>
+                                            <div class="image-title sqs-dynamic-text">
+                                                @if(App::isLocale('vi'))
+                                                <p>Hồ sơ</p>
+                                                    @else
+                                                    <p>Profile</p>
+                                                @endif
+                                            </div>
                                         </div>
 
 
@@ -279,7 +282,13 @@
                                 <figcaption class="image-card-wrapper" data-width-ratio>
                                     <div class="image-card sqs-dynamic-text-container">
                                         <div class="image-title-wrapper">
-                                            <div class="image-title sqs-dynamic-text"><p class="">People</p></div>
+                                            <div class="image-title sqs-dynamic-text">
+                                                @if(App::isLocale('vi'))
+                                                    <p>Con người</p>
+                                                @else
+                                                    <p>People</p>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                 </figcaption>
@@ -463,10 +472,14 @@
 
 
                                         <div class="image-title-wrapper">
-                                            <div class="image-title sqs-dynamic-text"
+                                            <div class="image-title sqs-dynamic-text">
+                                                @if(App::isLocale('vi'))
+                                                    <p>Việc làm</p>
+                                                @else
+                                                    <p>Employment</p>
+                                                @endif
 
-
-                                            ><p class="">Employment</p></div>
+                                            </div>
                                         </div>
 
 
@@ -560,10 +573,13 @@
 
 
                                         <div class="image-title-wrapper">
-                                            <div class="image-title sqs-dynamic-text"
-
-
-                                            ><p class="">Awards</p></div>
+                                            <div class="image-title sqs-dynamic-text">
+                                                @if(App::isLocale('vi'))
+                                                    <p>Giải thưởng</p>
+                                                @else
+                                                    <p>Awards</p>
+                                                @endif
+                                            </div>
                                         </div>
 
 
@@ -663,10 +679,14 @@
                                             <div class="image-title sqs-dynamic-text"
 
                                                  data-animation-override
-                                            ><p>Clients</p></div>
+                                            >
+                                                @if(App::isLocale('vi'))
+                                                    <p>Khách hàng</p>
+                                                @else
+                                                    <p>Clients</p>
+                                                @endif
+                                            </div>
                                         </div>
-
-
                                     </div>
                                 </figcaption>
 
