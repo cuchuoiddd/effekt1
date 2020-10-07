@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Setting;
 use Exception;
 use nusoap_client;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -134,123 +135,6 @@ class Functions
 
     }
 
-    /**
-     * SMS VMG BRANDNAME
-     *
-     * @param $phone
-     * @param $sms_text
-     * @param string $send_after
-     * @return int
-     */
-    public static function sendSmsV3($phone, $sms_text, $send_after = '')
-    {
-        $data = [
-            'to' => $phone,
-            'from' => "ROYAL SPA",
-            'message' => $sms_text,
-            'scheduled' => $send_after,//15-01-2019 16:05
-            'requestId' => "",
-            'useUnicode' => 0,//sử dụng có dấu hay k dấu
-            'type' => 1 // CSKH hay QC
-        ];
-        $data = json_encode((object)$data);
-        $base_url = 'http://api.brandsms.vn:8018/api/SMSBrandname/SendSMS';
-        $token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c24iOiJyb3lhbHNwYSIsInNpZCI6ImFmZTIxOWQ4LTdhM2UtNDA5MS05NjBmLThmZjViNGI4NzRhMiIsIm9idCI6IiIsIm9iaiI6IiIsIm5iZiI6MTU4OTM1NDE4MCwiZXhwIjoxNTg5MzU3NzgwLCJpYXQiOjE1ODkzNTQxODB9.Hx8r30IR1nqAkOClihx0n9upfvgOg1f-E3MwNEwWT-0';
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => $base_url,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => $data,
-            CURLOPT_HTTPHEADER => array(
-                "Content-Type: application/json",
-                "token: $token"
-            ),
-        ));
-        $response = curl_exec($curl);
-        curl_close($curl);
-        $error_code = json_decode($response)->errorCode;
-        if ($error_code == '000') {
-            return 1;
-        }
-    }
-
-    /**
-     * SMS VIETTEL
-     *
-     * @param $phone
-     * @param $sms_text
-     * @return int
-     */
-    public static function sendSmsBK($phone, $sms_text)
-    {
-        $client = new nusoap_client("http://203.190.170.43:9998/bulkapi?wsdl", 'wsdl', '', '', '', '');
-        $client->soap_defencoding = 'UTF-8';
-        $client->decode_utf8 = false;
-        $err = $client->getError();
-        if ($err) {
-            echo '<h2>Test-Constructor error</h2><pre>' . $err . '</pre>';
-        }
-        $result = $client->call('wsCpMt',
-            [
-                'User' => 'smsbrand_royal_spa',
-                'Password' => '123456a@',
-                'CPCode' => 'ROYAL_SPA',
-                'UserID' => $phone,
-                'RequestID' => '1',
-                'ReceiverID' => $phone,
-                'ServiceID' => 'ROYAL-SPA',
-                'CommandCode' => 'bulksms',
-                'ContentType' => '0',
-                'Content' => $sms_text,
-            ], '', '', ''
-        );
-
-        $err = $client->getError();
-        if (!$err) {
-            return 1;
-        }
-
-    }
-
-    /**
-     * @param $token
-     * @param $method
-     * @param $uri
-     * @param $field
-     * @return mixed
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
-    public static function getDataFaceBook($token, $method, $uri, $field)
-    {
-        $params = [
-            'query' => [
-                'access_token' => $token,
-                'fields' => $field,
-            ]
-        ];
-
-        try {
-            $client = new \GuzzleHttp\Client();
-            $res = $client->request($method, $uri, $params);
-
-            if ($res->getStatusCode() == 200) { // 200 OK
-                $response_data = $res->getBody()->getContents();
-                $datas = json_decode($response_data)->data;
-                return $datas;
-            }
-        } catch (Exception $e) {
-            report($e);
-            return [];
-        }
-
-
-    }
 
     /**
      *
@@ -288,6 +172,11 @@ class Functions
         }
 //        dd($locale, $lang, $url, 222);
         return $url;
+    }
+
+    public static function getSetting(){
+        $setting = Setting::first();
+        return $setting;
     }
 
 }

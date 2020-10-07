@@ -45,17 +45,17 @@
                                                 Hồ sơ
                                             </div>
                                         </div>
-                                        <div class="col-6 form-group">
+                                        <div class="col-12 form-group">
                                             <label for="squareText">Nội dung hồ sơ VN</label>
                                             <textarea name="content_profile_vn" class="editor"
-                                                      style="height: 300px;">
+                                                      style="min-height: 500px;">
                                             {!! $office->content_profile_vn ?? old('content_profile_vn') !!}
                                         </textarea>
                                         </div>
-                                        <div class="col-6 form-group">
+                                        <div class="col-12 form-group">
                                             <label for="squareText">Nội dung hồ sơ EN</label>
                                             <textarea name="content_profile_en" class="editor1"
-                                                      style="height: 300px;">
+                                                      style="min-height: 500px;">
                                             {!!  $office->content_profile_en ?? old('content_profile_en') !!}
                                         </textarea>
 
@@ -100,23 +100,23 @@
                                         </div>
                                         <div class="col-6 form-group">
                                             <label for="squareText">Vị trí liên lạc (lat)</label>
-                                            <input type="text" class="form-control square" name="contact_lat">
+                                            <input type="text" class="form-control square" name="contact_lat" value="{{ $office->contact_lat ?? old('contact_lat') }}">
                                         </div>
                                         <div class="col-6 form-group">
                                             <label for="squareText">Vị trí liên lạc (long)</label>
-                                            <input type="text" class="form-control square" name="contact_long">
+                                            <input type="text" class="form-control square" name="contact_long" value="{{ $office->contact_long ?? old('contact_long') }}">
                                         </div>
-                                        <div class="col-6 form-group">
+                                        <div class="col-12 form-group">
                                             <label for="squareText">Nội dung liên lạc VN</label>
                                             <textarea name="content_contact_vn" class="editor2"
-                                                      style="height: 300px;">
+                                                      style="min-height: 500px;">
                                             {!! $office->content_contact_vn ?? old('content_contact_vn') !!}
                                         </textarea>
                                         </div>
-                                        <div class="col-6 form-group">
+                                        <div class="col-12 form-group">
                                             <label for="squareText">Nội dung liên lạc EN</label>
                                             <textarea name="content_contact_en" class="editor7"
-                                                      style="height: 300px;">
+                                                      style="min-height: 500px;">
                                             {!! $office->content_contact_en ?? old('content_contact_en') !!}
                                         </textarea>
                                         </div>
@@ -166,17 +166,17 @@
                                                 Công việc
                                             </div>
                                         </div>
-                                        <div class="col-6 form-group">
+                                        <div class="col-12 form-group">
                                             <label for="squareText">Nội dung công việc VN</label>
                                             <textarea name="content_employment_vn" class="editor3"
-                                                      style="height: 300px;">
+                                                      style="min-height: 500px;">
                                             {!! $office->content_employment_vn ?? old('content_employment_vn') !!}
                                         </textarea>
                                         </div>
-                                        <div class="col-6 form-group">
+                                        <div class="col-12 form-group">
                                             <label for="squareText">Nội dung công việc EN</label>
                                             <textarea name="content_employment_en" class="editor4"
-                                                      style="height: 300px;">
+                                                      style="min-height: 500px;">
                                             {!! $office->content_employment_en ?? old('content_employment_en') !!}
                                         </textarea>
 
@@ -219,17 +219,17 @@
                                                 Giải thưởng
                                             </div>
                                         </div>
-                                        <div class="col-6 form-group">
+                                        <div class="col-12 form-group">
                                             <label for="squareText">Nội dung giải thưởng VN</label>
                                             <textarea name="content_award_vn" class="editor5"
-                                                      style="height: 300px;">
+                                                      style="min-height: 500px;">
                                             {!! $office->content_award_vn ?? old('content_award_vn') !!}
                                         </textarea>
                                         </div>
-                                        <div class="col-6 form-group">
+                                        <div class="col-12 form-group">
                                             <label for="squareText">Nội dung giải thưởng EN</label>
                                             <textarea name="content_award_en" class="editor6"
-                                                      style="height: 300px;">
+                                                      style="min-height: 500px;">
                                             {!! $office->content_award_en ?? old('content_award_en') !!}
                                         </textarea>
 

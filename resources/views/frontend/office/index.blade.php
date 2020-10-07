@@ -14,6 +14,8 @@
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script crossorigin="anonymous"
             src="{{asset('frontend/js/common-vendors-7b923839d08245f4f8a81-min.en-US.js')}}"></script>
+    <script>(function (rollups, name) { if (!rollups[name]) { rollups[name] = {}; } rollups[name].js = ["{{asset('frontend/js/common-b954de4a6fd59077b61a1-min.en-US.js')}}"]; })(SQUARESPACE_ROLLUPS, 'squarespace-common');</script>
+
     <script crossorigin="anonymous" src="{{asset('frontend/js/common-b954de4a6fd59077b61a1-min.en-US.js')}}"></script>
     <script data-name="static-context">
 
@@ -26,9 +28,13 @@
     </script>
     <script type="text/javascript">  Squarespace.load(window);</script>
     <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/site8696.css')}}?&amp;filterFeatures=false"/>
+    <link rel="stylesheet" href="{{asset('frontend/css/custom.css')}}">
     <style>
         table {
             width: 100%;
+        }
+        body{
+            font-family: proxima-nova;
         }
     </style>
 </head>
@@ -43,7 +49,11 @@
 
 
             <a class="logo" href="/" data-content-field="site-title">
-                effekt
+                @if(\App\Helpers\Functions::getSetting()->logo)
+                    <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}" alt="logo">
+                @else
+                    effekt
+                @endif
             </a>
 
         </div>
@@ -212,8 +222,8 @@
                          data-block-json="&#123;&quot;location&quot;:&#123;&quot;mapLat&quot;:55.68709910318869,&quot;mapLng&quot;:12.557689962951581,&quot;mapZoom&quot;:14,&quot;markerLat&quot;:55.68745819999999,&quot;markerLng&quot;:12.559191999999939,&quot;addressTitle&quot;:&quot;EFFEKT&quot;,&quot;addressLine1&quot;:&quot;Bl\u00E5g\u00E5rdsgade 8, 2. sal&quot;,&quot;addressLine2&quot;:&quot;K\u00F8benhavn&quot;,&quot;addressCountry&quot;:&quot;Denmark&quot;&#125;,&quot;vSize&quot;:null,&quot;style&quot;:4,&quot;labels&quot;:true,&quot;terrain&quot;:false,&quot;controls&quot;:false,&quot;hSize&quot;:null,&quot;floatDir&quot;:null,&quot;aspectRatio&quot;:42.391304347826086&#125;"
                          data-block-type="4" id="block-yui_3_17_2_5_1509369643211_11245">
                         <div class="sqs-block-content">&nbsp;</div>
-                        <iframe src="https://maps.google.com/maps?q=21.0365442,105.8125174&hl=es;z=14&amp;output=embed"
-                                width="100%" height="400px"></iframe>
+                        {{--<iframe src="https://maps.google.com/maps?q=21.0365442,105.8125174&hl=es;z=14&amp;output=embed"--}}
+                                {{--width="100%" height="400px"></iframe>--}}
                     </div>
 
                     <div class="sqs-block spacer-block sqs-block-spacer sized vsize-1" data-block-type="21"

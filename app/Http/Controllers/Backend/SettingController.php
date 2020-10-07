@@ -2,12 +2,26 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Constants\DirectoryConstant;
+use App\Helpers\Functions;
+use App\Services\UploadService;
 use App\Setting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class SettingController extends Controller
 {
+    private $fileUpload;
+
+    /**
+     * UploadService constructor.
+     *
+     * @param Filesystem $fileUpload
+     */
+    public function __construct(UploadService $fileUpload)
+    {
+        $this->fileUpload = $fileUpload;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +29,9 @@ class SettingController extends Controller
      */
     public function index()
     {
-        Setting::first();
-        return view('backend.setting._form');
+        $setting = Setting::first();
+
+        return view('backend.setting._form',compact('setting'));
     }
 
     /**
@@ -37,7 +52,14 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        if ($request->logo != "null") {
+            $url_thumb = $this->fileUpload->uploadImage(DirectoryConstant::UPLOAD_FOLDER_LOGO,
+                $request->logo);
+            $data['logo'] = $url_thumb;
+        }
+        Setting::create($data);
+        return redirect('/admin/setting');
     }
 
     /**
@@ -71,7 +93,18 @@ class SettingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $setting = Setting::find($id);
+        $data = $request->all();
+        if ($request->hasFile('logo')) {
+            $url_thumb = $this->fileUpload->uploadImage(DirectoryConstant::UPLOAD_FOLDER_LOGO,
+                $request->logo);
+            $data['logo'] = $url_thumb;
+            Functions::unlinkUpload(DirectoryConstant::UPLOAD_FOLDER_LOGO , $setting->logo);
+        } else {
+            unset($data['logo']);
+        }
+        $setting->update($data);
+        return redirect('/admin/setting');
     }
 
     /**

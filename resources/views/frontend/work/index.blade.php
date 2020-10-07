@@ -17,7 +17,11 @@
     <nav class="site-nav">
         <div class="logo-container">
             <a class="logo" href="/" data-content-field="site-title">
-                effekt
+                @if(\App\Helpers\Functions::getSetting()->logo)
+                    <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}" alt="logo">
+                @else
+                    effekt
+                @endif
             </a>
 
         </div>

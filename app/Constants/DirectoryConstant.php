@@ -30,4 +30,5 @@ class DirectoryConstant
     const UPLOAD_FOLDER_PEOPLE = '/backend/images/people/';
     const UPLOAD_FOLDER_SLIDE = '/backend/images/slide/';
     const UPLOAD_FOLDER_SLIDE_THUMB = '/backend/images/slide/thumb/';
+    const UPLOAD_FOLDER_LOGO = '/backend/images/logo/';
 }

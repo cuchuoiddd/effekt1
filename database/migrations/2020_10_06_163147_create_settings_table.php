@@ -16,7 +16,7 @@ class CreateSettingsTable extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('logo')->nullable();
-            $table->string('page_id')->comment('kết nối fanpage')->nullable();
+            $table->string('fanpage_id')->comment('kết nối fanpage')->nullable();
             $table->timestamps();
         });
     }
