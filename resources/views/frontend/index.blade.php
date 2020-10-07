@@ -19,7 +19,7 @@
     <nav class="site-nav">
         <div class="logo-container">
             <a class="logo" href="/" data-content-field="site-title">
-                @if(\App\Helpers\Functions::getSetting()->logo)
+                @if(isset(\App\Helpers\Functions::getSetting()->logo) && \App\Helpers\Functions::getSetting()->logo)
                     <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}" alt="logo">
                     @else
                     effekt
@@ -144,7 +144,7 @@
 <!-- Your Chat Plugin code -->
 <div class="fb-customerchat"
      attribution=setup_tool
-     page_id="{{\App\Helpers\Functions::getSetting()->fanpage_id?:'104351897844'}}">
+     page_id="{{isset(\App\Helpers\Functions::getSetting()->fanpage_id)?\App\Helpers\Functions::getSetting()->fanpage_id:'104351897844'}}">
 </div>
 </body>
 

@@ -98,14 +98,12 @@
                                                 Liên lạc
                                             </div>
                                         </div>
-                                        <div class="col-6 form-group">
-                                            <label for="squareText">Vị trí liên lạc (lat)</label>
-                                            <input type="text" class="form-control square" name="contact_lat" value="{{ $office->contact_lat ?? old('contact_lat') }}">
-                                        </div>
-                                        <div class="col-6 form-group">
-                                            <label for="squareText">Vị trí liên lạc (long)</label>
-                                            <input type="text" class="form-control square" name="contact_long" value="{{ $office->contact_long ?? old('contact_long') }}">
-                                        </div>
+                                            {{--<label for="squareText">Vị trí liên lạc (lat)</label>--}}
+                                            {{--<input type="text" class="form-control square" name="contact_lat" value="{{ $office->contact_lat ?? old('contact_lat') }}">--}}
+                                            <div class="col-md-12 col-xs-12 listen-address form-group">
+                                                <label class="control-label required">Địa chỉ</label>
+                                                <input class="form-control location square" id="location" type="text" size="50" name="contact_address" value="{{ $office->contact_address ?? old('contact_address') }}">
+                                            </div>
                                         <div class="col-12 form-group">
                                             <label for="squareText">Nội dung liên lạc VN</label>
                                             <textarea name="content_contact_vn" class="editor2"
@@ -495,5 +493,24 @@
                 });
             })
         })
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&key=AIzaSyAOYTBGlUxFOO0am9ZAsM3-q3Fv2GBWxys"></script>
+    <script>
+        function init() {
+            var autocomplete = new google.maps.places.Autocomplete(document.getElementById("location"));
+            console.log(autocomplete,'complate  ');
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                var place = autocomplete.getPlace();
+                var address = place.formatted_address;
+                var lat = place.geometry.location.lat();
+                var long = place.geometry.location.lng();
+                var input = '<input type="hidden" name="contact_lat" value="' + lat + '"> <input type="hidden" name="contact_long" value="' + long + '">';
+                $('.listen-address').prepend(input);
+                console.log(input,'lat-long');
+            });
+        }
+
+        google.maps.event.addDomListener(window, 'load', init);
+
     </script>
 @endsection

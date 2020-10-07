@@ -49,7 +49,7 @@
 
 
             <a class="logo" href="/" data-content-field="site-title">
-                @if(\App\Helpers\Functions::getSetting()->logo)
+                @if(isset(\App\Helpers\Functions::getSetting()->logo) && \App\Helpers\Functions::getSetting()->logo)
                     <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}" alt="logo">
                 @else
                     effekt
@@ -156,9 +156,7 @@
 
 
                                     >
-                                        <img data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_profile}}"
-                                             data-image="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_profile}}"
-                                             data-image-dimensions="1000x500" data-image-focal-point="0.5,0.5" alt=""/>
+                                        <img data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_profile}}" data-image="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_profile}}" data-image-dimensions="1000x500" data-image-focal-point="0.5,0.5" alt="office" data-parent-ratio="2.3" style="left: 0px; top: -53px; width: 1504px; height: 752px; position: absolute;" class="loaded" data-image-resolution="2500w" src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_profile}}?format=2500w">
                                         <div class="image-overlay"></div>
 
                                     </div>
@@ -219,11 +217,9 @@
             <div class="row sqs-row">
                 <div class="col sqs-col-12 span-12">
                     <div class="sqs-block map-block sqs-block-map" data-aspect-ratio="42.391304347826086"
-                         data-block-json="&#123;&quot;location&quot;:&#123;&quot;mapLat&quot;:55.68709910318869,&quot;mapLng&quot;:12.557689962951581,&quot;mapZoom&quot;:14,&quot;markerLat&quot;:55.68745819999999,&quot;markerLng&quot;:12.559191999999939,&quot;addressTitle&quot;:&quot;EFFEKT&quot;,&quot;addressLine1&quot;:&quot;Bl\u00E5g\u00E5rdsgade 8, 2. sal&quot;,&quot;addressLine2&quot;:&quot;K\u00F8benhavn&quot;,&quot;addressCountry&quot;:&quot;Denmark&quot;&#125;,&quot;vSize&quot;:null,&quot;style&quot;:4,&quot;labels&quot;:true,&quot;terrain&quot;:false,&quot;controls&quot;:false,&quot;hSize&quot;:null,&quot;floatDir&quot;:null,&quot;aspectRatio&quot;:42.391304347826086&#125;"
+                         data-block-json="&#123;&quot;location&quot;:&#123;&quot;mapLat&quot;:{{$office->contact_lat}},&quot;mapLng&quot;:{{$office->contact_long}},&quot;mapZoom&quot;:14,&quot;markerLat&quot;:{{$office->contact_lat}},&quot;markerLng&quot;:{{$office->contact_long}},&quot;addressTitle&quot;:&quot;EFFEKT&quot;,&quot;addressLine1&quot;:&quot;Bl\u00E5g\u00E5rdsgade 8, 2. sal&quot;,&quot;addressLine2&quot;:&quot;K\u00F8benhavn&quot;,&quot;addressCountry&quot;:&quot;Denmark&quot;&#125;,&quot;vSize&quot;:null,&quot;style&quot;:4,&quot;labels&quot;:true,&quot;terrain&quot;:false,&quot;controls&quot;:false,&quot;hSize&quot;:null,&quot;floatDir&quot;:null,&quot;aspectRatio&quot;:42.391304347826086&#125;"
                          data-block-type="4" id="block-yui_3_17_2_5_1509369643211_11245">
                         <div class="sqs-block-content">&nbsp;</div>
-                        {{--<iframe src="https://maps.google.com/maps?q=21.0365442,105.8125174&hl=es;z=14&amp;output=embed"--}}
-                                {{--width="100%" height="400px"></iframe>--}}
                     </div>
 
                     <div class="sqs-block spacer-block sqs-block-spacer sized vsize-1" data-block-type="21"
@@ -283,9 +279,7 @@
                                          data-animation-role="image"
                                          data-description=""
                                     >
-                                        <img data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_people}}"
-                                             data-image="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_people}}"
-                                             data-image-dimensions="1000x500" data-image-focal-point="0.5,0.5" alt=""/>
+                                        <img data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_people}}" data-image="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_people}}" data-image-dimensions="2500x1667" data-image-focal-point="0.49990699404761907,0.3630952380952381" data-parent-ratio="2.3" style="left: 0px; top: -41.1363px; width: 1504px; height: 1002.87px; position: absolute;" alt="office" class="loaded" data-image-resolution="2500w" src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_people}}?format=2500w">
                                         <div class="image-overlay"></div>
                                     </div>
                                 </div>
@@ -366,6 +360,8 @@
                                                              data-image-focal-point="0.5,0.5"
                                                              alt="{{$item->full_name}} {{$item->job_vn}} {{$item->email}}"
                                                              data-load="false"
+
+
                                                              data-type="image"/>
                                                     </div>
 
@@ -464,10 +460,7 @@
 
 
                                     >
-
-                                        <img data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_employment}}"
-                                             data-image="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_employment}}"
-                                             data-image-dimensions="1000x500" data-image-focal-point="0.5,0.5" alt=""/>
+                                       <img data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_employment}}" data-image="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_employment}}" data-image-dimensions="2500x1667" data-image-focal-point="0.5118117559523809,0.8869047619047619" data-parent-ratio="2.3" style="left: 0px; top: -356.867px; width: 1504px; height: 1002.87px; position: absolute;" alt="IMG_2909.jpg" class="loaded" data-image-resolution="2500w" src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_employment}}?format=2500w">
 
                                         <div class="image-overlay"></div>
 
@@ -495,11 +488,7 @@
 
                                     </div>
                                 </figcaption>
-
-
                             </figure>
-
-
                         </div>
                     </div>
                     <div class="sqs-block spacer-block sqs-block-spacer sized vsize-1" data-block-type="21"
@@ -566,9 +555,7 @@
 
                                     >
 
-                                        <img data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_award}}"
-                                             data-image="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_award}}"
-                                             data-image-dimensions="1000x500" data-image-focal-point="0.5,0.5" alt=""/>
+                                        <img data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_award}}" data-image="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_award}}" data-image-dimensions="2500x1667" data-image-focal-point="0.49990699404761907,0.3630952380952381" data-parent-ratio="2.3" style="left: 0px; top: -41.1363px; width: 1504px; height: 1002.87px; position: absolute;" alt="IMG_9864.jpg" class="loaded" data-image-resolution="2500w" src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_award}}?format=2500w">
 
                                         <div class="image-overlay"></div>
 
@@ -669,10 +656,7 @@
 
                                     >
 
-                                        <img data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_client}}"
-                                             data-image="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_client}}"
-                                             data-image-dimensions="1000x500" data-image-focal-point="0.5,0.5" alt=""/>
-
+                                        <img data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_client}}" data-image="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_client}}" data-image-dimensions="2500x2000" data-image-focal-point="0.5047619047619047,0.7440476190476191" data-parent-ratio="2.4" style="left: 0%; top: -70.6906%; width: 100%; height: 195.008%; position: absolute;" alt="Carlsberg_UCC.jpg" class="loaded" data-image-resolution="2500w" src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE.$office->image_client}}?format=2500w">
                                         <div class="image-overlay"></div>
 
                                     </div>
@@ -735,7 +719,9 @@
                                                      data-image="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO.$item->url}}"
                                                      data-image-dimensions="600x400" data-image-focal-point="0.5,0.5"
                                                      data-load="false"
-                                                     data-type="image"/>
+                                                     data-type="image"
+                                                     alt="office"
+                                                />
                                             </a>
 
                                         </div>

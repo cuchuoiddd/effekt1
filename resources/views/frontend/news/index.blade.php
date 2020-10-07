@@ -23,7 +23,7 @@
             <a class="logo" href="/" data-content-field="site-title">
 
 
-                @if(\App\Helpers\Functions::getSetting()->logo)
+                @if(isset(\App\Helpers\Functions::getSetting()->logo) && \App\Helpers\Functions::getSetting()->logo)
                     <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}" alt="logo">
                 @else
                     effekt

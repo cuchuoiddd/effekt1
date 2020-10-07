@@ -130,23 +130,9 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6 form-group">
-                                            <label for="squareText" class="required">vị trí lat</label>
-                                            <input type="text" id="lat" name="lat" class="form-control square" value="{{ $product->lat ?? old('lat') }}">
-                                        </div>
-                                        <div class="col-6 form-group">
-                                            <label for="squareText" class="required">vị trí long</label>
-                                            <input type="text" id="long" name="long" class="form-control square" value="{{ $product->long ?? old('long') }}">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 form-group">
-                                            <label for="squareText">Vị trí VN</label>
-                                            <input type="text" id="location_vn" name="location_vn" class="form-control square" value="{{ $product->location_vn ?? old('location_vn') }}">
-                                        </div>
-                                        <div class="col-6 form-group">
-                                            <label for="squareText">Vị trí EN</label>
-                                            <input type="text" id="location_en" name="location_en" class="form-control square" value="{{ $product->location_en ?? old('location_en') }}">
+                                        <div class="col-md-12 col-xs-12 listen-address form-group">
+                                            <label class="control-label required">Địa chỉ</label>
+                                            <input class="form-control location square" id="location" type="text" size="50" name="address" value="{{ $product->address ?? old('address') }}">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -388,5 +374,24 @@
             //In slug ra textbox có id “slug”
             document.getElementById('slug').value = slug;
         }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&key=AIzaSyAOYTBGlUxFOO0am9ZAsM3-q3Fv2GBWxys"></script>
+    <script>
+        function init() {
+            var autocomplete = new google.maps.places.Autocomplete(document.getElementById("location"));
+            console.log(autocomplete,'complate  ');
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                var place = autocomplete.getPlace();
+                var address = place.formatted_address;
+                var lat = place.geometry.location.lat();
+                var long = place.geometry.location.lng();
+                var input = '<input type="hidden" name="lat" value="' + lat + '"> <input type="hidden" name="long" value="' + long + '">';
+                $('.listen-address').prepend(input);
+                console.log(input,'lat-long');
+            });
+        }
+
+        google.maps.event.addDomListener(window, 'load', init);
+
     </script>
 @endsection

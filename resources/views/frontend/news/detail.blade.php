@@ -2,7 +2,7 @@
 <head>
     <base #href="">
     <meta charset="utf-8"/>
-    <title>News | EFFEKT welcomes Jennifer Zitner as new Director of Business Development</title>
+    <title>News | {{$news->title_en}}</title>
     @include('frontend.layout.head')
 </head>
 
@@ -14,7 +14,7 @@
     <nav class="site-nav">
         <div class="logo-container">
             <a class="logo" href="/" data-content-field="site-title">
-                @if(\App\Helpers\Functions::getSetting()->logo)
+                @if(isset(\App\Helpers\Functions::getSetting()->logo) && \App\Helpers\Functions::getSetting()->logo)
                     <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}" alt="logo">
                 @else
                     effekt

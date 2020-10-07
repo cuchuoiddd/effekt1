@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html lang="en-US">
 
 <head>
@@ -12,7 +11,8 @@
     <!-- effekt -->
     <base #href="">
     <meta charset="utf-8"/>
-    <title>Rosenhøj Student Housing</title>
+    <title>{{$work->title_en}}</title>
+
     @include('frontend.layout.head')
 </head>
 
@@ -24,7 +24,7 @@
     <nav class="site-nav">
         <div class="logo-container">
             <a class="logo" href="/" data-content-field="site-title">
-                @if(\App\Helpers\Functions::getSetting()->logo)
+                @if(isset(\App\Helpers\Functions::getSetting()->logo) && \App\Helpers\Functions::getSetting()->logo)
                     <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}" alt="logo">
                 @else
                     effekt
@@ -268,8 +268,17 @@
                             <!-- <div id="googleMap" style="width:100%;height:400px; margin-top: 30px;"></div> -->
                             <!-- <div id="googleMap"></div> -->
                             <div style="margin-top: 30px;">
-                                <iframe src="https://maps.google.com/maps?q={{$work->lat.','.$work->long}}&hl=es;z=14&amp;output=embed"
-                                        width="100%" height="400px"></iframe>
+                                {{--<iframe src="https://maps.google.com/maps?q={{$work->lat.','.$work->long}}&hl=es;z=14&amp;output=embed"--}}
+                                        {{--width="100%" height="400px"></iframe>--}}
+                                <div class="sqs-block map-block sqs-block-map" data-aspect-ratio="42.391304347826086"
+                                     data-block-json="&#123;&quot;location&quot;:&#123;&quot;mapLat&quot;:{{$work->lat}},&quot;mapLng&quot;:{{$work->long}},&quot;mapZoom&quot;:14,&quot;markerLat&quot;:{{$work->lat}},&quot;markerLng&quot;:{{$work->long}},&quot;addressTitle&quot;:&quot;EFFEKT&quot;,&quot;addressLine1&quot;:&quot;Bl\u00E5g\u00E5rdsgade 8, 2. sal&quot;,&quot;addressLine2&quot;:&quot;K\u00F8benhavn&quot;,&quot;addressCountry&quot;:&quot;Denmark&quot;&#125;,&quot;vSize&quot;:null,&quot;style&quot;:4,&quot;labels&quot;:true,&quot;terrain&quot;:false,&quot;controls&quot;:false,&quot;hSize&quot;:null,&quot;floatDir&quot;:null,&quot;aspectRatio&quot;:42.391304347826086&#125;"
+                                     data-block-type="4" id="block-yui_3_17_2_5_1509369643211_11245">
+                                    <div class="sqs-block-content">&nbsp;</div>
+                                </div>
+                                <div class="sqs-block spacer-block sqs-block-spacer sized vsize-1" data-block-type="21"
+                                     id="block-yui_3_17_2_3_1509370795243_23617">
+                                    <div class="sqs-block-content">&nbsp;</div>
+                                </div>
                             </div>
                         </class>
                     </div>
@@ -306,7 +315,7 @@
                                 <p>{{$work->typology_en}}</p>
                                 <hr>
                                 <h3 id="location">Location</h3>
-                                <p>{{$work->location_en}}</p>
+                                <p>{{$work->address}} sdfgsdgds</p>
                                 <hr>
                                 <h3 id="year">Year</h3>
                                 <p>{{$work->year}}</p>

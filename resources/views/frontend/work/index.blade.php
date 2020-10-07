@@ -17,7 +17,7 @@
     <nav class="site-nav">
         <div class="logo-container">
             <a class="logo" href="/" data-content-field="site-title">
-                @if(\App\Helpers\Functions::getSetting()->logo)
+                @if(isset(\App\Helpers\Functions::getSetting()->logo) && \App\Helpers\Functions::getSetting()->logo)
                     <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}" alt="logo">
                 @else
                     effekt
@@ -92,7 +92,7 @@
                             class="gallery-item iso-item hentry category-{{$item->category->title_en}} author-lucrezia-biasutti post-type-image article-index-1">
                         <a href="work/{{$item->slug}}" title="Rosenhøj Youth Housing">
                             <div class="iso-image img-wrap cover">
-                                <img alt="Rosenhøj Youth Housing" data-sizes="auto"
+                                <img alt="{{$item->title_vn}}" data-sizes="auto"
                                      data-srcset="
 	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT_THUMB.$item->images[0]->url}}?format=750w 750w,
       {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=2500w 2500w"
@@ -119,7 +119,7 @@
                             class="gallery-item iso-item hentry {{$item->category_id}} author-lucrezia-biasutti post-type-image article-index-1">
                         <a href="work/{{$item->slug}}" title="Rosenhøj Youth Housing">
                             <div class="iso-image img-wrap cover">
-                                <img alt="Rosenhøj Youth Housing" data-sizes="auto"
+                                <img alt="{{$item->title_en}}" data-sizes="auto"
                                      data-srcset="
 	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT_THUMB.$item->images[0]->url}}?format=750w 750w,
       {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=2500w 2500w"

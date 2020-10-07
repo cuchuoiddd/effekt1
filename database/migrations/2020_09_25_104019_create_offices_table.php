@@ -21,6 +21,7 @@ class CreateOfficesTable extends Migration
 
             $table->string('contact_lat')->nullable();
             $table->string('contact_long')->nullable();
+            $table->string('contact_address')->nullable();
             $table->text('content_contact_en')->nullable();
             $table->text('content_contact_vn')->nullable();
 
