@@ -283,4 +283,13 @@ a[data-show="false"]{
     height: 50%;
     width: 33.33%;
 }
+.has-error{
+    color: red;
+}
+.has-error label{
+    color: red;
+}
+.has-error input{
+    border-color: red;
+}
 /***************** EndCustom ******************/

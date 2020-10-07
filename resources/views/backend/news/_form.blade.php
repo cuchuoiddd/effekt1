@@ -45,12 +45,13 @@
                                         </div>
                                     </div>
                                     <div class="row mt-1">
-                                        <div class="col-6 form-group">
+                                        <div class="col-6 form-group {{ $errors->has('content_vn') ? 'has-error' : '' }}">
                                             <label for="squareText" class="required">Nội dung VN</label>
                                             <textarea name="content_vn" class="editor" id="content_vn"
                                                       style="height: 300px;">
-                                            <p>{{$news->content_vn ?? old('content_vn')}}</p>
-                                        </textarea>
+                                                <p>{{$news->content_vn ?? old('content_vn')}}</p>
+                                            </textarea>
+                                            <span class="help-block">{{ $errors->first('content_vn', ':message') }}</span>
                                         </div>
                                         <div class="col-6 form-group">
                                             <label for="squareText">Nội dung EN</label>
@@ -66,23 +67,12 @@
                                             <input type="date" id="date" name="date"
                                                    class="form-control square"
                                                    value="{{isset($news->date) ? $news->date : old('date') }}">
-                                            {{--<div class="input-group date" id="datetime">--}}
-                                                {{--<input type="text" class="form-control" placeholder="Chọn ngày"--}}
-                                                       {{--name="date"--}}
-                                                       {{--autocomplete="off"--}}
-                                                       {{--value="{{isset($news->date) ? Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$news->date)->format('d/m/Y') : old('date') }}">--}}
-                                                {{--<div class="input-group-append">--}}
-                                                    {{--<span class="input-group-text">--}}
-                                                        {{--<span class="fa fa-calendar"></span>--}}
-                                                    {{--</span>--}}
-                                                {{--</div>--}}
-                                            {{--</div>--}}
                                             <br>
                                             <label for="squareText">Slug</label>
                                             <input type="text" id="slug" name="slug"
                                                    class="form-control square" value="{{$news->slug ?? old('slug')}}">
                                         </div>
-                                        <div class="col-md-6 fileupload fileupload-new mt-1" data-provides="fileupload">
+                                        <div class="col-md-6 fileupload fileupload-new mt-1 {{ $errors->has('image') ? 'has-error' : '' }}" data-provides="fileupload">
                                             <label for="squareText">Hình ảnh</label>
                                             <div class="d-flex mb-1" style="margin-top: 10px;">
                                                 <button type="button" class="btn btn-secondary btn-file">
@@ -102,6 +92,7 @@
                                                          style="width: 65%">
                                                 @endif
                                             </div>
+                                            <span class="help-block">{{ $errors->first('image', ':message') }}</span>
                                             <div class="fileupload-preview fileupload-exists thumbnail"
                                                  style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                                         </div>
@@ -171,5 +162,14 @@
             //In slug ra textbox có id “slug”
             document.getElementById('slug').value = slug;
         }
+    </script>
+    <script>
+        $("#myFormId").validate({
+            rules: {
+                title_vn: "required",
+                content_vn: "required",
+                image:"required"
+            }
+        });
     </script>
 @endsection

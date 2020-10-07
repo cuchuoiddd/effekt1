@@ -9,6 +9,7 @@ use App\News;
 use App\Services\UploadService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class NewsController extends Controller
 {
@@ -54,6 +55,22 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            'title_vn' => 'required',
+            'content_vn' => 'required',
+            'image' => 'required'
+        ];
+        $messages = [
+            'title_vn.required' => 'Tiêu đề không được bỏ trống',
+            'content_vn.required' => 'Nội dung không được bỏ trống',
+            'image.required' => 'Hình ảnh không được bỏ trống',
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
         $data = $request->except('_token');
         if ($request->image != "null") {
             $url_thumb = $this->fileUpload->uploadImage(DirectoryConstant::UPLOAD_FOLDER_NEW,

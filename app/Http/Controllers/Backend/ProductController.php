@@ -62,6 +62,29 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            'category_id' => 'required',
+            'title_vn' => 'required',
+            'title_en' => 'required',
+            'content_vn' => 'required',
+            'content_en' => 'required',
+            'slug' => 'required'
+        ];
+        $messages = [
+            'category_id.required' => 'Danh mục không được bỏ trống',
+            'title_vn.required' => 'Tiêu đề VN không được bỏ trống',
+            'title_en.required' => 'Tiêu đề EN không được bỏ trống',
+            'content_vn.required' => 'Nội dung VN không được bỏ trống',
+            'content_en.required' => 'Nội dung EN không được bỏ trống',
+            'slug.required' => 'Slug không được bỏ trống'
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
         $data = $request->all();
         $images = $request->images;
         if ($images && count($images)) {

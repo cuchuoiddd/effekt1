@@ -54,13 +54,15 @@
                                                         ảnh</a></label>
                                                 <input type="file" class="hidden images" multiple="multiple" id="images"
                                                        name="images[]">
-                                                <input type="hidden" id="images_json" name="images_json" value="{{json_encode($images)}}">
+                                                <input type="hidden" id="images_json" name="images_json"
+                                                       value="{{json_encode($images)}}">
                                                 <div class="">
                                                     <div class="imagesUploadBox product-images">
                                                         <div class="thumb-list product-photo-grid__item">
                                                             @foreach($images as $k => $image)
                                                                 <div class="thumb-image">
-                                                                    <img class="" data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$image->url}}"
+                                                                    <img class=""
+                                                                         data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$image->url}}"
                                                                          src="{{url(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$image->url)}}">
                                                                     <div class="overlay">
                                                                         <div class="alter-button" data-toggle="modal"
@@ -83,12 +85,14 @@
                                         <div class="col-6 form-group">
                                             <label for="squareText" class="required">Tiêu đề VN</label>
                                             <input type="text" id="title_vn" name="title_vn"
-                                                   class="form-control square" value="{{ $product->title_vn ?? old('title_vn') }}">
+                                                   class="form-control square"
+                                                   value="{{ $product->title_vn ?? old('title_vn') }}">
                                         </div>
                                         <div class="col-6 form-group">
-                                            <label for="squareText" class="required">Tiêu đề EN</label>
+                                            <label for="" class="required">Tiêu đề EN</label>
                                             <input type="text" id="title_en" name="title_en"
-                                                   class="form-control square" value="{{ $product->title_en ?? old('title_en') }}">
+                                                   class="form-control square"
+                                                   value="{{ $product->title_en ?? old('title_en') }}">
                                         </div>
                                     </div>
 
@@ -97,14 +101,14 @@
                                             <label for="squareText" class="required">Nội dung VN</label>
                                             <textarea name="content_vn" class="editor" id="content_vn"
                                                       style="height: 300px;">
-                                           {!! $product->title_vn ?? old('title_vn') !!}
+                                           {!! $product->content_vn ?? old('content_vn') !!}
                                         </textarea>
                                         </div>
                                         <div class="col-6 form-group">
                                             <label for="squareText" class="required">Nội dung EN</label>
                                             <textarea name="content_en" class="editor1" id="content_en"
                                                       style="height: 300px;">
-                                            {!! $product->title_en ?? old('title_en') !!}
+                                            {!! $product->content_en ?? old('content_en') !!}
                                         </textarea>
                                         </div>
                                     </div>
@@ -112,94 +116,128 @@
                                     <div class="row">
                                         <div class="col-6 form-group">
                                             <label for="squareText">Tên dự án VN</label>
-                                            <input type="text" id="project_name_vn" name="project_name_vn" class="form-control square" value="{{ $product->project_name_vn ?? old('project_name_vn') }}">
+                                            <input type="text" id="project_name_vn" name="project_name_vn"
+                                                   class="form-control square"
+                                                   value="{{ $product->project_name_vn ?? old('project_name_vn') }}">
                                         </div>
                                         <div class="col-6 form-group">
                                             <label for="squareText">Tên dự án EN</label>
-                                            <input type="text" id="project_name_en" name="project_name_en" class="form-control square" value="{{ $product->project_name_en ?? old('project_name_en') }}">
+                                            <input type="text" id="project_name_en" name="project_name_en"
+                                                   class="form-control square"
+                                                   value="{{ $product->project_name_en ?? old('project_name_en') }}">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-6 form-group">
                                             <label for="squareText">Phân loại VN</label>
-                                            <input type="text" id="typology_vn" name="typology_vn" class="form-control square" value="{{ $product->typology_vn ?? old('typology_vn') }}">
+                                            <input type="text" id="typology_vn" name="typology_vn"
+                                                   class="form-control square"
+                                                   value="{{ $product->typology_vn ?? old('typology_vn') }}">
                                         </div>
                                         <div class="col-6 form-group">
                                             <label for="squareText">Phân loại EN</label>
-                                            <input type="text" id="typology_en" name="typology_en" class="form-control square" value="{{ $product->typology_en ?? old('typology_en') }}">
+                                            <input type="text" id="typology_en" name="typology_en"
+                                                   class="form-control square"
+                                                   value="{{ $product->typology_en ?? old('typology_en') }}">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12 col-xs-12 listen-address form-group">
-                                            <label class="control-label required">Địa chỉ</label>
-                                            <input class="form-control location square" id="location" type="text" size="50" name="address" value="{{ $product->address ?? old('address') }}">
+                                            <label class="control-label">Địa chỉ</label>
+                                            <input class="form-control location square" id="address" type="text"
+                                                   size="50" name="address"
+                                                   value="{{ $product->address ?? old('address') }}">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-6 form-group">
                                             <label for="squareText">Trạng thái VN</label>
-                                            <input type="text" id="status_vn" name="status_vn" class="form-control square" value="{{ $product->status_vn ?? old('status_vn') }}">
+                                            <input type="text" id="status_vn" name="status_vn"
+                                                   class="form-control square"
+                                                   value="{{ $product->status_vn ?? old('status_vn') }}">
                                         </div>
                                         <div class="col-6 form-group">
                                             <label for="squareText">Trạng thái EN</label>
-                                            <input type="text" id="status_en" name="status_en" class="form-control square" value="{{ $product->status_en ?? old('status_en') }}">
+                                            <input type="text" id="status_en" name="status_en"
+                                                   class="form-control square"
+                                                   value="{{ $product->status_en ?? old('status_en') }}">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-6 form-group">
                                             <label for="squareText">Kích thước VN</label>
-                                            <input type="text" id="size_vn" name="size_vn" class="form-control square" value="{{ $product->size_vn ?? old('size_vn') }}">
+                                            <input type="text" id="size_vn" name="size_vn" class="form-control square"
+                                                   value="{{ $product->size_vn ?? old('size_vn') }}">
                                         </div>
                                         <div class="col-6 form-group">
                                             <label for="squareText">Kích thước EN</label>
-                                            <input type="text" id="size_en" name="size_en" class="form-control square" value="{{ $product->size_en ?? old('size_en') }}">
+                                            <input type="text" id="size_en" name="size_en" class="form-control square"
+                                                   value="{{ $product->size_en ?? old('size_en') }}">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-6 form-group">
                                             <label for="squareText">Khách hàng VN</label>
-                                            <input type="text" id="client_vn" name="client_vn" class="form-control square" value="{{ $product->client_vn ?? old('client_vn') }}">
+                                            <input type="text" id="client_vn" name="client_vn"
+                                                   class="form-control square"
+                                                   value="{{ $product->client_vn ?? old('client_vn') }}">
                                         </div>
                                         <div class="col-6 form-group">
                                             <label for="squareText">Khách hàng EN</label>
-                                            <input type="text" id="client_en" name="client_en" class="form-control square" value="{{ $product->client_en ?? old('client_en') }}">
+                                            <input type="text" id="client_en" name="client_en"
+                                                   class="form-control square"
+                                                   value="{{ $product->client_en ?? old('client_en') }}">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-6 form-group">
                                             <label for="squareText">Cộng tác viên VN</label>
-                                            <input type="text" id="collaborator_vn" name="collaborator_vn" class="form-control square" value="{{ $product->collaborator_vn ?? old('collaborator_vn') }}">
+                                            <input type="text" id="collaborator_vn" name="collaborator_vn"
+                                                   class="form-control square"
+                                                   value="{{ $product->collaborator_vn ?? old('collaborator_vn') }}">
                                         </div>
                                         <div class="col-6 form-group">
                                             <label for="squareText">Cộng tác viên EN</label>
-                                            <input type="text" id="collaborator_en" name="collaborator_en" class="form-control square" value="{{ $product->collaborator_en ?? old('collaborator_en') }}">
+                                            <input type="text" id="collaborator_en" name="collaborator_en"
+                                                   class="form-control square"
+                                                   value="{{ $product->collaborator_en ?? old('collaborator_en') }}">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-6 form-group">
                                             <label for="squareText">Năm làm dự án</label>
-                                            <input type="text" id="year" name="year" class="form-control square" value="{{ $product->year ?? old('year') }}">
+                                            <input type="text" id="year" name="year" class="form-control square"
+                                                   value="{{ $product->year ?? old('year') }}">
                                         </div>
                                         <div class="col-6 form-group">
                                             <label for="squareText">Nhóm thiết kế</label>
                                             {{--{{dd($product)}}--}}
                                             <select name="design_team[]" id="design_team" class="select2" multiple>
                                                 <option></option>
-                                                @if(count($people))
+                                                @if(count($people) && isset($product))
                                                     @foreach($people as $item)
-                                                <option value="{{$item->id}}" {{in_array($item->id,$product->design_team) ? 'selected':''}}>{{$item->full_name_vn}} ({{$item->full_name_en}})</option>
+                                                        <option value="{{$item->id}}" {{in_array($item->id,$product->design_team) ? 'selected':''}}>{{$item->full_name_vn}}
+                                                            ({{$item->full_name_en}})
+                                                        </option>
                                                     @endforeach
-                                                    @endif
+                                                @else
+                                                    @foreach($people as $item)
+                                                        <option value="{{$item->id}}">{{$item->full_name_vn}}
+                                                            ({{$item->full_name_en}})
+                                                        </option>
+                                                    @endforeach
+                                                @endif
                                             </select>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-6 form-group">
                                             <label for="squareText">Slug</label>
-                                            <input type="text" id="slug" name="slug" class="form-control square" value="{{ $product->slug ?? old('year') }}">
+                                            <input type="text" id="slug" name="slug" class="form-control square"
+                                                   value="{{ $product->slug ?? old('year') }}">
                                         </div>
                                     </div>
-                                    
+
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary" style="width: 200px;">Save
                                         </button>
@@ -221,9 +259,10 @@
             rules: {
                 category_id: "required",
                 title_vn: "required",
+                title_en: "required",
                 content_vn: "required",
-                lat: "required",
-                long: "required"
+                content_en: "required",
+                slug: "required"
             },
         })
 
@@ -337,7 +376,6 @@
         })
     </script>
     <script>
-
         $('#title_vn').on('input', function () {
             ChangeToSlug()
         });
@@ -380,7 +418,7 @@
     <script>
         function init() {
             var autocomplete = new google.maps.places.Autocomplete(document.getElementById("location"));
-            console.log(autocomplete,'complate  ');
+            console.log(autocomplete, 'complate  ');
             google.maps.event.addListener(autocomplete, 'place_changed', function () {
                 var place = autocomplete.getPlace();
                 var address = place.formatted_address;
@@ -388,7 +426,7 @@
                 var long = place.geometry.location.lng();
                 var input = '<input type="hidden" name="lat" value="' + lat + '"> <input type="hidden" name="long" value="' + long + '">';
                 $('.listen-address').prepend(input);
-                console.log(input,'lat-long');
+                console.log(input, 'lat-long');
             });
         }
 
