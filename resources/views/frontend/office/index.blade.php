@@ -48,13 +48,25 @@
         <div class="logo-container">
 
 
-            <a class="logo" href="/" data-content-field="site-title">
-                @if(isset(\App\Helpers\Functions::getSetting()->logo) && \App\Helpers\Functions::getSetting()->logo)
-                    <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}" alt="logo">
-                @else
-                    effekt
-                @endif
-            </a>
+            @if(App::isLocale('vi'))
+                <a class="logo" href="/" data-content-field="site-title">
+                    @if(isset(\App\Helpers\Functions::getSetting()->logo) && \App\Helpers\Functions::getSetting()->logo)
+                        <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}"
+                             alt="logo">
+                    @else
+                        effekt
+                    @endif
+                </a>
+            @else
+                <a class="logo" href="/en" data-content-field="site-title">
+                    @if(isset(\App\Helpers\Functions::getSetting()->logo) && \App\Helpers\Functions::getSetting()->logo)
+                        <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}"
+                             alt="logo">
+                    @else
+                        effekt
+                    @endif
+                </a>
+            @endif
 
         </div>
         <div class="nav-container">
@@ -330,38 +342,20 @@
 
 
                                                 <figure
-                                                        class="
-              sqs-block-image-figure
-              intrinsic
-            "
+                                                        class="sqs-block-image-figure intrinsic"
                                                         style="max-width:2500.0px;"
                                                 >
 
 
-                                                    <div
-
-                                                            style="padding-bottom:66.63999938964844%;"
-
-                                                            class="
-                image-block-wrapper
-
-
-
-                has-aspect-ratio
-              "
-                                                            data-animation-role="image"
-
-
-                                                    >
+                                                    <div style="padding-bottom:66.63999938964844%;" class="image-block-wrapper has-aspect-ratio"
+                                                         data-animation-role="image">
                                                         <img class="thumb-image"
                                                              data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PEOPLE.$item->avatar}}"
                                                              data-image="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PEOPLE.$item->avatar}}"
                                                              data-image-dimensions="2500x1666"
                                                              data-image-focal-point="0.5,0.5"
-                                                             alt="{{$item->full_name}} {{$item->job_vn}} {{$item->email}}"
+                                                             alt="{{$item->full_name_vn}} {{$item->job_vn}} {{$item->email}}"
                                                              data-load="false"
-
-
                                                              data-type="image"/>
                                                     </div>
 
@@ -369,7 +363,7 @@
                                                         <figcaption class="image-caption-wrapper">
                                                             <div class="image-caption">
                                                                 <p class="">
-                                                                    <strong>{{$item->full_name}} </strong><br>{{$item->job_vn}}
+                                                                    <strong>{{$item->full_name_vn}} </strong><br>{{$item->job_vn}}
                                                                     <br>
                                                                     <a href="mailto:{{$item->email}}"
                                                                        target="_blank">{{$item->email}}</a>
@@ -379,7 +373,7 @@
                                                         <figcaption class="image-caption-wrapper">
                                                             <div class="image-caption">
                                                                 <p class="">
-                                                                    <strong>{{$item->full_name}} </strong><br>{{$item->job_en}}
+                                                                    <strong>{{$item->full_name_en}} </strong><br>{{$item->job_en}}
                                                                     <br>
                                                                     <a href="mailto:{{$item->email}}"
                                                                        target="_blank">{{$item->email}}</a>

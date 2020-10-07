@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en-US">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,13 +22,25 @@
 
     <nav class="site-nav">
         <div class="logo-container">
-            <a class="logo" href="/" data-content-field="site-title">
-                @if(isset(\App\Helpers\Functions::getSetting()->logo) && \App\Helpers\Functions::getSetting()->logo)
-                    <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}" alt="logo">
-                @else
-                    effekt
-                @endif
-            </a>
+            @if(App::isLocale('vi'))
+                <a class="logo" href="/" data-content-field="site-title">
+                    @if(isset(\App\Helpers\Functions::getSetting()->logo) && \App\Helpers\Functions::getSetting()->logo)
+                        <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}"
+                             alt="logo">
+                    @else
+                        effekt
+                    @endif
+                </a>
+            @else
+                <a class="logo" href="/en" data-content-field="site-title">
+                    @if(isset(\App\Helpers\Functions::getSetting()->logo) && \App\Helpers\Functions::getSetting()->logo)
+                        <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}"
+                             alt="logo">
+                    @else
+                        effekt
+                    @endif
+                </a>
+            @endif
 
         </div>
         <div class="nav-container">
@@ -243,7 +254,7 @@
                                 <p>{{$work->typology_vn}}</p>
                                 <hr>
                                 <h3 id="location">Location</h3>
-                                <p>{{$work->location_vn}}</p>
+                                <p>{{$work->address}}</p>
                                 <hr>
                                 <h3 id="year">Year</h3>
                                 <p>{{$work->year}}</p>
@@ -261,9 +272,7 @@
                                 <p>{{$work->collaborator_vn}}</p>
                                 <hr>
                                 <h3 id="design-team">Design team</h3>
-                                <p>Sinus Lynge, Tue Foged, Gitte Juul Sørensen, Anders Hjortnæs, Sandra Fleischmann, Peter
-                                    Kofod
-                                    Bentsen, Karolina Julia Pajnowska, Elzbieta Paszkowicz, Cristian Daniel Rusu </p>
+                                <p> {{$work->getPeopleVN()}} </p>
                             </div>
                             <!-- <div id="googleMap" style="width:100%;height:400px; margin-top: 30px;"></div> -->
                             <!-- <div id="googleMap"></div> -->
@@ -315,7 +324,7 @@
                                 <p>{{$work->typology_en}}</p>
                                 <hr>
                                 <h3 id="location">Location</h3>
-                                <p>{{$work->address}} sdfgsdgds</p>
+                                <p>{{$work->address}}</p>
                                 <hr>
                                 <h3 id="year">Year</h3>
                                 <p>{{$work->year}}</p>
@@ -333,15 +342,20 @@
                                 <p>{{$work->collaborator_en}}</p>
                                 <hr>
                                 <h3 id="design-team">Design team</h3>
-                                <p>Sinus Lynge, Tue Foged, Gitte Juul Sørensen, Anders Hjortnæs, Sandra Fleischmann, Peter
-                                    Kofod
-                                    Bentsen, Karolina Julia Pajnowska, Elzbieta Paszkowicz, Cristian Daniel Rusu </p>
+                                <p>{{$work->getPeopleEN()}}</p>
                             </div>
                             <!-- <div id="googleMap" style="width:100%;height:400px; margin-top: 30px;"></div> -->
                             <!-- <div id="googleMap"></div> -->
                             <div style="margin-top: 30px;">
-                                <iframe src="https://maps.google.com/maps?q={{$work->lat.','.$work->long}}&hl=es;z=14&amp;output=embed"
-                                        width="100%" height="400px"></iframe>
+                                <div class="sqs-block map-block sqs-block-map" data-aspect-ratio="42.391304347826086"
+                                     data-block-json="&#123;&quot;location&quot;:&#123;&quot;mapLat&quot;:{{$work->lat}},&quot;mapLng&quot;:{{$work->long}},&quot;mapZoom&quot;:14,&quot;markerLat&quot;:{{$work->lat}},&quot;markerLng&quot;:{{$work->long}},&quot;addressTitle&quot;:&quot;EFFEKT&quot;,&quot;addressLine1&quot;:&quot;Bl\u00E5g\u00E5rdsgade 8, 2. sal&quot;,&quot;addressLine2&quot;:&quot;K\u00F8benhavn&quot;,&quot;addressCountry&quot;:&quot;Denmark&quot;&#125;,&quot;vSize&quot;:null,&quot;style&quot;:4,&quot;labels&quot;:true,&quot;terrain&quot;:false,&quot;controls&quot;:false,&quot;hSize&quot;:null,&quot;floatDir&quot;:null,&quot;aspectRatio&quot;:42.391304347826086&#125;"
+                                     data-block-type="4" id="block-yui_3_17_2_5_1509369643211_11245">
+                                    <div class="sqs-block-content">&nbsp;</div>
+                                </div>
+                                <div class="sqs-block spacer-block sqs-block-spacer sized vsize-1" data-block-type="21"
+                                     id="block-yui_3_17_2_3_1509370795243_23617">
+                                    <div class="sqs-block-content">&nbsp;</div>
+                                </div>
                             </div>
                         </class>
                     </div>

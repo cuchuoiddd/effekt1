@@ -38,7 +38,8 @@
                                         <tr>
                                             <th class="text-center" style="width: 30px;">#</th>
                                             <th class="text-center">Hình ảnh</th>
-                                            <th class="text-center">Họ tên</th>
+                                            <th class="text-center">Họ tên VN</th>
+                                            <th class="text-center">Họ tên EN</th>
                                             <th class="text-center">Công việc VN</th>
                                             <th class="text-center">Công việc EN</th>
                                             <th class="text-center">Email</th>
@@ -54,7 +55,8 @@
                                                         <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PEOPLE.$item->avatar}}" alt=""
                                                         style="width: 70px;">
                                                     </td>
-                                                    <td class="text-center">{{$item->full_name}}</td>
+                                                    <td class="text-center">{{$item->full_name_vn}}</td>
+                                                    <td class="text-center">{{$item->full_name_en}}</td>
                                                     <td class="text-center">{{$item->job_vn}}</td>
                                                     <td class="text-center">{{$item->job_en}}</td>
                                                     <td class="text-center">{{$item->email}}</td>
@@ -72,7 +74,6 @@
                                                 <td colspan="5">Không có bản ghi nào</td>
                                             </tr>
                                         @endif
-
                                         </tbody>
                                     </table>
                                 </div>

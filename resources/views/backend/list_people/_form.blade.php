@@ -31,14 +31,14 @@
                             <div class="card-body">
                                 <div class="row mt-2">
                                     <div class="col-6 form-group">
-                                        <label for="squareText" class="required">Họ tên</label>
-                                        <input type="text" id="full_name" name="full_name"
-                                               class="form-control square" value="{{$people->full_name ?? old('full_name')}}">
+                                        <label for="squareText" class="required">Họ tên VN</label>
+                                        <input type="text" id="full_name_vn" name="full_name_vn"
+                                               class="form-control square" value="{{$people->full_name_vn ?? old('full_name_vn')}}">
                                     </div>
                                     <div class="col-6 form-group">
-                                        <label for="squareText">Email</label>
-                                        <input type="email" id="email" name="email"
-                                               class="form-control square" value="{{$people->email ?? old('email')}}">
+                                        <label for="squareText" class="required">Họ tên EN</label>
+                                        <input type="text" id="full_name_en" name="full_name_en"
+                                               class="form-control square" value="{{$people->full_name_en ?? old('full_name_en')}}">
                                     </div>
 
                                 </div>
@@ -80,6 +80,11 @@
                                             @endif
                                         </div>
                                         <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                    </div>
+                                    <div class="col-6 form-group">
+                                        <label for="squareText">Email</label>
+                                        <input type="email" id="email" name="email"
+                                               class="form-control square" value="{{$people->email ?? old('email')}}">
                                     </div>
                                 </div>
                                 <div class="card-footer">

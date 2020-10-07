@@ -100,6 +100,7 @@ class ProductController extends Controller
     {
 //        dd($id);
         $product = Product::find($id);
+        $product->design_team = $product->design_team ? json_decode($product->design_team) : [];
         $categories = Category::all();
         $people = People::all();
         return view('backend.products._form', compact('product', 'categories','people'));

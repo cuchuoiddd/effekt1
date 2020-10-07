@@ -182,11 +182,12 @@
                                         </div>
                                         <div class="col-6 form-group">
                                             <label for="squareText">Nhóm thiết kế</label>
+                                            {{--{{dd($product)}}--}}
                                             <select name="design_team[]" id="design_team" class="select2" multiple>
                                                 <option></option>
                                                 @if(count($people))
                                                     @foreach($people as $item)
-                                                <option value="{{$item->id}}">{{$item->full_name}}</option>
+                                                <option value="{{$item->id}}" {{in_array($item->id,$product->design_team) ? 'selected':''}}>{{$item->full_name_vn}} ({{$item->full_name_en}})</option>
                                                     @endforeach
                                                     @endif
                                             </select>

@@ -61,6 +61,7 @@ class WorkController extends Controller
     public function show($id)
     {
         $work = Product::where('slug',$id)->first();
+//        dd($work);
         return view('frontend.work.detail',compact('work'));
     }
 
