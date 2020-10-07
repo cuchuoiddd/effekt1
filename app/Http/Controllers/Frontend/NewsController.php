@@ -60,7 +60,7 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        $news = News::where('slug',$id)->first();
+        $news = News::where('slug',$id)->firstOrFail();
         return view('frontend.news.detail',compact('news'));
     }
 

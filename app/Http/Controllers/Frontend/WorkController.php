@@ -60,7 +60,7 @@ class WorkController extends Controller
      */
     public function show($id)
     {
-        $work = Product::where('slug',$id)->first();
+        $work = Product::where('slug',$id)->firstOrFail();
 //        dd($work);
         return view('frontend.work.detail',compact('work'));
     }
