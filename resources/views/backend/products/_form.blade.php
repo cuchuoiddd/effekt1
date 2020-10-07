@@ -417,7 +417,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&key=AIzaSyAOYTBGlUxFOO0am9ZAsM3-q3Fv2GBWxys"></script>
     <script>
         function init() {
-            var autocomplete = new google.maps.places.Autocomplete(document.getElementById("location"));
+            var autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"));
             console.log(autocomplete, 'complate  ');
             google.maps.event.addListener(autocomplete, 'place_changed', function () {
                 var place = autocomplete.getPlace();
