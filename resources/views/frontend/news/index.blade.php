@@ -96,12 +96,19 @@
                            title="{{$item->title_vn}}">
                             <div class="blog-image img-wrap cover">
 
-                                <img alt="{{$item->title_vn}}"
-                                     data-sizes="auto"
-                                     data-srcset="
-	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW_THUMB.$item->image}}?format=750w 750w,
-      {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=2500w 2500w"
-                                     class="lazyload "/>
+                                <img alt="{{$item->title_vn}}" data-sizes="auto" data-srcset="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=100w 100w,
+	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=300w 300w,
+	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=500w 500w,
+	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=750w 750w,
+	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=1000w 1000w,
+      {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=1500w 1500w,
+      {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=2500w 2500w" class="lazyautosizes ls-is-cached lazyloaded" sizes="342px" srcset="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=100w 100w,
+	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=300w 300w,
+	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=500w 500w,
+	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=750w 750w,
+	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=1000w 1000w,
+      {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=1500w 1500w,
+      {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=2500w 2500w">
                             </div>
                         </a>
                         <div class="item-meta-wrapper">
@@ -120,12 +127,19 @@
                            title="{{$item->title_en}}">
                             <div class="blog-image img-wrap cover">
 
-                                <img alt="{{$item->title_en}}"
-                                     data-sizes="auto"
-                                     data-srcset="
-	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW_THUMB.$item->image}}?format=750w 750w,
-      {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=2500w 2500w"
-                                     class="lazyload "/>
+                                     <img alt="{{$item->title_en}}" data-sizes="auto" data-srcset="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=100w 100w,
+	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=300w 300w,
+	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=500w 500w,
+	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=750w 750w,
+	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=1000w 1000w,
+      {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=1500w 1500w,
+      {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=2500w 2500w" class="lazyautosizes ls-is-cached lazyloaded" sizes="342px" srcset="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=100w 100w,
+	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=300w 300w,
+	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=500w 500w,
+	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=750w 750w,
+	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=1000w 1000w,
+      {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=1500w 1500w,
+      {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$item->image}}?format=2500w 2500w">
                             </div>
                         </a>
                         <div class="item-meta-wrapper">
