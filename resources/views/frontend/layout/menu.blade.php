@@ -1,7 +1,11 @@
 <li>
     <div class="btn-group show" style="z-index: 1000;position:relative">
         <button class="btn btn-secondary btn-lg dropdown-toggle" style="border: none;background:none">
+            @if(App::isLocale('vi'))
             <img class=" lazyloaded" src="{{asset('images/flag-vietnam.png')}}" width="30" height="60">
+                @else
+                <img class=" lazyloaded" src="{{asset('images/flag-england.png')}}" width="30" height="60">
+            @endif
         </button>
         <div class="dropdown-menu" x-placement="bottom-start"
              style="position: absolute; transform: translate3d(0px, 48px, 0px); top: 0px; left: 7px; will-change: transform;display: none;">

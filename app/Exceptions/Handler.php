@@ -48,7 +48,6 @@ class Handler extends ExceptionHandler
     {
         $data['title'] = '404';
         if ($this->isHttpException($exception)) {
-            dd(1);
             return response()->view('errors.404', ['data' => $data], 404);
         }
         return parent::render($request, $exception);

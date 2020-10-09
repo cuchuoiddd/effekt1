@@ -115,16 +115,19 @@
     <script src="{{asset('backend/plugins/ckeditor/ckeditor.js')}}"></script>
     <script>
 
-        ClassicEditor
-            .create(document.querySelector('.editor'))
-            .catch(error => {
-                console.error(error);
-            });
-        ClassicEditor
-            .create(document.querySelector('.editor1'))
-            .catch(error => {
-                console.error(error);
-            });
+        CKEDITOR.replace('content_vn');
+        CKEDITOR.replace('content_en');
+
+        // ClassicEditor
+        //     .create(document.querySelector('.editor'))
+        //     .catch(error => {
+        //         console.error(error);
+        //     });
+        // ClassicEditor
+        //     .create(document.querySelector('.editor1'))
+        //     .catch(error => {
+        //         console.error(error);
+        //     });
         $('#title_vn').on('input', function () {
             ChangeToSlug()
         });

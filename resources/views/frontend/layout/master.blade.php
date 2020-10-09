@@ -61,12 +61,7 @@
             @include('frontend.layout.menu')
         </ul>
     </div>
-    <nav class="trans-nav">
-        <div class="trans-nav-wrapper">
-            <ul class="anchor-nav">
-            </ul>
-        </div>
-    </nav>
+    @yield('trans-nav')
 </header>
 
 

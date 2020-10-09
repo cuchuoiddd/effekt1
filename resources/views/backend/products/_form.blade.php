@@ -266,16 +266,8 @@
             },
         })
 
-        ClassicEditor
-            .create(document.querySelector('.editor'))
-            .catch(error => {
-                console.error(error);
-            });
-        ClassicEditor
-            .create(document.querySelector('.editor1'))
-            .catch(error => {
-                console.error(error);
-            });
+        CKEDITOR.replace('content_vn');
+        CKEDITOR.replace('content_en');
     </script>
     <script>
         readURL = async function (input, callback) {

@@ -355,46 +355,14 @@
     <script src="/js/file_upload.js"></script>
     <script src="{{asset('backend/plugins/ckeditor/ckeditor.js')}}"></script>
     <script>
-        ClassicEditor
-            .create(document.querySelector('.editor'))
-            .catch(error => {
-                console.error(error);
-            });
-        ClassicEditor
-            .create(document.querySelector('.editor1'))
-            .catch(error => {
-                console.error(error);
-            });
-        ClassicEditor
-            .create(document.querySelector('.editor2'))
-            .catch(error => {
-                console.error(error);
-            });
-        ClassicEditor
-            .create(document.querySelector('.editor3'))
-            .catch(error => {
-                console.error(error);
-            });
-        ClassicEditor
-            .create(document.querySelector('.editor4'))
-            .catch(error => {
-                console.error(error);
-            });
-        ClassicEditor
-            .create(document.querySelector('.editor5'))
-            .catch(error => {
-                console.error(error);
-            });
-        ClassicEditor
-            .create(document.querySelector('.editor6'))
-            .catch(error => {
-                console.error(error);
-            });
-        ClassicEditor
-            .create(document.querySelector('.editor7'))
-            .catch(error => {
-                console.error(error);
-            });
+        CKEDITOR.replace('content_profile_vn');
+        CKEDITOR.replace('content_profile_en');
+        CKEDITOR.replace('content_contact_vn');
+        CKEDITOR.replace('content_contact_en');
+        CKEDITOR.replace('content_employment_vn');
+        CKEDITOR.replace('content_employment_en');
+        CKEDITOR.replace('content_award_vn');
+        CKEDITOR.replace('content_award_en');
     </script>
     <script>
         readURL = async function (input, callback) {
