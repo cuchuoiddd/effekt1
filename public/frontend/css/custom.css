@@ -41,9 +41,9 @@ h1,h2,h3{
 main .publish-date{
     font-family: Helvetica-Light !important;
 }
-main .item-title{
+main .item-title,.post-title{
     font-family: VNFutuna-Bold !important;
 }
-main a,td{
+main a,td,p{
     font-family: Helvetica-Light !important;
 }
