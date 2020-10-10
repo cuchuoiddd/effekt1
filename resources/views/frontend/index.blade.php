@@ -1,4 +1,28 @@
 @extends('frontend.layout.master')
+
+
+@if(App::isLocale('vi'))
+    @section('title')
+    <title>air.concept</title>
+    @endsection
+    @section('meta-title')
+        <meta property="og:title" content="{{isset(\App\Helpers\Functions::getSetting()->title_vn) && \App\Helpers\Functions::getSetting()->title_vn ?: 'air.concept' }}">
+    @endsection
+    @section('meta-description')
+        <meta name="description" content="{{isset(\App\Helpers\Functions::getSetting()->description_vn) && \App\Helpers\Functions::getSetting()->description_vn ?: 'air.concept' }}">
+    @endsection
+@else
+    @section('title')
+        <title>air.concept</title>
+    @endsection
+    @section('meta-title')
+        <meta property="og:title" content="{{isset(\App\Helpers\Functions::getSetting()->title_en) && \App\Helpers\Functions::getSetting()->title_en ?: 'air.concept' }}">
+    @endsection
+    @section('meta-description')
+        <meta name="description" content="{{isset(\App\Helpers\Functions::getSetting()->description_en) && \App\Helpers\Functions::getSetting()->description_en ?: 'air.concept' }}">
+    @endsection
+@endif
+
 @section('body')
 
 <body class="product-list-titles-overlay product-list-alignment-center product-item-size-11-square product-image-auto-crop product-gallery-size-11-square product-gallery-auto-crop show-product-price show-product-item-nav product-social-sharing tweak-v1-related-products-image-aspect-ratio-11-square tweak-v1-related-products-details-alignment-center newsletter-style-dark hide-opentable-icons opentable-style-light small-button-style-solid small-button-shape-square medium-button-style-solid medium-button-shape-square large-button-style-solid large-button-shape-square image-block-poster-text-alignment-center image-block-card-dynamic-font-sizing image-block-card-content-position-center image-block-card-text-alignment-left image-block-overlap-dynamic-font-sizing image-block-overlap-content-position-center image-block-overlap-text-alignment-left image-block-collage-dynamic-font-sizing image-block-collage-content-position-top image-block-collage-text-alignment-left image-block-stack-dynamic-font-sizing image-block-stack-text-alignment-left button-style-outline button-corner-style-square tweak-product-quick-view-button-style-floating tweak-product-quick-view-button-position-bottom tweak-product-quick-view-lightbox-excerpt-display-truncate tweak-product-quick-view-lightbox-show-arrows tweak-product-quick-view-lightbox-show-close-button tweak-product-quick-view-lightbox-controls-weight-light product-list-titles-overlay product-list-alignment-center product-item-size-11-square product-image-auto-crop product-gallery-size-11-square product-gallery-auto-crop show-product-price show-product-item-nav product-social-sharing tweak-v1-related-products-image-aspect-ratio-11-square tweak-v1-related-products-details-alignment-center native-currency-code-usd collection-type-index collection-layout-default collection-59f10dc91f318dc4a4211a4f homepage view-list">
@@ -20,9 +44,14 @@
                     @foreach($slides as $item)
                         <div class="slide swiper-slide">
                             <div class="img-wrap cover">
-                                <img alt="" data-sizes="auto" data-srcset="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE_THUMB.$item->image}} 750w,
-                                            {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}} 2500w"
-                                     class="swiper-lazy"/>
+                                <img
+                                        alt="air.concept"
+                                        data-sizes="auto"
+                                        data-srcset="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=750w 750w,
+                                            {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=1000w 1000w,
+                                            {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=1500w 1500w,
+                                            {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=2500w 2500w"
+                                        class="swiper-lazy" />
                             </div>
                         </div>
                     @endforeach

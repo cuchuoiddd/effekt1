@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Constants\DepartmentConstant;
 use App\Services\UserService;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -14,9 +15,10 @@ class UserController extends Controller
         $this->user = $user;
     }
 
-    public function getAllSale(){
-        $search['searchDepartment'] = DepartmentConstant::SALE;
-        $user = $this->user->getAll($search);
-        return $user;
+    public function getUser(){
+        $user = Auth::user();
+        return response()->json([
+            'user' => $user
+        ]);
     }
 }

@@ -146,8 +146,8 @@
                      id="page-59f727388e7b0f7a605c0d28">
                     <div class="row sqs-row">
                         <div class="col sqs-col-12 span-12">
-                            <div class="sqs-block map-block sqs-block-map" data-aspect-ratio="42.391304347826086"
-                                 data-block-json="&#123;&quot;location&quot;:&#123;&quot;mapLat&quot;:{{$office->contact_lat}},&quot;mapLng&quot;:{{$office->contact_long}},&quot;mapZoom&quot;:14,&quot;markerLat&quot;:{{$office->contact_lat}},&quot;markerLng&quot;:{{$office->contact_long}},&quot;addressTitle&quot;:&quot;EFFEKT&quot;,&quot;addressLine1&quot;:&quot;Bl\u00E5g\u00E5rdsgade 8, 2. sal&quot;,&quot;addressLine2&quot;:&quot;K\u00F8benhavn&quot;,&quot;addressCountry&quot;:&quot;Denmark&quot;&#125;,&quot;vSize&quot;:null,&quot;style&quot;:4,&quot;labels&quot;:true,&quot;terrain&quot;:false,&quot;controls&quot;:false,&quot;hSize&quot;:null,&quot;floatDir&quot;:null,&quot;aspectRatio&quot;:42.391304347826086&#125;"
+                            <div class="sqs-block map-block sqs-block-map" data-aspect-ratio="{{$office->contact_lat}}"
+                                 data-block-json="&#123;&quot;location&quot;:&#123;&quot;mapLat&quot;:{{$office->contact_lat}},&quot;mapLng&quot;:{{$office->contact_long}},&quot;mapZoom&quot;:14,&quot;markerLat&quot;:{{$office->contact_lat}},&quot;markerLng&quot;:{{$office->contact_long}},&quot;addressTitle&quot;:&quot;EFFEKT&quot;,&quot;addressLine1&quot;:&quot;{{$office->contact_lat}}, {{$office->contact_long}}. sal&quot;,&quot;addressLine2&quot;:&quot;K\u00F8benhavn&quot;,&quot;addressCountry&quot;:&quot;Denmark&quot;&#125;,&quot;vSize&quot;:null,&quot;style&quot;:4,&quot;labels&quot;:true,&quot;terrain&quot;:false,&quot;controls&quot;:false,&quot;hSize&quot;:null,&quot;floatDir&quot;:null,&quot;aspectRatio&quot;:{{$office->contact_lat}}&#125;"
                                  data-block-type="4" id="block-yui_3_17_2_5_1509369643211_11245">
                                 <div class="sqs-block-content">&nbsp;</div>
                             </div>

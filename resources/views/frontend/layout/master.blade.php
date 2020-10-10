@@ -10,7 +10,13 @@
     <!-- effekt -->
     <base #href="">
     <meta charset="utf-8"/>
-    <title>effekt</title>
+    <link rel="shortcut icon" type="image/x-icon"
+          href="{{isset(\App\Helpers\Functions::getSetting()->favicon) && \App\Helpers\Functions::getSetting()->favicon
+          ?\App\Constants\DirectoryConstant::UPLOAD_FOLDER_FAVICON.\App\Helpers\Functions::getSetting()->favicon
+          :''}}">
+    @yield('title')
+    @yield('meta-title')
+    @yield('meta-description')
     @include('frontend.layout.head')
 </head>
 
@@ -21,16 +27,16 @@
             @if(App::isLocale('vi'))
                 <a class="logo" href="/" data-content-field="site-title">
                     @if(isset(\App\Helpers\Functions::getSetting()->logo) && \App\Helpers\Functions::getSetting()->logo)
-                        <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}"
+                        <img style="max-height: 30px" src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}"
                              alt="logo">
                     @else
-                        effekt
+                        air.concept
                     @endif
                 </a>
             @else
                 <a class="logo" href="/en" data-content-field="site-title">
                     @if(isset(\App\Helpers\Functions::getSetting()->logo) && \App\Helpers\Functions::getSetting()->logo)
-                        <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}"
+                        <img style="max-height: 30px" src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}"
                              alt="logo">
                     @else
                         effekt

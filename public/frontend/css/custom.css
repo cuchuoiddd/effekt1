@@ -41,7 +41,7 @@ h1,h2,h3{
 main .publish-date{
     font-family: Helvetica-Light !important;
 }
-main .item-title,.post-title{
+main .item-title,.post-title,.image-title.sqs-dynamic-text p{
     font-family: VNFutuna-Bold !important;
 }
 main a,td,p{

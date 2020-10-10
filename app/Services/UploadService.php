@@ -34,7 +34,6 @@ class UploadService
      */
     public function uploadImage($path, $file)
     {
-
         $thumb_path = $path . 'thumb/';
         if (!is_dir($path)) {
             @mkdir($path, 0777, true);

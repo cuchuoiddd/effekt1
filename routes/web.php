@@ -32,7 +32,6 @@ Route::get('set-locale/{slug}','HomeController@setLocate');
 
 
 Route::group(['middleware'=>'auth','namespace' => 'Backend','prefix'=>'admin', 'as' => 'admin.'], function () {
-
     Route::resource('news','NewsController');
     Route::resource('slide','SlideController');
     Route::resource('work/categories','CategoryController');
@@ -42,51 +41,5 @@ Route::group(['middleware'=>'auth','namespace' => 'Backend','prefix'=>'admin', '
     Route::post('work/categories/serialize', 'CategoryController@serialize');
     Route::resource('san-pham', 'ProductController');
     Route::resource('setting','SettingController');
-
-
-//    Route::group(['prefix' => 'depots', 'as' => 'depots.'], function () {
-//        Route::resource('product', 'ProductDepotController');
-//        Route::resource('history', 'HistoryDepotController');
-//        Route::resource('list', 'DepotController');
-//    });
-//
-//    Route::group(['prefix' => 'marketing', 'as' => 'marketing.'], function () {
-//        Route::resource('fanpage', 'FanpageController');
-//        Route::get('ranking', 'RankingController@marketing')->name('marketing.ranking.marketing');
-//        Route::resource('fanpage-post', 'FanpagePostController');
-//        Route::resource('seeding-number', 'SeedingNumberController');
-//        Route::resource('custom-data', 'InsertDataCustomController');
-//    });
-//
-//    Route::group(['namespace' => 'Sale', 'prefix' => 'sale', 'as' => 'sale.'], function () {
-//        Route::resource('customer', 'CustomerController');
-//    });
-//
-//    Route::group(['namespace' => 'Marketing', 'prefix' => 'marketing', 'as' => 'marketing.'], function () {
-//        Route::resource('source','SourceController');
-//    });
-//
-//    Route::group(['namespace' => 'System', 'prefix' => 'system', 'as' => 'system.'], function () {
-//        Route::resource('team', 'TeamController');
-//    });
-//
-//
-//    /*
-//  |--------------------------------------------------------------------------
-//  | CMS for AJAX
-//  |--------------------------------------------------------------------------
-//  */
-//    Route::group(['prefix' => 'ajax'], function () {
-//        Route::get('searchLocation', 'LocationController@searchAllLocation');
-//        Route::get('searchDistrict/{city}', 'LocationController@searchAllDistrict');
-//        Route::get('searchWards/{district}', 'LocationController@searchAllWards');
-//        Route::get('searchAllUseWards/{ward}', 'LocationController@searchAllUseWards');
-//        Route::get('location/cac-tinh-mien-bac', 'LocationController@locationMienBac');
-//        Route::get('location/cac-tinh-mien-trung', 'LocationController@locationMienTrung');
-//        Route::get('location/cac-tinh-mien-nam', 'LocationController@locationMienNam');
-//
-//        Route::get('showDepot/{id}', 'DepotController@showDepot');
-//
-//        Route::get('get-all-sale','UserController@getAllSale');
-//    });
+    Route::get('get-user','UserController@getUser');
 });
