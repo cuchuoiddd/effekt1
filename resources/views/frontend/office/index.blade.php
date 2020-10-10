@@ -1,6 +1,29 @@
 
 
 @extends('frontend.layout.master')
+
+@if(App::isLocale('vi'))
+    @section('title')
+        <title>Văn phòng</title>
+    @endsection
+    @section('meta-title')
+        <meta property="og:title" content="Văn phòng">
+    @endsection
+    @section('meta-description')
+        <meta name="description" content="">
+    @endsection
+    @else
+    @section('title')
+        <title>Office</title>
+    @endsection
+    @section('meta-title')
+        <meta property="og:title" content="Office">
+    @endsection
+    @section('meta-description')
+        <meta name="description" content="">
+    @endsection
+@endif
+
 @section('body')
     <style>
         @media only screen and (max-width: 640px){

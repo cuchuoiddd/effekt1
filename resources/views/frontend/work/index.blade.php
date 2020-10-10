@@ -3,7 +3,7 @@
 
 @if(App::isLocale('vi'))
     @section('title')
-        <title>Tin tức | {{$news->title_vn?:''}}</title>
+        <title>Công việc</title>
     @endsection
     @section('meta-title')
         <meta property="og:title" content="Công việc">
@@ -13,7 +13,7 @@
     @endsection
     @else
     @section('title')
-        <title>News | {{$news->title_en?:''}}</title>
+        <title>Work</title>
     @endsection
     @section('meta-title')
         <meta property="og:title" content="Work">
