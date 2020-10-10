@@ -6,20 +6,20 @@
     <title>air.concept</title>
     @endsection
     @section('meta-title')
-        <meta property="og:title" content="{{isset(\App\Helpers\Functions::getSetting()->title_vn) && \App\Helpers\Functions::getSetting()->title_vn ?: 'air.concept' }}">
+        <meta property="og:title" content="{{isset(\App\Helpers\Functions::getSetting()->title_vn) && \App\Helpers\Functions::getSetting()->title_vn ? \App\Helpers\Functions::getSetting()->title_vn : 'air.concept' }}">
     @endsection
     @section('meta-description')
-        <meta name="description" content="{{isset(\App\Helpers\Functions::getSetting()->description_vn) && \App\Helpers\Functions::getSetting()->description_vn ?: 'air.concept' }}">
+        <meta name="description" content="{{isset(\App\Helpers\Functions::getSetting()->description_vn) && \App\Helpers\Functions::getSetting()->description_vn ? \App\Helpers\Functions::getSetting()->description_vn : 'air.concept' }}">
     @endsection
 @else
     @section('title')
         <title>air.concept</title>
     @endsection
     @section('meta-title')
-        <meta property="og:title" content="{{isset(\App\Helpers\Functions::getSetting()->title_en) && \App\Helpers\Functions::getSetting()->title_en ?: 'air.concept' }}">
+        <meta property="og:title" content="{{isset(\App\Helpers\Functions::getSetting()->title_en) && \App\Helpers\Functions::getSetting()->title_en ? \App\Helpers\Functions::getSetting()->title_en : 'air.concept' }}">
     @endsection
     @section('meta-description')
-        <meta name="description" content="{{isset(\App\Helpers\Functions::getSetting()->description_en) && \App\Helpers\Functions::getSetting()->description_en ?: 'air.concept' }}">
+        <meta name="description" content="{{isset(\App\Helpers\Functions::getSetting()->description_en) && \App\Helpers\Functions::getSetting()->description_en ? \App\Helpers\Functions::getSetting()->description_en : 'air.concept' }}">
     @endsection
 @endif
 

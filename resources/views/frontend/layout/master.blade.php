@@ -18,6 +18,16 @@
     @yield('meta-title')
     @yield('meta-description')
     @include('frontend.layout.head')
+    <style>
+        .logo img{
+            max-height: 40px;
+        }
+        @media only screen and (max-width: 640px){
+            .logo img{
+                max-height: 30px;
+            }
+        }
+    </style>
 </head>
 
 @yield('body')
@@ -27,7 +37,7 @@
             @if(App::isLocale('vi'))
                 <a class="logo" href="/" data-content-field="site-title">
                     @if(isset(\App\Helpers\Functions::getSetting()->logo) && \App\Helpers\Functions::getSetting()->logo)
-                        <img style="max-height: 30px" src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}"
+                        <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}"
                              alt="logo">
                     @else
                         air.concept
@@ -36,7 +46,7 @@
             @else
                 <a class="logo" href="/en" data-content-field="site-title">
                     @if(isset(\App\Helpers\Functions::getSetting()->logo) && \App\Helpers\Functions::getSetting()->logo)
-                        <img style="max-height: 30px" src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}"
+                        <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LOGO.\App\Helpers\Functions::getSetting()->logo}}"
                              alt="logo">
                     @else
                         effekt

@@ -2075,20 +2075,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       show_notify: false,
       show_mail: false,
-      show_user: false
+      show_user: false,
+      user: null
     };
   },
   mounted: function mounted() {
     console.log('Component mounted.');
+    this.getUser();
   },
   methods: {
     showNotify: function showNotify() {
@@ -2118,6 +2116,13 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response);
         window.location.reload();
       });
+    },
+    getUser: function getUser() {
+      var _this = this;
+
+      axios.get('/admin/get-user').then(function (res) {
+        _this.user = res.data.user;
+      })["catch"](function (err) {});
     }
   }
 });
@@ -6556,7 +6561,7 @@ exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base
 
 
 // module
-exports.push([module.i, ".v-select{position:relative;font-family:inherit}.v-select,.v-select *{box-sizing:border-box}@-webkit-keyframes vSelectSpinner{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}@keyframes vSelectSpinner{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}.vs__fade-enter-active,.vs__fade-leave-active{pointer-events:none;transition:opacity .15s cubic-bezier(1,.5,.8,1)}.vs__fade-enter,.vs__fade-leave-to{opacity:0}.vs--disabled .vs__clear,.vs--disabled .vs__dropdown-toggle,.vs--disabled .vs__open-indicator,.vs--disabled .vs__search,.vs--disabled .vs__selected{cursor:not-allowed;background-color:#f8f8f8}.v-select[dir=rtl] .vs__actions{padding:0 3px 0 6px}.v-select[dir=rtl] .vs__clear{margin-left:6px;margin-right:0}.v-select[dir=rtl] .vs__deselect{margin-left:0;margin-right:2px}.v-select[dir=rtl] .vs__dropdown-menu{text-align:right}.vs__dropdown-toggle{-webkit-appearance:none;-moz-appearance:none;appearance:none;display:flex;padding:0 0 4px;background:none;border:1px solid rgba(60,60,60,.26);border-radius:4px;white-space:normal}.vs__selected-options{display:flex;flex-basis:100%;flex-grow:1;flex-wrap:wrap;padding:0 2px;position:relative}.vs__actions{display:flex;align-items:center;padding:4px 6px 0 3px}.vs--searchable .vs__dropdown-toggle{cursor:text}.vs--unsearchable .vs__dropdown-toggle{cursor:pointer}.vs--open .vs__dropdown-toggle{border-bottom-color:transparent;border-bottom-left-radius:0;border-bottom-right-radius:0}.vs__open-indicator{fill:rgba(60,60,60,.5);transform:scale(1);transition:transform .15s cubic-bezier(1,-.115,.975,.855);transition-timing-function:cubic-bezier(1,-.115,.975,.855)}.vs--open .vs__open-indicator{transform:rotate(180deg) scale(1)}.vs--loading .vs__open-indicator{opacity:0}.vs__clear{fill:rgba(60,60,60,.5);padding:0;border:0;background-color:transparent;cursor:pointer;margin-right:8px}.vs__dropdown-menu{display:block;box-sizing:border-box;position:absolute;top:calc(100% - 1px);left:0;z-index:1000;padding:5px 0;margin:0;width:100%;max-height:350px;min-width:160px;overflow-y:auto;box-shadow:0 3px 6px 0 rgba(0,0,0,.15);border:1px solid rgba(60,60,60,.26);border-top-style:none;border-radius:0 0 4px 4px;text-align:left;list-style:none;background:#fff}.vs__no-options{text-align:center}.vs__dropdown-option{line-height:1.42857143;display:block;padding:3px 20px;clear:both;color:#333;white-space:nowrap}.vs__dropdown-option:hover{cursor:pointer}.vs__dropdown-option--highlight{background:#5897fb;color:#fff}.vs__dropdown-option--disabled{background:inherit;color:rgba(60,60,60,.5)}.vs__dropdown-option--disabled:hover{cursor:inherit}.vs__selected{display:flex;align-items:center;background-color:#f0f0f0;border:1px solid rgba(60,60,60,.26);border-radius:4px;color:#333;line-height:1.4;margin:4px 2px 0;padding:0 .25em;z-index:0}.vs__deselect{display:inline-flex;-webkit-appearance:none;-moz-appearance:none;appearance:none;margin-left:4px;padding:0;border:0;cursor:pointer;background:none;fill:rgba(60,60,60,.5);text-shadow:0 1px 0 #fff}.vs--single .vs__selected{background-color:transparent;border-color:transparent}.vs--single.vs--open .vs__selected{position:absolute;opacity:.4}.vs--single.vs--searching .vs__selected{display:none}.vs__search::-webkit-search-cancel-button{display:none}.vs__search::-ms-clear,.vs__search::-webkit-search-decoration,.vs__search::-webkit-search-results-button,.vs__search::-webkit-search-results-decoration{display:none}.vs__search,.vs__search:focus{-webkit-appearance:none;-moz-appearance:none;appearance:none;line-height:1.4;font-size:1em;border:1px solid transparent;border-left:none;outline:none;margin:4px 0 0;padding:0 7px;background:none;box-shadow:none;width:0;max-width:100%;flex-grow:1;z-index:1}.vs__search::-moz-placeholder{color:inherit}.vs__search:-ms-input-placeholder{color:inherit}.vs__search::-ms-input-placeholder{color:inherit}.vs__search::placeholder{color:inherit}.vs--unsearchable .vs__search{opacity:1}.vs--unsearchable:not(.vs--disabled) .vs__search:hover{cursor:pointer}.vs--single.vs--searching:not(.vs--open):not(.vs--loading) .vs__search{opacity:.2}.vs__spinner{align-self:center;opacity:0;font-size:5px;text-indent:-9999em;overflow:hidden;border:.9em solid hsla(0,0%,39.2%,.1);border-left-color:rgba(60,60,60,.45);transform:translateZ(0);-webkit-animation:vSelectSpinner 1.1s linear infinite;animation:vSelectSpinner 1.1s linear infinite;transition:opacity .1s}.vs__spinner,.vs__spinner:after{border-radius:50%;width:5em;height:5em}.vs--loading .vs__spinner{opacity:1}", ""]);
+exports.push([module.i, ".v-select{position:relative;font-family:inherit}.v-select,.v-select *{box-sizing:border-box}@-webkit-keyframes vSelectSpinner{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}@keyframes vSelectSpinner{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}.vs__fade-enter-active,.vs__fade-leave-active{pointer-events:none;transition:opacity .15s cubic-bezier(1,.5,.8,1)}.vs__fade-enter,.vs__fade-leave-to{opacity:0}.vs--disabled .vs__clear,.vs--disabled .vs__dropdown-toggle,.vs--disabled .vs__open-indicator,.vs--disabled .vs__search,.vs--disabled .vs__selected{cursor:not-allowed;background-color:#f8f8f8}.v-select[dir=rtl] .vs__actions{padding:0 3px 0 6px}.v-select[dir=rtl] .vs__clear{margin-left:6px;margin-right:0}.v-select[dir=rtl] .vs__deselect{margin-left:0;margin-right:2px}.v-select[dir=rtl] .vs__dropdown-menu{text-align:right}.vs__dropdown-toggle{-webkit-appearance:none;-moz-appearance:none;appearance:none;display:flex;padding:0 0 4px;background:none;border:1px solid rgba(60,60,60,.26);border-radius:4px;white-space:normal}.vs__selected-options{display:flex;flex-basis:100%;flex-grow:1;flex-wrap:wrap;padding:0 2px;position:relative}.vs__actions{display:flex;align-items:center;padding:4px 6px 0 3px}.vs--searchable .vs__dropdown-toggle{cursor:text}.vs--unsearchable .vs__dropdown-toggle{cursor:pointer}.vs--open .vs__dropdown-toggle{border-bottom-color:transparent;border-bottom-left-radius:0;border-bottom-right-radius:0}.vs__open-indicator{fill:rgba(60,60,60,.5);transform:scale(1);transition:transform .15s cubic-bezier(1,-.115,.975,.855);transition-timing-function:cubic-bezier(1,-.115,.975,.855)}.vs--open .vs__open-indicator{transform:rotate(180deg) scale(1)}.vs--loading .vs__open-indicator{opacity:0}.vs__clear{fill:rgba(60,60,60,.5);padding:0;border:0;background-color:transparent;cursor:pointer;margin-right:8px}.vs__dropdown-menu{display:block;box-sizing:border-box;position:absolute;top:calc(100% - 1px);left:0;z-index:1000;padding:5px 0;margin:0;width:100%;max-height:350px;min-width:160px;overflow-y:auto;box-shadow:0 3px 6px 0 rgba(0,0,0,.15);border:1px solid rgba(60,60,60,.26);border-top-style:none;border-radius:0 0 4px 4px;text-align:left;list-style:none;background:#fff}.vs__no-options{text-align:center}.vs__dropdown-option{line-height:1.42857143;display:block;padding:3px 20px;clear:both;color:#333;white-space:nowrap}.vs__dropdown-option:hover{cursor:pointer}.vs__dropdown-option--highlight{background:#5897fb;color:#fff}.vs__dropdown-option--disabled{background:inherit;color:rgba(60,60,60,.5)}.vs__dropdown-option--disabled:hover{cursor:inherit}.vs__selected{display:flex;align-items:center;background-color:#f0f0f0;border:1px solid rgba(60,60,60,.26);border-radius:4px;color:#333;line-height:1.4;margin:4px 2px 0;padding:0 .25em;z-index:0}.vs__deselect{display:inline-flex;-webkit-appearance:none;-moz-appearance:none;appearance:none;margin-left:4px;padding:0;border:0;cursor:pointer;background:none;fill:rgba(60,60,60,.5);text-shadow:0 1px 0 #fff}.vs--single .vs__selected{background-color:transparent;border-color:transparent}.vs--single.vs--open .vs__selected{position:absolute;opacity:.4}.vs--single.vs--searching .vs__selected{display:none}.vs__search::-webkit-search-cancel-button{display:none}.vs__search::-ms-clear,.vs__search::-webkit-search-decoration,.vs__search::-webkit-search-results-button,.vs__search::-webkit-search-results-decoration{display:none}.vs__search,.vs__search:focus{-webkit-appearance:none;-moz-appearance:none;appearance:none;line-height:1.4;font-size:1em;border:1px solid transparent;border-left:none;outline:none;margin:4px 0 0;padding:0 7px;background:none;box-shadow:none;width:0;max-width:100%;flex-grow:1;z-index:1}.vs__search::-moz-placeholder{color:inherit}.vs__search:-ms-input-placeholder{color:inherit}.vs__search::placeholder{color:inherit}.vs--unsearchable .vs__search{opacity:1}.vs--unsearchable:not(.vs--disabled) .vs__search:hover{cursor:pointer}.vs--single.vs--searching:not(.vs--open):not(.vs--loading) .vs__search{opacity:.2}.vs__spinner{align-self:center;opacity:0;font-size:5px;text-indent:-9999em;overflow:hidden;border:.9em solid hsla(0,0%,39.2%,.1);border-left-color:rgba(60,60,60,.45);transform:translateZ(0);-webkit-animation:vSelectSpinner 1.1s linear infinite;animation:vSelectSpinner 1.1s linear infinite;transition:opacity .1s}.vs__spinner,.vs__spinner:after{border-radius:50%;width:5em;height:5em}.vs--loading .vs__spinner{opacity:1}", ""]);
 
 // exports
 
@@ -11587,7 +11592,7 @@ var rscriptType = ( /^$|^module$|\/(?:java|ecma)script/i );
 	support.noCloneChecked = !!div.cloneNode( true ).lastChild.defaultValue;
 
 	// Support: IE <=9 only
-	// IE <=9 replaces <option> tags with their offices when inserted outside of
+	// IE <=9 replaces <option> tags with their contents when inserted outside of
 	// the select element.
 	div.innerHTML = "<option></option>";
 	support.option = !!div.lastChild;
@@ -38385,110 +38390,6 @@ var render = function() {
             _c(
               "li",
               {
-                staticClass: "dropdown dropdown-notification nav-item",
-                class: { show: _vm.show_notify === true }
-              },
-              [
-                _c(
-                  "a",
-                  {
-                    directives: [
-                      {
-                        name: "click-outside",
-                        rawName: "v-click-outside",
-                        value: _vm.hideNotify,
-                        expression: "hideNotify"
-                      }
-                    ],
-                    staticClass: "nav-link nav-link-label",
-                    attrs: { href: "#", "data-toggle": "dropdown" },
-                    on: {
-                      click: function($event) {
-                        return _vm.showNotify()
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "ficon ft-bell" }),
-                    _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        staticClass:
-                          "badge badge-pill badge-default badge-danger badge-default badge-up"
-                      },
-                      [_vm._v("5")]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "ul",
-                  {
-                    staticClass:
-                      "dropdown-menu dropdown-menu-media dropdown-menu-right",
-                    class: { show: _vm.show_notify === true }
-                  },
-                  [_vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4)]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "li",
-              {
-                staticClass: "dropdown dropdown-notification nav-item",
-                class: { show: _vm.show_mail === true }
-              },
-              [
-                _c(
-                  "a",
-                  {
-                    directives: [
-                      {
-                        name: "click-outside",
-                        rawName: "v-click-outside",
-                        value: _vm.hideMail,
-                        expression: "hideMail"
-                      }
-                    ],
-                    staticClass: "nav-link nav-link-label",
-                    attrs: { href: "#", "data-toggle": "dropdown" },
-                    on: {
-                      click: function($event) {
-                        return _vm.showMail()
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "ficon ft-mail" }),
-                    _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        staticClass:
-                          "badge badge-pill badge-default badge-warning badge-default badge-up"
-                      },
-                      [_vm._v("3")]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "ul",
-                  {
-                    staticClass:
-                      "dropdown-menu dropdown-menu-media dropdown-menu-right",
-                    class: { show: _vm.show_mail === true }
-                  },
-                  [_vm._m(5), _vm._v(" "), _vm._m(6), _vm._v(" "), _vm._m(7)]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "li",
-              {
                 staticClass: "dropdown dropdown-user nav-item",
                 class: { show: _vm.show_user === true }
               },
@@ -38513,10 +38414,14 @@ var render = function() {
                     }
                   },
                   [
-                    _vm._m(8),
+                    _vm._m(2),
                     _vm._v(" "),
                     _c("span", { staticClass: "user-name" }, [
-                      _vm._v("John Doe")
+                      _vm._v(
+                        _vm._s(
+                          _vm.user && _vm.user.name ? _vm.user.name : "Admin"
+                        )
+                      )
                     ])
                   ]
                 ),
@@ -38528,13 +38433,7 @@ var render = function() {
                     class: { show: _vm.show_user === true }
                   },
                   [
-                    _vm._m(9),
-                    _vm._v(" "),
-                    _vm._m(10),
-                    _vm._v(" "),
-                    _vm._m(11),
-                    _vm._v(" "),
-                    _vm._m(12),
+                    _vm._m(3),
                     _vm._v(" "),
                     _c("div", { staticClass: "dropdown-divider" }),
                     _vm._v(" "),
@@ -38625,173 +38524,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "dropdown-menu-header" }, [
-      _c("h6", { staticClass: "dropdown-header m-0" }, [
-        _c("span", { staticClass: "grey darken-2" }, [_vm._v("Notifications")]),
-        _vm._v(" "),
-        _c(
-          "span",
-          {
-            staticClass:
-              "notification-tag badge badge-default badge-danger float-right m-0"
-          },
-          [_vm._v("5 New")]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "scrollable-container media-list" }, [
-      _c("a", { attrs: { href: "javascript:void(0)" } }, [
-        _c("div", { staticClass: "media" }, [
-          _c("div", { staticClass: "media-left align-self-center" }, [
-            _c("i", { staticClass: "ft-plus-square icon-bg-circle bg-cyan" })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "media-body" }, [
-            _c("h6", { staticClass: "media-heading" }, [
-              _vm._v("You have new order!")
-            ]),
-            _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "notification-text font-small-3 text-muted" },
-              [
-                _vm._v(
-                  "Lorem ipsum dolor sit\n                                            amet, consectetuer elit."
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c("small", [
-              _c(
-                "time",
-                {
-                  staticClass: "media-meta text-muted",
-                  attrs: { datetime: "2015-06-11T18:29:20+08:00" }
-                },
-                [
-                  _vm._v(
-                    "30 minutes ago\n                                            "
-                  )
-                ]
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "dropdown-menu-footer" }, [
-      _c(
-        "a",
-        {
-          staticClass: "dropdown-item text-muted text-center",
-          attrs: { href: "javascript:void(0)" }
-        },
-        [_vm._v("Read all notifications")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "dropdown-menu-header" }, [
-      _c("h6", { staticClass: "dropdown-header m-0" }, [
-        _c("span", { staticClass: "grey darken-2" }, [_vm._v("Messages")]),
-        _vm._v(" "),
-        _c(
-          "span",
-          {
-            staticClass:
-              "notification-tag badge badge-default badge-warning float-right m-0"
-          },
-          [_vm._v("4 New")]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "scrollable-container media-list" }, [
-      _c("a", { attrs: { href: "javascript:void(0)" } }, [
-        _c("div", { staticClass: "media" }, [
-          _c("div", { staticClass: "media-left" }, [
-            _c(
-              "span",
-              { staticClass: "avatar avatar-sm avatar-online rounded-circle" },
-              [
-                _c("img", {
-                  attrs: {
-                    src:
-                      "/backend/app-assets/images/portrait/small/avatar-s-1.png",
-                    alt: "avatar"
-                  }
-                }),
-                _c("i")
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "media-body" }, [
-            _c("h6", { staticClass: "media-heading" }, [
-              _vm._v("Margaret Govan")
-            ]),
-            _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "notification-text font-small-3 text-muted" },
-              [
-                _vm._v(
-                  "I like your portfolio,\n                                            let's start."
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c("small", [
-              _c(
-                "time",
-                {
-                  staticClass: "media-meta text-muted",
-                  attrs: { datetime: "2015-06-11T18:29:20+08:00" }
-                },
-                [_vm._v("Today\n                                            ")]
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "dropdown-menu-footer" }, [
-      _c(
-        "a",
-        {
-          staticClass: "dropdown-item text-muted text-center",
-          attrs: { href: "javascript:void(0)" }
-        },
-        [_vm._v("Read all\n                                messages")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("span", { staticClass: "avatar avatar-online" }, [
       _c("img", {
         attrs: {
@@ -38810,45 +38542,6 @@ var staticRenderFns = [
       "a",
       { staticClass: "dropdown-item", attrs: { href: "user-profile.html" } },
       [_c("i", { staticClass: "ft-user" }), _vm._v(" Edit Profile")]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "dropdown-item",
-        attrs: { href: "email-application.html" }
-      },
-      [_c("i", { staticClass: "ft-mail" }), _vm._v(" My Inbox")]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "dropdown-item", attrs: { href: "user-cards.html" } },
-      [_c("i", { staticClass: "ft-check-square" }), _vm._v(" Task")]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "dropdown-item",
-        attrs: { href: "chat-application.html" }
-      },
-      [
-        _c("i", { staticClass: "ft-message-square" }),
-        _vm._v("\n                            Chats")
-      ]
     )
   }
 ]
@@ -50259,7 +49952,7 @@ function genScopedSlots (
   // #9534: if a component with scoped slots is inside a conditional branch,
   // it's possible for the same component to be reused but with different
   // compiled slot content. To avoid that, we generate a unique key based on
-  // the generated code of all the slot offices.
+  // the generated code of all the slot contents.
   var needsKey = !!el.if;
 
   // OR when it is inside another scoped slot or v-for (the reactivity may be
@@ -51345,8 +51038,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\PHP\cms-tmdt-adam\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\PHP\cms-tmdt-adam\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\PHP\effekt1\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\PHP\effekt1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

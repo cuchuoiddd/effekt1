@@ -29,7 +29,6 @@ class ProductController extends Controller
         $this->fileUpload = $fileUpload;
     }
 
-
     /**
      * Display a listing of the resource.
      *
@@ -37,8 +36,13 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        $search['searchTitle'] = $request->searchTitle;
         $categories = Category::all();
-        $products = Product::paginate(StatusCode::PAGINATE_20);
+        $products = Product::search($search)->paginate(StatusCode::PAGINATE_20);
+
+        if ($request->ajax()){
+            return view('backend.products.ajax', compact('products', 'categories'));
+        }
         return view('backend.products.index', compact('products', 'categories'));
     }
 

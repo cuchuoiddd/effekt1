@@ -10,9 +10,7 @@
                             <div class="row" style="align-items: baseline">
                                 <h4 class="col-lg-3">Danh sách nhân viên</h4>
                                 <div class="col-lg-3 col-md-6">
-                                    <fieldset class="form-group">
                                         <input type="text" class="form-control square" placeholder="Tìm kiếm tên ...">
-                                    </fieldset>
                                 </div>
                                 <button class="btn btn-primary"><i class="fa fa-search"></i> Tìm kiếm</button>
                             </div>

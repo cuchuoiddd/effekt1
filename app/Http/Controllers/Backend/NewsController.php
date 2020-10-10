@@ -29,11 +29,16 @@ class NewsController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $news = News::orderByDesc('id')->paginate(StatusCode::PAGINATE_20);
+        $search['searchTitle'] = $request->searchTitle;
+        $news = News::search($search)->paginate(StatusCode::PAGINATE_20);
+        if ($request->ajax()){
+            return view('backend.news.ajax', compact('news'));
+        }
         return view('backend.news.index',compact('news'));
     }
 
