@@ -20,17 +20,17 @@
 </li>
 @if(App::isLocale('vi'))
     <li class="{{$active_menu == 'news' ? 'active':''}}" >
-        <a href="/news" >Tin tức</a>
+        <a href="/news" >Câu chuyện</a>
     </li>
     <li class="{{$active_menu == 'work' ? 'active':''}}" >
-        <a href="/work">Công việc</a>
+        <a href="/work">Dự án</a>
     </li>
     <li class="{{$active_menu == 'office' ? 'active':''}}" >
         <a href="/office">Văn phòng</a>
     </li>
 @else
     <li class="{{$active_menu == 'news' ? 'active':''}}">
-        <a  href="/en/news">News</a>
+        <a  href="/en/news">Story</a>
     </li>
     <li class="{{$active_menu == 'work' ? 'active':''}}">
         <a  href="/en/work">Work</a>

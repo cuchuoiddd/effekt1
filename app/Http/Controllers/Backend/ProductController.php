@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\UploadService;
 use Illuminate\Support\Arr;
-
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -22,7 +22,7 @@ class ProductController extends Controller
     /**
      * UploadService constructor.
      *
-     * @param Filesystem $fileUpload
+     * @param UploadService $fileUpload
      */
     public function __construct(UploadService $fileUpload)
     {
