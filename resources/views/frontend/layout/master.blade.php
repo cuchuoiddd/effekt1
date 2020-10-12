@@ -104,7 +104,7 @@
                     <div class="sqs-block html-block sqs-block-html" data-block-type="2"
                          id="block-04f6434df3a15da7abb7">
                         <div class="sqs-block-content"><p class="text-align-center">Copyright © 2018&nbsp; | &nbsp;All
-                                rights reserved &nbsp;|&nbsp; <a href="../../../../privacy.html">Privacy Policy</a></p>
+                                rights reserved &nbsp;|&nbsp; <a href="">Privacy Policy</a></p>
                         </div>
                     </div>
                     <div class="sqs-block socialaccountlinks-v2-block sqs-block-socialaccountlinks-v2"
@@ -122,7 +122,8 @@
                                                 <use class="sqs-use--mask" xlink:href="#linkedin-mask"></use>
                                             </svg>
                                         </div>
-                                    </a><a href="http://www.facebook.com/effekt.dk" target="_blank"
+                                    </a>
+                                    <a href="http://www.facebook.com/effekt.dk" target="_blank"
                                            class="sqs-svg-icon--wrapper facebook" aria-label="EFFEKT">
                                         <div>
                                             <svg class="sqs-svg-icon--social" viewBox="0 0 64 64">
@@ -130,7 +131,8 @@
                                                 <use class="sqs-use--mask" xlink:href="#facebook-mask"></use>
                                             </svg>
                                         </div>
-                                    </a><a href="https://twitter.com/EffektArch" target="_blank"
+                                    </a>
+                                    <a href="https://twitter.com/EffektArch" target="_blank"
                                            class="sqs-svg-icon--wrapper twitter" aria-label="EFFEKT Architects">
                                         <div>
                                             <svg class="sqs-svg-icon--social" viewBox="0 0 64 64">
@@ -138,7 +140,8 @@
                                                 <use class="sqs-use--mask" xlink:href="#twitter-mask"></use>
                                             </svg>
                                         </div>
-                                    </a><a href="http://instagram.com/effektarchitects" target="_blank"
+                                    </a>
+                                    <a href="http://instagram.com/effektarchitects" target="_blank"
                                            class="sqs-svg-icon--wrapper instagram" aria-label="EFFEKT Architects">
                                         <div>
                                             <svg class="sqs-svg-icon--social" viewBox="0 0 64 64">

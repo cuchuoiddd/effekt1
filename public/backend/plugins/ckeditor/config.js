@@ -6,8 +6,8 @@
 CKEDITOR.editorConfig = function (config) {
     config.autoParagraph = false;
     config.entities_latin = false;
-    config.filebrowserBrowseUrl = '/BE/plugins/ckfinder/ckfinder.html';
-    config.filebrowserUploadUrl = '/BE/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images';
+    config.filebrowserBrowseUrl = '/backend/plugins/ckfinder/ckfinder.html';
+    config.filebrowserUploadUrl = '/backend/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images';
 
     config.extraPlugins = 'wordcount';
     config.wordcount = {

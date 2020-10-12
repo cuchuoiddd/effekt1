@@ -22,7 +22,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::orderByDesc('id')->get();
+        $news = News::orderByDesc('date')->get();
         $news = $news->map(function ($m){
             $m['year'] = \Carbon\Carbon::parse($m->date);
             $m['year'] = $m['year']->year;
