@@ -1,5 +1,3 @@
-<link rel="shortcut icon" type="image/x-icon"
-      href="https://images.squarespace-cdn.com/content/v1/51819b9fe4b03000ce6f03ea/1397468947522-8YU4E750PIJ9WVU9O4GZ/ke17ZwdGBToddI8pDm48kNjpXgdB2GQ4GXsvq_1og8aoCXeSvxnTEQmG4uwOsdIceAoHiyRoc52GMN5_2H8Wp6_MLhNeL9yWw1amyLjdgohmCNS_LeH4t9qD0d_SmSPc_VumPslpQQgM4-VHAcYf4g/favicon.ico"/>
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/swiper.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/site8696.css')}}?&amp;filterFeatures=false"/>
 <link rel="stylesheet" href="{{asset('frontend/css/custom.css')}}">

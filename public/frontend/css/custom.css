@@ -49,3 +49,6 @@ main .item-title,.post-title,.image-title.sqs-dynamic-text p{
 main a,td,p{
     font-family: Helvetica-Light !important;
 }
+.trans-nav{
+    margin-top: -10px !important;
+}

@@ -116,6 +116,37 @@
                                                    value="{{ $setting->fanpage_id ?? old('fanpage_id')}}">
                                         </div>
                                     </div>
+
+                                    <div class="row">
+                                        <div class="col-6 form-group">
+                                            <label for="squareText">Link Company</label>
+                                            <input type="text" id="link_website" name="link_website"
+                                                   class="form-control square"
+                                                   value="{{ $setting->link_website ?? old('link_website')}}">
+                                        </div>
+
+                                        <div class="col-6 form-group">
+                                            <label for="squareText">Link Facebook</label>
+                                            <input type="text" id="link_facebook" name="link_facebook"
+                                                   class="form-control square"
+                                                   value="{{ $setting->link_facebook ?? old('link_facebook')}}">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 form-group">
+                                            <label for="squareText">Link twitter</label>
+                                            <input type="text" id="link_twitter" name="link_twitter"
+                                                   class="form-control square"
+                                                   value="{{ $setting->link_twitter ?? old('link_twitter')}}">
+                                        </div>
+
+                                        <div class="col-6 form-group">
+                                            <label for="squareText">Link Instagram</label>
+                                            <input type="text" id="link_instagram" name="link_instagram"
+                                                   class="form-control square"
+                                                   value="{{ $setting->link_instagram ?? old('link_instagram')}}">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary" style="width: 200px;">Save</button>
