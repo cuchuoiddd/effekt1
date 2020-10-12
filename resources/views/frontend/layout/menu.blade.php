@@ -1,5 +1,5 @@
 <li>
-    <div class="btn-group show" style="z-index: 1000;position:relative;margin-top: -3px;height: 30px;">
+    <div class="btn-group show" style="z-index: 1000;position:relative;margin-top: -4px;height: 30px;">
         <button class="btn btn-secondary btn-lg dropdown-toggle" style="border: none;background:none">
             @if(App::isLocale('vi'))
             <img class=" lazyloaded" src="{{asset('images/flag-vietnam.png')}}" width="30" height="60">
