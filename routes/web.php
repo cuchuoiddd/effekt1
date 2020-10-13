@@ -42,4 +42,5 @@ Route::group(['middleware'=>'auth','namespace' => 'Backend','prefix'=>'admin', '
     Route::resource('san-pham', 'ProductController');
     Route::resource('setting','SettingController');
     Route::get('get-user','UserController@getUser');
+    Route::post('edit-profile','UserController@editProfile');
 });
