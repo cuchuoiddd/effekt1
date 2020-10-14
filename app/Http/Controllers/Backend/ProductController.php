@@ -196,8 +196,10 @@ class ProductController extends Controller
         } else {
             $data['images'] = json_encode($arr_image_not_delete);
         }
-        if($request->design_team){
+        if($request->has('design_team')){
             $data['design_team'] = json_encode($request->design_team);
+        } else {
+            $data['design_team'] = "[null]";
         }
         $data = Arr::except($data, 'images_json');
         $product->update($data);

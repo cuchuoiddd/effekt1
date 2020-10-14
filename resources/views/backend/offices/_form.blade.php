@@ -313,7 +313,7 @@
                                                        name="images[]">
                                                 <input type="hidden" id="images_json" name="images_json"
                                                        value="{{json_encode($images)}}">
-                                                <div class="">
+                                                <div class="" style="overflow: scroll">
                                                     <div class="imagesUploadBox product-images">
                                                         <div class="thumb-list product-photo-grid__item">
                                                             @foreach($images as $k => $image)

@@ -25,6 +25,14 @@
 
 {{--Validate--}}
 <script src="/backend/plugins/validate/jquery.validate.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $( function() {
+        $( "#sortable" ).sortable();
+        $( "#sortable" ).disableSelection();
+    } );
+</script>
+
 
 <!-- Select2 -->
 <script src="/backend/plugins/select2/select2.min.js"></script>
