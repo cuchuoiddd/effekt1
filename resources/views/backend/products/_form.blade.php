@@ -234,7 +234,7 @@
                                         <div class="col-6 form-group">
                                             <label for="squareText">Slug</label>
                                             <input type="text" id="slug" name="slug" class="form-control square"
-                                                   value="{{ $product->slug ?? old('year') }}">
+                                                   value="{{ $product->slug ?? old('slug') }}">
                                         </div>
                                     </div>
 
@@ -270,6 +270,8 @@
         CKEDITOR.replace('content_en');
     </script>
     <script>
+
+
         readURL = async function (input, callback) {
             var fileList = []
             for (var i = 0; i < input.files.length; i++) {
@@ -289,6 +291,14 @@
             }
         }
         $(document).ready(function () {
+            $( "#sortable" ).sortable({
+                stop: function(event, ui) {
+                    console.log(11111);
+                    // updateImagesJSON();
+                }
+            });
+
+
             $('#modal-alt').on('show.bs.modal', function (e) {
                 $(e.target).find('#altText').val('')
                 $(e.target).find('.btn-primary').removeAttr('data-pos')
@@ -309,7 +319,9 @@
             function updateImagesJSON() {
                 var list = [];
                 $('.thumb-image').each(function (index, image) {
+                    console.log(123,image);
                     list.push({
+                        position: index,
                         url: $(image).find('img').attr('data-src'),
                         alt: $(image).find('img').attr('alt')
                     })
@@ -327,8 +339,10 @@
                     var totallyNew = $('.thumb-image:not(.new)').length == 0 ? true : false
                     curList = curList.filter((item) => typeof item.new === 'undefined')
 
+                    var last_position = curList.length ? curList[curList.length - 1].position : -1
                     fileList.forEach((file) => {
                         curList.push({
+                            position: ++last_position,
                             url: file.src,
                             alt: '',
                             new: true,

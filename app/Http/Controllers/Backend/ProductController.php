@@ -66,8 +66,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
         $rules = [
             'category_id' => 'required',
+            'title_vn' => 'required',
             'title_vn' => 'required',
             'title_en' => 'required',
             'content_vn' => 'required',
@@ -92,14 +94,19 @@ class ProductController extends Controller
                 ->withInput();
         }
         $data = $request->all();
+        $images_json = json_decode($request->input('images_json'));
         $images = $request->images;
         if ($images && count($images)) {
-            $arr_images = [];
             foreach ($images as $key => $item) {
+                $name=$item->getClientOriginalName();
                 $url = $this->fileUpload->uploadImage(DirectoryConstant::UPLOAD_FOLDER_PRODUCT, $item);
-                $arr_images[$key]['url'] = $url;
+                foreach($images_json as $image){
+                    if(isset($image->fileName) && $image->fileName == $name){
+                        $image->url = $url;
+                    }
+                }
             }
-            $data['images'] = json_encode($arr_images);
+            $data['images'] = json_encode($images_json);
         } else {
             $data['images'] = '';
         }
@@ -148,7 +155,6 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-
         $product = Product::find($id);
 
         $arr_image_not_delete = [];
