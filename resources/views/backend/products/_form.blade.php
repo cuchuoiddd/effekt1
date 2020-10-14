@@ -234,7 +234,7 @@
                                         <div class="col-6 form-group">
                                             <label for="squareText">Slug</label>
                                             <input type="text" id="slug" name="slug" class="form-control square"
-                                                   value="{{ $product->slug ?? old('year') }}">
+                                                   value="{{ $product->slug ?? old('slug') }}">
                                         </div>
                                     </div>
 
