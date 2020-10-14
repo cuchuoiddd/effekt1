@@ -49,14 +49,14 @@
                                                     $images = isset($product) && isset($product->images) && $product->images !='' ? json_decode($product->images) : json_decode('[]');
                                                 @endphp
                                                 <label for="images"
-                                                       class="control-label alt-flex"><span>Ảnh dự án</span><a
+                                                       class="control-label alt-flex"><span class="required">Ảnh dự án</span><a
                                                             class="addImages"><i class="fa fa-plus"></i> Upload
                                                         ảnh</a></label>
                                                 <input type="file" class="hidden images" multiple="multiple" id="images"
                                                        name="images[]">
                                                 <input type="hidden" id="images_json" name="images_json"
                                                        value="{{json_encode($images)}}">
-                                                <div class="">
+                                                <div class="" style="overflow:scroll;">
                                                     <div class="imagesUploadBox product-images">
                                                         <div class="thumb-list product-photo-grid__item">
                                                             @foreach($images as $k => $image)
@@ -65,9 +65,9 @@
                                                                          data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$image->url}}"
                                                                          src="{{url(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$image->url)}}">
                                                                     <div class="overlay">
-                                                                        <div class="alter-button" data-toggle="modal"
-                                                                             data-target="#modal-alt">Alt
-                                                                        </div>
+                                                                        {{--<div class="alter-button" data-toggle="modal"--}}
+                                                                             {{--data-target="#modal-alt">Alt--}}
+                                                                        {{--</div>--}}
                                                                         <div class="remove-button"><i
                                                                                     class="fa fa-trash"></i></div>
                                                                     </div>
@@ -262,7 +262,8 @@
                 title_en: "required",
                 content_vn: "required",
                 content_en: "required",
-                slug: "required"
+                slug: "required",
+                images: "required"
             },
         })
 

@@ -72,7 +72,8 @@ class ProductController extends Controller
             'title_en' => 'required',
             'content_vn' => 'required',
             'content_en' => 'required',
-            'slug' => 'required'
+            'slug' => 'required',
+            'images' => 'required'
         ];
         $messages = [
             'category_id.required' => 'Danh mục không được bỏ trống',
@@ -80,7 +81,8 @@ class ProductController extends Controller
             'title_en.required' => 'Tiêu đề EN không được bỏ trống',
             'content_vn.required' => 'Nội dung VN không được bỏ trống',
             'content_en.required' => 'Nội dung EN không được bỏ trống',
-            'slug.required' => 'Slug không được bỏ trống'
+            'slug.required' => 'Slug không được bỏ trống',
+            'images.required' => 'Hình ảnh không được bỏ trống'
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
 
@@ -100,6 +102,9 @@ class ProductController extends Controller
             $data['images'] = json_encode($arr_images);
         } else {
             $data['images'] = '';
+        }
+        if($request->has('design_team')){
+            $data['design_team'] = json_encode($request->design_team);
         }
         $data = Arr::except($data, 'images_json');
         Product::create($data);
