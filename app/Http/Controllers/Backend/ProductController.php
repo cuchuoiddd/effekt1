@@ -157,6 +157,46 @@ class ProductController extends Controller
         $data = $request->all();
         $product = Product::find($id);
 
+        $images_json = json_decode($request->images_json);
+        $images = $request->images;
+        if ($images && count($images)) {
+            foreach ($images as $key => $item) {
+                $name=$item->getClientOriginalName();
+                $url = $this->fileUpload->uploadImage(DirectoryConstant::UPLOAD_FOLDER_PRODUCT, $item);
+                foreach($images_json as $image){
+                    if(isset($image->fileName) && $image->fileName == $name){
+                        $image->url = $url;
+                    }
+                }
+            }
+            $data['images'] = json_encode($images_json);
+        } else {
+            $data['images'] = '';
+        }
+
+        if($request->has('images_delete')){
+            $images_delete = json_decode($request->images_delete);
+            foreach ($images_delete as $item) {
+                Functions::unlinkUpload(DirectoryConstant::UPLOAD_FOLDER_PRODUCT ,$item);
+                Functions::unlinkUpload(DirectoryConstant::UPLOAD_FOLDER_PRODUCT_THUMB ,$item);
+            }
+        }
+
+        dd($data);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         $arr_image_not_delete = [];
 
         if ($request->images_json != '') {

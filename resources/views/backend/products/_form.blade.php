@@ -56,6 +56,9 @@
                                                        name="images[]">
                                                 <input type="hidden" id="images_json" name="images_json"
                                                        value="{{json_encode($images)}}">
+                                                @if(isset($product))
+                                                    <input type="hidden" id="images_delete" name="images_delete">
+                                                @endif
                                                 <div class="" style="overflow: scroll">
                                                     <div class="imagesUploadBox product-images">
                                                         <div class="thumb-list product-photo-grid__item" id="sortable">
@@ -269,11 +272,119 @@
         CKEDITOR.replace('content_vn');
         CKEDITOR.replace('content_en');
     </script>
+    {{--<script>--}}
+        {{--readURL = async function (input, callback) {--}}
+            {{--var fileList = [];--}}
+            {{--console.log(111,input)--}}
+            {{--for (var i = 0; i < input.files.length; i++) {--}}
+                {{--var reader = new FileReader();--}}
+                {{--var count = 0;--}}
+                {{--reader.onload = function (e) {--}}
+                    {{--fileList.push({--}}
+                        {{--src: e.target.result,--}}
+                        {{--name: input.files[count].name--}}
+                    {{--})--}}
+                    {{--count++--}}
+                    {{--if (count == input.files.length) {--}}
+                        {{--callback(fileList)--}}
+                    {{--}--}}
+                {{--}--}}
+                {{--reader.readAsDataURL(input.files[i]);--}}
+            {{--}--}}
+        {{--}--}}
+        {{--$(document).ready(function () {--}}
+            {{--let abc  = $('#images')[0];--}}
+            {{--$( "#sortable" ).sortable({--}}
+                {{--stop: function(event, ui) {  }--}}
+            {{--});--}}
+
+
+            {{--$('#modal-alt').on('show.bs.modal', function (e) {--}}
+                {{--$(e.target).find('#altText').val('')--}}
+                {{--$(e.target).find('.btn-primary').removeAttr('data-pos')--}}
+
+                {{--var alt = $(e.relatedTarget).closest('.thumb-image').find('img').attr('alt')--}}
+                {{--var pos = $(e.relatedTarget).closest('.thumb-image').index('.imagesUploadBox .thumb-image')--}}
+                {{--$(e.target).find('#altText').val(alt)--}}
+                {{--$(e.target).find('.btn-primary').attr('data-pos', pos)--}}
+            {{--})--}}
+            {{--$('#modal-alt .btn-primary').on('click', function () {--}}
+                {{--var pos = $(this).attr('data-pos')--}}
+                {{--var value = $(this).closest('#modal-alt').find('#altText').val()--}}
+                {{--$('.imagesUploadBox .thumb-image').eq(pos).find('img').attr('alt', value)--}}
+                {{--$('#modal-alt').modal('hide')--}}
+                {{--updateImagesJSON()--}}
+            {{--})--}}
+
+            {{--function updateImagesJSON() {--}}
+                {{--var list = [];--}}
+                {{--$('.thumb-image').each(function (index, image) {--}}
+                    {{--console.log(123,image);--}}
+                    {{--list.push({--}}
+                        {{--position: index,--}}
+                        {{--url: $(image).find('img').attr('data-src'),--}}
+                        {{--alt: $(image).find('img').attr('alt')--}}
+                    {{--})--}}
+                {{--})--}}
+                {{--$('#images_json').val(JSON.stringify(list))--}}
+            {{--}--}}
+
+            {{--$('body').on('click', '.imagesUploadBox .remove-button', function () {--}}
+                {{--$(this).closest('.thumb-image').remove()--}}
+                {{--updateImagesJSON()--}}
+            {{--});--}}
+            {{--$('input.images').on('change', function () {--}}
+                {{--readURL(this, function (fileList) {--}}
+                    {{--var curList = JSON.parse($('#images_json').val())--}}
+                    {{--var totallyNew = $('.thumb-image:not(.new)').length == 0 ? true : false--}}
+                    {{--curList = curList.filter((item) => typeof item.new === 'undefined')--}}
+
+                    {{--var last_position = curList.length ? curList[curList.length - 1].position : -1--}}
+                    {{--fileList.forEach((file) => {--}}
+                        {{--curList.push({--}}
+                            {{--position: ++last_position,--}}
+                            {{--url: file.src,--}}
+                            {{--alt: '',--}}
+                            {{--new: true,--}}
+                            {{--fileName: file.name--}}
+                        {{--})--}}
+                    {{--})--}}
+                    {{--var html = '',--}}
+                        {{--html_main = ''--}}
+                    {{--$('.product-images').find('.thumb-image.new').remove();--}}
+                    {{--curList.forEach((item, index) => {--}}
+                        {{--if (item.new) {--}}
+                            {{--html += `<div class="thumb-image new">--}}
+                        {{--<img class="" src="` + item.url + `" alt="` + item.alt + `">--}}
+                        {{--<div class="overlay">--}}
+                            {{--<div class="alter-button">Alt</div>--}}
+                            {{--<div class="remove-button"><i class="fa fa-trash"></i></div>--}}
+                        {{--</div>--}}
+                    {{--</div>`--}}
+                        {{--}--}}
+                        {{--if (index == 0) {--}}
+                            {{--html_main = `<div class="thumb-image new">--}}
+                        {{--<img class="" src="` + item.url + `" alt="` + item.alt + `">--}}
+                        {{--<div class="overlay">--}}
+                            {{--<div class="alter-button">Alt</div>--}}
+                            {{--<div class="remove-button"><i class="fa fa-trash"></i></div>--}}
+                        {{--</div>--}}
+                    {{--</div>`--}}
+                        {{--}--}}
+                    {{--})--}}
+                    {{--if (totallyNew) {--}}
+                        {{--$('.main-image').append(html_main)--}}
+                    {{--}--}}
+                    {{--$('.thumb-list').append(html)--}}
+                    {{--$('#images_json').val(JSON.stringify(curList))--}}
+                {{--});--}}
+            {{--})--}}
+        {{--})--}}
+    {{--</script>--}}
+
     <script>
-
-
         readURL = async function (input, callback) {
-            var fileList = []
+            var fileList = [];
             for (var i = 0; i < input.files.length; i++) {
                 var reader = new FileReader();
                 var count = 0;
@@ -293,28 +404,10 @@
         $(document).ready(function () {
             $( "#sortable" ).sortable({
                 stop: function(event, ui) {
-                    console.log(11111);
-                    // updateImagesJSON();
+                    updateImagesJSON()
+                    console.log('drag',JSON.parse($('#images_json').val()))
                 }
             });
-
-
-            $('#modal-alt').on('show.bs.modal', function (e) {
-                $(e.target).find('#altText').val('')
-                $(e.target).find('.btn-primary').removeAttr('data-pos')
-
-                var alt = $(e.relatedTarget).closest('.thumb-image').find('img').attr('alt')
-                var pos = $(e.relatedTarget).closest('.thumb-image').index('.imagesUploadBox .thumb-image')
-                $(e.target).find('#altText').val(alt)
-                $(e.target).find('.btn-primary').attr('data-pos', pos)
-            })
-            $('#modal-alt .btn-primary').on('click', function () {
-                var pos = $(this).attr('data-pos')
-                var value = $(this).closest('#modal-alt').find('#altText').val()
-                $('.imagesUploadBox .thumb-image').eq(pos).find('img').attr('alt', value)
-                $('#modal-alt').modal('hide')
-                updateImagesJSON()
-            })
 
             function updateImagesJSON() {
                 var list = [];
@@ -323,13 +416,18 @@
                     list.push({
                         position: index,
                         url: $(image).find('img').attr('data-src'),
-                        alt: $(image).find('img').attr('alt')
+                        alt: $(image).find('img').attr('alt'),
+                        fileName: $(image).find('img').attr('data-name')
                     })
                 })
                 $('#images_json').val(JSON.stringify(list))
             }
 
+            var arr_delete = [];
             $('body').on('click', '.imagesUploadBox .remove-button', function () {
+                let arr_src_delete = $(this).closest('.thumb-image').find('img')[0].getAttribute('data-src');
+                arr_delete.push(arr_src_delete);
+                $('#images_delete').val(JSON.stringify(arr_delete))
                 $(this).closest('.thumb-image').remove()
                 updateImagesJSON()
             });
@@ -355,21 +453,21 @@
                     curList.forEach((item, index) => {
                         if (item.new) {
                             html += `<div class="thumb-image new">
-                        <img class="" src="` + item.url + `" alt="` + item.alt + `">
-                        <div class="overlay">
-                            <div class="alter-button">Alt</div>
-                            <div class="remove-button"><i class="fa fa-trash"></i></div>
-                        </div>
-                    </div>`
+                    <img class="" src="` + item.url + `" data-src="` + item.url + `" alt="` + item.alt + `" data-name="`+ item.fileName +`">
+                    <div class="overlay">
+                        <div class="alter-button">Alt</div>
+                        <div class="remove-button"><i class="fa fa-trash"></i></div>
+                    </div>
+                </div>`
                         }
                         if (index == 0) {
                             html_main = `<div class="thumb-image new">
-                        <img class="" src="` + item.url + `" alt="` + item.alt + `">
-                        <div class="overlay">
-                            <div class="alter-button">Alt</div>
-                            <div class="remove-button"><i class="fa fa-trash"></i></div>
-                        </div>
-                    </div>`
+                    <img class="" src="` + item.url + `"  data-src="` + item.url + `" alt="` + item.alt + `">
+                    <div class="overlay">
+                        <div class="alter-button">Alt</div>
+                        <div class="remove-button"><i class="fa fa-trash"></i></div>
+                    </div>
+                </div>`
                         }
                     })
                     if (totallyNew) {
@@ -381,6 +479,8 @@
             })
         })
     </script>
+
+
     <script>
         $('#title_vn').on('input', function () {
             ChangeToSlug()
