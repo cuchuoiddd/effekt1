@@ -159,6 +159,7 @@ class ProductController extends Controller
 
         $images_json = json_decode($request->images_json);
         $images = $request->images;
+
         if ($images && count($images)) {
             foreach ($images as $key => $item) {
                 $name=$item->getClientOriginalName();
@@ -169,85 +170,17 @@ class ProductController extends Controller
                     }
                 }
             }
-            $data['images'] = json_encode($images_json);
-        } else {
-            $data['images'] = '';
         }
+        $data['images'] = json_encode($images_json);
 
-        if($request->has('images_delete')){
+        if(isset($request->images_delete)){
             $images_delete = json_decode($request->images_delete);
             foreach ($images_delete as $item) {
                 Functions::unlinkUpload(DirectoryConstant::UPLOAD_FOLDER_PRODUCT ,$item);
                 Functions::unlinkUpload(DirectoryConstant::UPLOAD_FOLDER_PRODUCT_THUMB ,$item);
             }
         }
-
-        dd($data);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        $arr_image_not_delete = [];
-
-        if ($request->images_json != '') {
-            $images_json = json_decode($request->images_json);
-
-            $arr_image_not_delete = self::checkImageNotDelete($images_json);
-        }
-
-
-        $arr_image_not_delete_map = collect($arr_image_not_delete) -> map(function ($item) {
-            return str_replace('/backend/images/products/','',$item['url']);
-        });
-        $arr_image_not_delete_map = $arr_image_not_delete_map->toArray();
-
-        if ($product->images != '') {
-            $images_old = collect(json_decode($product->images));
-            $images_old = $images_old->map(function($item){
-                return $item->url;
-            })->toArray();
-            foreach ($images_old as $item) {
-                if (in_array($item, $arr_image_not_delete_map)) {
-                } else {
-                    Functions::unlinkUpload(DirectoryConstant::UPLOAD_FOLDER_PRODUCT ,$item);
-                    Functions::unlinkUpload(DirectoryConstant::UPLOAD_FOLDER_PRODUCT_THUMB ,$item);
-                }
-            }
-        }
-
-
-        $arr_image_not_delete = collect($arr_image_not_delete)->map(function($item){
-            return  str_replace('/backend/images/products/','',$item);
-        });
-
-        $images = $request->images;
-
-        if ($images && count($images)) {
-            $arr_images = [];
-            foreach ($images as $key => $item) {
-                $url = $this->fileUpload->uploadImage(DirectoryConstant::UPLOAD_FOLDER_PRODUCT, $item);
-                $arr_images[$key]['url'] = $url;
-            }
-            $data['images'] = json_encode($arr_image_not_delete->merge($arr_images));
-        } else {
-            $data['images'] = json_encode($arr_image_not_delete);
-        }
-        if($request->has('design_team')){
-            $data['design_team'] = json_encode($request->design_team);
-        } else {
-            $data['design_team'] = "[null]";
-        }
-        $data = Arr::except($data, 'images_json');
+        $data = Arr::except($data, ['images_json','images_delete']);
         $product->update($data);
         return redirect('/admin/work/products');
     }
@@ -272,15 +205,4 @@ class ProductController extends Controller
         $product->delete();
     }
 
-    //get arr image không xóa
-    public function checkImageNotDelete($image_json)
-    {
-        $result = [];
-        foreach ($image_json as $key => $item) {
-            if (isset($item->url) && !isset($item->fileName)) {
-                $result[]['url'] = $item->url;
-            }
-        }
-        return $result;
-    }
 }

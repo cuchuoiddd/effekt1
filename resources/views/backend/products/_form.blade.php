@@ -65,6 +65,7 @@
                                                             @foreach($images as $k => $image)
                                                                 <div class="thumb-image">
                                                                     <img class=""
+                                                                         data-image="{{$image->url}}"
                                                                          data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$image->url}}"
                                                                          src="{{url(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$image->url)}}">
                                                                     <div class="overlay">
@@ -415,7 +416,7 @@
                     console.log(123,image);
                     list.push({
                         position: index,
-                        url: $(image).find('img').attr('data-src'),
+                        url: $(image).find('img').attr('data-image'),
                         alt: $(image).find('img').attr('alt'),
                         fileName: $(image).find('img').attr('data-name')
                     })
@@ -425,7 +426,7 @@
 
             var arr_delete = [];
             $('body').on('click', '.imagesUploadBox .remove-button', function () {
-                let arr_src_delete = $(this).closest('.thumb-image').find('img')[0].getAttribute('data-src');
+                let arr_src_delete = $(this).closest('.thumb-image').find('img')[0].getAttribute('data-image');
                 arr_delete.push(arr_src_delete);
                 $('#images_delete').val(JSON.stringify(arr_delete))
                 $(this).closest('.thumb-image').remove()
