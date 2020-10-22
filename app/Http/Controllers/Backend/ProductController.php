@@ -157,6 +157,7 @@ class ProductController extends Controller
     {
         $data = $request->all();
         $product = Product::find($id);
+
         $images_json = json_decode($request->images_json);
         $images = $request->images;
 

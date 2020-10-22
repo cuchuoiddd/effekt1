@@ -79,15 +79,23 @@ class OfficeController extends Controller
                 $request->image_client);
             $data['image_client'] = $url_thumb;
         }
-        if ($request->has('images')){
-            $result = [];
-            foreach ($request->images as $k=> $item){
-                $url_thumb = $this->fileUpload->uploadImage(DirectoryConstant::UPLOAD_FOLDER_OFFICE,
-                    $item);
-                $result[$k]['url'] = $url_thumb;
-//                $data['images'] = $url_thumb;
+
+        $images_json = json_decode($request->input('images_json'));
+        $images = $request->images;
+        if ($images && count($images)) {
+            foreach ($images as $key => $item) {
+                $name=$item->getClientOriginalName();
+                $url = $this->fileUpload->uploadImage(DirectoryConstant::UPLOAD_FOLDER_OFFICE, $item);
+                foreach($images_json as $image){
+                    if(isset($image->fileName) && $image->fileName == $name){
+                        $image->url = $url;
+                        $image->new = false;
+                    }
+                }
             }
-            $data['image_client_logo'] = json_encode($result);
+            $data['image_client_logo'] = json_encode($images_json);
+        } else {
+            $data['image_client_logo'] = '';
         }
 
         Office::create($data);
@@ -128,47 +136,26 @@ class OfficeController extends Controller
         $data = $request->all();
         $office = Office::find($id);
 
-        $arr_image_not_delete = [];
-
-        if ($request->images_json != '') {
-            $images_json = json_decode($request->images_json);
-
-            $arr_image_not_delete = self::checkImageNotDelete($images_json);
-        }
-
-        $arr_image_not_delete_map = collect($arr_image_not_delete) -> map(function ($item) {
-            return str_replace('/backend/images/office/client_logo/','',$item['url']);
-        });
-        $arr_image_not_delete_map = $arr_image_not_delete_map->toArray();
-
-        if ($office->image_client_logo){
-            $images_old = collect(json_decode($office->image_client_logo));
-            $images_old = $images_old->map(function($item){
-                return $item->url;
-            })->toArray();
-            foreach ($images_old as $item) {
-                if (in_array($item, $arr_image_not_delete_map)) {
-                } else {
-                    Functions::unlinkUpload(DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO ,$item);
+        $images_json = json_decode($request->images_json);
+        $images = $request->images;
+        if ($images && count($images)) {
+            foreach ($images as $key => $item) {
+                $name=$item->getClientOriginalName();
+                $url = $this->fileUpload->uploadImage1(DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO, $item);
+                foreach($images_json as $image){
+                    if(isset($image->fileName) && $image->fileName == $name){
+                        $image->url = $url;
+                        $image->new = false;
+                    }
                 }
             }
         }
-
-        $arr_image_not_delete = collect($arr_image_not_delete)->map(function($item){
-            return  str_replace('/backend/images/office/client_logo/','',$item);
-        });
-
-        $images = $request->images;
-
-        if ($images && count($images)) {
-            $arr_images = [];
-            foreach ($images as $key => $item) {
-                $url = $this->fileUpload->uploadImage1(DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO, $item);
-                $arr_images[$key]['url'] = $url;
+        $data['image_client_logo'] = json_encode($images_json);
+        if(isset($request->images_delete)){
+            $images_delete = json_decode($request->images_delete);
+            foreach ($images_delete as $item) {
+                Functions::unlinkUpload(DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO ,$item);
             }
-            $data['image_client_logo'] = json_encode($arr_image_not_delete->merge($arr_images));
-        } else {
-            $data['image_client_logo'] = json_encode($arr_image_not_delete);
         }
 
         if ($request->has('image_profile')){
@@ -212,7 +199,7 @@ class OfficeController extends Controller
             }
         }
 
-        $data = Arr::except($data, ['images_json','images']);
+        $data = Arr::except($data, ['images_json','images','images_delete']);
         $office->update($data);
         return redirect('/admin/offices/contents');
     }
@@ -233,15 +220,4 @@ class OfficeController extends Controller
         Functions::unlinkUpload(DirectoryConstant::UPLOAD_FOLDER_OFFICE_THUMB ,$image);
     }
 
-    //get arr image không xóa
-    public function checkImageNotDelete($image_json)
-    {
-        $result = [];
-        foreach ($image_json as $key => $item) {
-            if (isset($item->url) && !isset($item->fileName)) {
-                $result[]['url'] = $item->url;
-            }
-        }
-        return $result;
-    }
 }

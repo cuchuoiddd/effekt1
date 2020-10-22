@@ -71,6 +71,7 @@
                                     class="gallery-item iso-item hentry category-{{$item->category->title_en}} author-lucrezia-biasutti post-type-image article-index-1">
                                 <a href="work/{{$item->slug}}" title="Rosenhøj Youth Housing">
                                     <div class="iso-image img-wrap cover">
+                                        @if(count($item->images))
                                         <img alt="{{$item->title_vn}}" data-sizes="auto" data-srcset="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=100w 100w,
 	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=300w 300w,
 	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=500w 500w,
@@ -84,7 +85,7 @@
 	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=1000w 1000w,
       {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=1500w 1500w,
       {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=2500w 2500w">
-
+                                        @endif
 
                                     </div>
                                     <div class="item-meta-wrapper">
@@ -108,6 +109,8 @@
                                     class="gallery-item iso-item hentry {{$item->category_id}} author-lucrezia-biasutti post-type-image article-index-1">
                                 <a href="work/{{$item->slug}}" title="Rosenhøj Youth Housing">
                                     <div class="iso-image img-wrap cover">
+
+                                        @if(count($item->images))
                                         <img alt="{{$item->title_en}}" data-sizes="auto" data-srcset="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=100w 100w,
 	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=300w 300w,
 	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=500w 500w,
@@ -121,6 +124,7 @@
 	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=1000w 1000w,
       {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=1500w 1500w,
       {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=2500w 2500w">
+                                            @endif
                                     </div>
                                     <div class="item-meta-wrapper">
                                         <div class="item-meta">

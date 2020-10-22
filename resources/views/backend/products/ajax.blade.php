@@ -20,7 +20,9 @@
                     <td class="text-center">{{$k+1}}</td>
                     <td class="text-center">{{@$item->category->title_vn}}</td>
                     <td class="text-center">
-                        <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.json_decode($item->images)[0]->url}}" alt="" style="width: 50px;height: 50px;">
+                        @if($item->images != "[]")
+                            <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.json_decode($item->images)[0]->url}}" alt="" style="width: 50px;height: 50px;">
+                        @endif
                     </td>
                     <td class="text-center">{{$item->title_vn}}</td>
                     <td class="text-center">{{$item->title_en}}</td>
