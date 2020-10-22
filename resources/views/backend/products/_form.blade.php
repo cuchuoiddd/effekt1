@@ -476,6 +476,7 @@
                     }
                     $('.thumb-list').append(html)
                     $('#images_json').val(JSON.stringify(curList))
+                    updateImagesJSON()
                 });
             })
         })

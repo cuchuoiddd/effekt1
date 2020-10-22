@@ -103,6 +103,7 @@ class ProductController extends Controller
                 foreach($images_json as $image){
                     if(isset($image->fileName) && $image->fileName == $name){
                         $image->url = $url;
+                        $image->new = false;
                     }
                 }
             }
@@ -156,7 +157,6 @@ class ProductController extends Controller
     {
         $data = $request->all();
         $product = Product::find($id);
-
         $images_json = json_decode($request->images_json);
         $images = $request->images;
 
@@ -167,12 +167,12 @@ class ProductController extends Controller
                 foreach($images_json as $image){
                     if(isset($image->fileName) && $image->fileName == $name){
                         $image->url = $url;
+                        $image->new = false;
                     }
                 }
             }
         }
         $data['images'] = json_encode($images_json);
-
         if(isset($request->images_delete)){
             $images_delete = json_decode($request->images_delete);
             foreach ($images_delete as $item) {
