@@ -68,9 +68,12 @@
                                                    class="form-control square"
                                                    value="{{isset($news->date) ? $news->date : old('date') }}">
                                             <br>
-                                            <label for="squareText">Slug</label>
-                                            <input type="text" id="slug" name="slug"
-                                                   class="form-control square" value="{{$news->slug ?? old('slug')}}">
+                                            <div class="{{ $errors->has('slug') ? 'has-error' : '' }}">
+                                                <label for="squareText ">Slug</label>
+                                                <input type="text" id="slug" name="slug"
+                                                       class="form-control square" value="{{$news->slug ?? old('slug')}}">
+                                                <span class="help-block">{{ $errors->first('slug', ':message') }}</span>
+                                            </div>
                                         </div>
                                         <div class="col-md-6 fileupload fileupload-new mt-1 {{ $errors->has('image') ? 'has-error' : '' }}" data-provides="fileupload">
                                             <label for="squareText">Hình ảnh</label>
@@ -170,8 +173,7 @@
         $("#myFormId").validate({
             rules: {
                 title_vn: "required",
-                content_vn: "required",
-                image:"required"
+                content_vn: "required"
             }
         });
     </script>

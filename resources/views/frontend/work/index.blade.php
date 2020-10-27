@@ -103,10 +103,9 @@
                             </div>
                         @endforeach
                     @else
-
                         @foreach($works as $item)
                             <div
-                                    class="gallery-item iso-item hentry {{$item->category_id}} author-lucrezia-biasutti post-type-image article-index-1">
+                                    class="gallery-item iso-item hentry category-{{$item->category->title_en}} author-lucrezia-biasutti post-type-image article-index-1">
                                 <a href="work/{{$item->slug}}" title="Rosenhøj Youth Housing">
                                     <div class="iso-image img-wrap cover">
 

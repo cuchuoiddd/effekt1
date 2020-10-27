@@ -413,7 +413,10 @@
             document.getElementById('slug').value = slug;
         }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&key=AIzaSyAOYTBGlUxFOO0am9ZAsM3-q3Fv2GBWxys"></script>
+    {{--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&key=AIzaSyAOYTBGlUxFOO0am9ZAsM3-q3Fv2GBWxys"></script>--}}
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&key=AIzaSyDDJIXIfj6TBPv3YI5P4lHOzg3sS1Mjbwk"></script>
+    {{--<script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async defer></script>--}}
+
     <script>
         function init() {
             var autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"));

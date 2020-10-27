@@ -63,12 +63,15 @@ class NewsController extends Controller
         $rules = [
             'title_vn' => 'required',
             'content_vn' => 'required',
-            'image' => 'required'
+            'image' => 'required',
+            'slug' => 'unique:news|required'
         ];
         $messages = [
             'title_vn.required' => 'Tiêu đề không được bỏ trống',
             'content_vn.required' => 'Nội dung không được bỏ trống',
             'image.required' => 'Hình ảnh không được bỏ trống',
+            'slug.unique' => 'Slug đã tồn tại !',
+            'slug.required' => 'Slug không được bỏ trống !',
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
@@ -118,6 +121,21 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $rules = [
+            'title_vn' => 'required',
+            'content_vn' => 'required'
+        ];
+        $messages = [
+            'title_vn.required' => 'Tiêu đề không được bỏ trống',
+            'content_vn.required' => 'Nội dung không được bỏ trống'
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $news = News::find($id);
         $data = $request->all();
         if ($request->hasFile('image')) {
