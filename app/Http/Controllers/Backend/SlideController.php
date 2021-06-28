@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Helpers\Functions;
 use App\Slide;
 use App\Constants\DirectoryConstant;
 use App\Services\UploadService;
@@ -51,12 +52,12 @@ class SlideController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        if ($request->image != "null") {
+        if (!empty($request->image)) {
             $url_thumb = $this->fileUpload->uploadImage(DirectoryConstant::UPLOAD_FOLDER_SLIDE,
                 $request->image);
             $data['image'] = $url_thumb;
+            Slide::create($data);
         }
-        Slide::create($data);
         return redirect('/admin/slide');
     }
 
@@ -69,6 +70,7 @@ class SlideController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -79,7 +81,8 @@ class SlideController extends Controller
      */
     public function edit($id)
     {
-        //
+        $slide = Slide::find($id);
+        return view('backend.slide._form',compact('slide'));
     }
 
     /**
@@ -91,7 +94,18 @@ class SlideController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $slide = Slide::find($id);
+        $data = $request->all();
+        if ($request->hasFile('image')) {
+            $url_thumb = $this->fileUpload->uploadImage(DirectoryConstant::UPLOAD_FOLDER_SLIDE,
+                $request->image);
+            $data['image'] = $url_thumb;
+            Functions::unlinkUpload(DirectoryConstant::UPLOAD_FOLDER_SLIDE , $slide->image);
+        } else {
+            unset($data['image']);
+        }
+        $slide->update($data);
+        return redirect('/admin/slide');
     }
 
     /**

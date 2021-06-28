@@ -11,12 +11,15 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <form action="/admin/slide" method="post"
+                        <form action="{{isset($slide) ? '/admin/slide/'.$slide->id : '/admin/slide' }}" method="post"
                               id="myFormId" enctype="multipart/form-data">
+                            @if(isset($slide))
+                                @method('put')
+                            @endif
                             @csrf
                             <div class="card-header fix-header bottom-card">
                                 <div class="row" style="align-items: baseline">
-                                    <h4 class="col-lg-3"> Thêm mới slide</h4>
+                                    <h4 class="col-lg-3">{{isset($slide) ? 'Cập nhật slide': 'Thêm mới slide'}}</h4>
                                 </div>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -27,7 +30,7 @@
                             <div class="card-content collapse show">
                                 <div class="card-body">
                                     <div class="row mt-2">
-                                        <div class="col-md-6 fileupload fileupload-new mt-1" data-provides="fileupload">
+                                        <div class="col-md-3 fileupload fileupload-new mt-1" data-provides="fileupload">
                                             <label for="squareText">Hình ảnh</label>
                                             <div class="d-flex mb-1" style="margin-top: 10px;">
                                                 <button type="button" class="btn btn-secondary btn-file">
@@ -39,8 +42,8 @@
 
                                             <div class="fileupload-new thumbnail"
                                                  style="border-radius: 5px;width: 200px; height: 150px;">
-                                                @if(isset($news->image))
-                                                    <img class="viewImage" src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_NEW.$news->image}}" alt="Hình ảnh tin tức" style="width: 65%">
+                                                @if(isset($slide->image))
+                                                    <img class="viewImage" src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$slide->image}}" alt="Hình ảnh tin tức" style="width: 65%">
                                                     @else
                                                     <img class="viewImage"
                                                          src="{{asset('images/default-image-300x225.jpg')}}" alt="Hình ảnh tin tức"
@@ -49,6 +52,12 @@
                                             </div>
                                             <div class="fileupload-preview fileupload-exists thumbnail"
                                                  style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="squareText">Đường dẫn</label>
+                                            <div class="col-12">
+                                                <input type="text" name="url" class="form-control square" value="{{ $slide->url ?? old('content_profile_en') }}">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

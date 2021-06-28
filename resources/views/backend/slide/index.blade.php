@@ -32,6 +32,7 @@
                                         <tr>
                                             <th class="text-center" style="width: 30px;">#</th>
                                             <th class="text-center">Hình ảnh</th>
+                                            <th class="text-center">Đường dẫn</th>
                                             <th class="text-center" style="width: 90px">Thao tác</th>
                                         </tr>
                                         </thead>
@@ -44,7 +45,12 @@
                                                         <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}"
                                                              style="width: 200px" alt="Ảnh slide">
                                                     </td>
+                                                    <td>{{$item->url}}</td>
                                                     <td class="text-center">
+                                                        <a class="action-control update" href="{{url('/admin/slide')}}/{{$item->id}}/edit"
+                                                           data-id="{{$item->id}}"><i
+                                                                class="fa fa-edit fa-2x"></i></a>
+
                                                         <a class="action-control delete" href="javascript:void(0)"
                                                            data-id="{{$item->id}}"><i
                                                                     class="fa fa-trash fa-2x"></i></a>

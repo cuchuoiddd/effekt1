@@ -43,16 +43,18 @@
                 @if(count($slides))
                     @foreach($slides as $item)
                         <div class="slide swiper-slide">
-                            <div class="img-wrap cover">
-                                <img
-                                        alt="air.concept"
-                                        data-sizes="auto"
-                                        data-srcset="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=750w 750w,
-                                            {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=1000w 1000w,
-                                            {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=1500w 1500w,
-                                            {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=2500w 2500w"
-                                        class="swiper-lazy" />
-                            </div>
+                            <a href="{{$item->url}}">
+                                <div class="img-wrap cover">
+                                    <img
+                                            alt="air.concept"
+                                            data-sizes="auto"
+                                            data-srcset="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=750w 750w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=1000w 1000w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=1500w 1500w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=2500w 2500w"
+                                            class="swiper-lazy" />
+                                </div>
+                            </a>
                         </div>
                     @endforeach
                 @endif
