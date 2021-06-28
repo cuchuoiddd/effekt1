@@ -20,7 +20,11 @@ class Setlanguage
         } else {
             $language = 'vi';
         }
-        \App::setLocale($language);
+        if(!request()->segment(1)){
+            \App::setLocale('en');
+        } else {
+            \App::setLocale($language);
+        }
         return $next($request);
     }
 }

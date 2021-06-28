@@ -1,28 +1,29 @@
 @extends('frontend.layout.master')
 
 @if(App::isLocale('vi'))
-@section('title')
-    <title>Công việc | {{$work->title_vn?:''}}</title>
-@endsection
-@section('meta-title')
-    <meta property="og:title" content="{{$work->title_vn?:''}}">
-@endsection
-@section('meta-description')
-    <meta name="description" content="{!! @str_limit(strip_tags($work->content_vn),150) !!}">
-@endsection
+    @section('title')
+        <title>Công việc | {{$work->title_vn?:''}}</title>
+    @endsection
+    @section('meta-title')
+        <meta property="og:title" content="{{$work->title_vn?:''}}">
+    @endsection
+    @section('meta-description')
+        <meta name="description" content="{!! @str_limit(strip_tags($work->content_vn),150) !!}">
+    @endsection
 @else
-@section('title')
-    <title>News | {{$work->title_en?:''}}</title>
-@endsection
-@section('meta-title')
-    <meta property="og:title" content="{{$work->title_en?:''}}">
-@endsection
-@section('meta-description')
-    <meta name="description" content="{!! @str_limit(strip_tags($work->content_en),150) !!}">
-@endsection
+    @section('title')
+        <title>News | {{$work->title_en?:''}}</title>
+    @endsection
+    @section('meta-title')
+        <meta property="og:title" content="{{$work->title_en?:''}}">
+    @endsection
+    @section('meta-description')
+        <meta name="description" content="{!! @str_limit(strip_tags($work->content_en),150) !!}">
+    @endsection
 @endif
 
 @section('body')
+
     <body class="product-list-titles-overlay product-list-alignment-center product-item-size-11-square product-image-auto-crop product-gallery-size-11-square product-gallery-auto-crop show-product-price show-product-item-nav product-social-sharing tweak-v1-related-products-image-aspect-ratio-11-square tweak-v1-related-products-details-alignment-center newsletter-style-dark hide-opentable-icons opentable-style-light small-button-style-solid small-button-shape-square medium-button-style-solid medium-button-shape-square large-button-style-solid large-button-shape-square image-block-poster-text-alignment-center image-block-card-dynamic-font-sizing image-block-card-content-position-center image-block-card-text-alignment-left image-block-overlap-dynamic-font-sizing image-block-overlap-content-position-center image-block-overlap-text-alignment-left image-block-collage-dynamic-font-sizing image-block-collage-content-position-top image-block-collage-text-alignment-left image-block-stack-dynamic-font-sizing image-block-stack-text-alignment-left button-style-outline button-corner-style-square tweak-product-quick-view-button-style-floating tweak-product-quick-view-button-position-bottom tweak-product-quick-view-lightbox-excerpt-display-truncate tweak-product-quick-view-lightbox-show-arrows tweak-product-quick-view-lightbox-show-close-button tweak-product-quick-view-lightbox-controls-weight-light product-list-titles-overlay product-list-alignment-center product-item-size-11-square product-image-auto-crop product-gallery-size-11-square product-gallery-auto-crop show-product-price show-product-item-nav product-social-sharing tweak-v1-related-products-image-aspect-ratio-11-square tweak-v1-related-products-details-alignment-center native-currency-code-usd collection-5c0e760a21c67c1ded501dbc collection-type-project collection-layout-default view-list">
 
     @endsection
@@ -53,15 +54,19 @@
                     @endif
 
                     <div class="slick-arrow prev hide">
-                        <svg viewBox="0 0 50 71" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <svg viewBox="0 0 50 71" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink">
                             <defs>
                                 <path id="b"
                                       d="M34.90463 6.48785L28.417 0 .907 27.51l27.51 27.51 6.48763-6.48785L13.88248 27.51z"/>
-                                <filter x="-39.7%" y="-20.9%" width="173.5%" height="145.4%" filterUnits="objectBoundingBox"
+                                <filter x="-39.7%" y="-20.9%" width="173.5%" height="145.4%"
+                                        filterUnits="objectBoundingBox"
                                         id="a">
-                                    <feMorphology radius=".5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"/>
+                                    <feMorphology radius=".5" operator="dilate" in="SourceAlpha"
+                                                  result="shadowSpreadOuter1"/>
                                     <feOffset dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
-                                    <feGaussianBlur stdDeviation="3.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+                                    <feGaussianBlur stdDeviation="3.5" in="shadowOffsetOuter1"
+                                                    result="shadowBlurOuter1"/>
                                     <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.603091033 0"
                                                    in="shadowBlurOuter1"/>
                                 </filter>
@@ -73,15 +78,21 @@
                         </svg>
                     </div>
                     <div class="slick-arrow next">
-                        <svg viewBox="0 0 50 71" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <svg viewBox="0 0 50 71" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink">
                             <defs>
-                                <path id="d" d="M7.39763 0L.91 6.48785 21.93215 27.51.91 48.53215 7.39763 55.02l27.51-27.51z"/>
-                                <filter x="-38.2%" y="-20%" width="176.5%" height="147.3%" filterUnits="objectBoundingBox"
+                                <path id="d"
+                                      d="M7.39763 0L.91 6.48785 21.93215 27.51.91 48.53215 7.39763 55.02l27.51-27.51z"/>
+                                <filter x="-38.2%" y="-20%" width="176.5%" height="147.3%"
+                                        filterUnits="objectBoundingBox"
                                         id="c">
-                                    <feMorphology radius=".5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"/>
+                                    <feMorphology radius=".5" operator="dilate" in="SourceAlpha"
+                                                  result="shadowSpreadOuter1"/>
                                     <feOffset dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
-                                    <feGaussianBlur stdDeviation="3.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
-                                    <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" in="shadowBlurOuter1"/>
+                                    <feGaussianBlur stdDeviation="3.5" in="shadowOffsetOuter1"
+                                                    result="shadowBlurOuter1"/>
+                                    <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0"
+                                                   in="shadowBlurOuter1"/>
                                 </filter>
                             </defs>
                             <g transform="translate(7 6)" fill-rule="nonzero" fill="none">
@@ -141,7 +152,8 @@
                 <div class="project-inner">
                     <div class="project-list-menu">
                         <button class="close-btn">
-                            <svg width="28" height="28" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1.4">
+                            <svg width="28" height="28" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
+                                 ratio="1.4">
                                 <path fill="none" stroke="#000" stroke-width="1.06" d="M16,16 L4,4"></path>
                                 <path fill="none" stroke="#000" stroke-width="1.06" d="M16,4 L4,16"></path>
                             </svg>
@@ -173,7 +185,6 @@
                 <div class="sqs-layout sqs-grid-12 columns-12" data-type="page" data-updated-on="1544522606354"
                      id="page-5c0e76a1032be4144a210440">
                     <div class="row sqs-row">
-
                         @if(App::isLocale('vi'))
                             <div class="col sqs-col-12 span-12">
                                 <div class="sqs-block html-block sqs-block-html" data-block-type="2"
@@ -232,12 +243,14 @@
                                     <div style="margin-top: 30px;">
                                         {{--<iframe src="https://maps.google.com/maps?q={{$work->lat.','.$work->long}}&hl=es;z=14&amp;output=embed"--}}
                                         {{--width="100%" height="400px"></iframe>--}}
-                                        <div class="sqs-block map-block sqs-block-map" data-aspect-ratio="42.391304347826086"
+                                        <div class="sqs-block map-block sqs-block-map"
+                                             data-aspect-ratio="42.391304347826086"
                                              data-block-json="&#123;&quot;location&quot;:&#123;&quot;mapLat&quot;:{{$work->lat}},&quot;mapLng&quot;:{{$work->long}},&quot;mapZoom&quot;:14,&quot;markerLat&quot;:{{$work->lat}},&quot;markerLng&quot;:{{$work->long}},&quot;addressTitle&quot;:&quot;EFFEKT&quot;,&quot;addressLine1&quot;:&quot;Bl\u00E5g\u00E5rdsgade 8, 2. sal&quot;,&quot;addressLine2&quot;:&quot;K\u00F8benhavn&quot;,&quot;addressCountry&quot;:&quot;Denmark&quot;&#125;,&quot;vSize&quot;:null,&quot;style&quot;:4,&quot;labels&quot;:true,&quot;terrain&quot;:false,&quot;controls&quot;:false,&quot;hSize&quot;:null,&quot;floatDir&quot;:null,&quot;aspectRatio&quot;:42.391304347826086&#125;"
                                              data-block-type="4" id="block-yui_3_17_2_5_1509369643211_11245">
                                             <div class="sqs-block-content">&nbsp;</div>
                                         </div>
-                                        <div class="sqs-block spacer-block sqs-block-spacer sized vsize-1" data-block-type="21"
+                                        <div class="sqs-block spacer-block sqs-block-spacer sized vsize-1"
+                                             data-block-type="21"
                                              id="block-yui_3_17_2_3_1509370795243_23617">
                                             <div class="sqs-block-content">&nbsp;</div>
                                         </div>
@@ -300,12 +313,14 @@
                                     <!-- <div id="googleMap" style="width:100%;height:400px; margin-top: 30px;"></div> -->
                                     <!-- <div id="googleMap"></div> -->
                                     <div style="margin-top: 30px;">
-                                        <div class="sqs-block map-block sqs-block-map" data-aspect-ratio="42.391304347826086"
+                                        <div class="sqs-block map-block sqs-block-map"
+                                             data-aspect-ratio="42.391304347826086"
                                              data-block-json="&#123;&quot;location&quot;:&#123;&quot;mapLat&quot;:{{$work->lat}},&quot;mapLng&quot;:{{$work->long}},&quot;mapZoom&quot;:14,&quot;markerLat&quot;:{{$work->lat}},&quot;markerLng&quot;:{{$work->long}},&quot;addressTitle&quot;:&quot;EFFEKT&quot;,&quot;addressLine1&quot;:&quot;Bl\u00E5g\u00E5rdsgade 8, 2. sal&quot;,&quot;addressLine2&quot;:&quot;K\u00F8benhavn&quot;,&quot;addressCountry&quot;:&quot;Denmark&quot;&#125;,&quot;vSize&quot;:null,&quot;style&quot;:4,&quot;labels&quot;:true,&quot;terrain&quot;:false,&quot;controls&quot;:false,&quot;hSize&quot;:null,&quot;floatDir&quot;:null,&quot;aspectRatio&quot;:42.391304347826086&#125;"
                                              data-block-type="4" id="block-yui_3_17_2_5_1509369643211_11245">
                                             <div class="sqs-block-content">&nbsp;</div>
                                         </div>
-                                        <div class="sqs-block spacer-block sqs-block-spacer sized vsize-1" data-block-type="21"
+                                        <div class="sqs-block spacer-block sqs-block-spacer sized vsize-1"
+                                             data-block-type="21"
                                              id="block-yui_3_17_2_3_1509370795243_23617">
                                             <div class="sqs-block-content">&nbsp;</div>
                                         </div>
@@ -318,4 +333,14 @@
                 </div>
             </section>
         </main>
-    @endsection
+        <script>
+            $(document).keydown(function (event) {
+                if (event.which == 37) {
+                    $('.prev').click();
+                }
+                if (event.which == 39) {
+                    $('.next').click();
+                }
+            });
+        </script>
+@endsection

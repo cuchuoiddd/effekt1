@@ -19,7 +19,7 @@
     @include('frontend.layout.head')
     <style>
         .logo img {
-            max-height: 50px;
+            max-height: 45px;
         }
 
         @media only screen and (max-width: 640px) {
