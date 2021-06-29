@@ -116,7 +116,11 @@ class SlideController extends Controller
      */
     public function destroy($id)
     {
-        Slide::find($id)->delete();
+        $slide = Slide::find($id);
+        if($slide->image){
+            Functions::unlinkUpload(DirectoryConstant::UPLOAD_FOLDER_SLIDE , $slide->image);
+        }
+        $slide->delete();
         return 1;
     }
 }
