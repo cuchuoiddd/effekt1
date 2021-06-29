@@ -323,8 +323,7 @@
                                                                          data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO.$image->url}}"
                                                                          src="{{url(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO.$image->url)}}">
                                                                     <div class="overlay">
-                                                                        <div class="alter-button" data-toggle="modal"
-                                                                             data-target="#modal-alt">Alt
+                                                                        <div class="alter-button clickModalUrl">Url
                                                                         </div>
                                                                         <div class="remove-button"><i
                                                                                     class="fa fa-trash"></i></div>
@@ -350,6 +349,26 @@
             </div>
         </section>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modal-url" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Thêm đường dẫn</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="add-url form-control square">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+                    <button type="button" class="btn btn-primary addUrl">Lưu lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('script')
     @include('backend.layouts.script')
@@ -365,104 +384,7 @@
         CKEDITOR.replace('content_award_vn');
         CKEDITOR.replace('content_award_en');
     </script>
-    {{--<script>--}}
-        {{--readURL = async function (input, callback) {--}}
-            {{--var fileList = []--}}
-            {{--for (var i = 0; i < input.files.length; i++) {--}}
-                {{--var reader = new FileReader();--}}
-                {{--var count = 0;--}}
-                {{--reader.onload = function (e) {--}}
-                    {{--fileList.push({--}}
-                        {{--src: e.target.result,--}}
-                        {{--name: input.files[count].name--}}
-                    {{--})--}}
-                    {{--count++--}}
-                    {{--if (count == input.files.length) {--}}
-                        {{--callback(fileList)--}}
-                    {{--}--}}
-                {{--}--}}
-                {{--reader.readAsDataURL(input.files[i]);--}}
-            {{--}--}}
-        {{--}--}}
-        {{--$(document).ready(function () {--}}
-            {{--$('#modal-alt').on('show.bs.modal', function (e) {--}}
-                {{--$(e.target).find('#altText').val('')--}}
-                {{--$(e.target).find('.btn-primary').removeAttr('data-pos')--}}
 
-                {{--var alt = $(e.relatedTarget).closest('.thumb-image').find('img').attr('alt')--}}
-                {{--var pos = $(e.relatedTarget).closest('.thumb-image').index('.imagesUploadBox .thumb-image')--}}
-                {{--$(e.target).find('#altText').val(alt)--}}
-                {{--$(e.target).find('.btn-primary').attr('data-pos', pos)--}}
-            {{--})--}}
-            {{--$('#modal-alt .btn-primary').on('click', function () {--}}
-                {{--var pos = $(this).attr('data-pos')--}}
-                {{--var value = $(this).closest('#modal-alt').find('#altText').val()--}}
-                {{--$('.imagesUploadBox .thumb-image').eq(pos).find('img').attr('alt', value)--}}
-                {{--$('#modal-alt').modal('hide')--}}
-                {{--updateImagesJSON()--}}
-            {{--})--}}
-
-            {{--function updateImagesJSON() {--}}
-                {{--var list = [];--}}
-                {{--$('.thumb-image').each(function (index, image) {--}}
-                    {{--list.push({--}}
-                        {{--url: $(image).find('img').attr('data-src'),--}}
-                        {{--alt: $(image).find('img').attr('alt')--}}
-                    {{--})--}}
-                {{--})--}}
-                {{--$('#images_json').val(JSON.stringify(list))--}}
-            {{--}--}}
-
-            {{--$('body').on('click', '.imagesUploadBox .remove-button', function () {--}}
-                {{--$(this).closest('.thumb-image').remove()--}}
-                {{--updateImagesJSON()--}}
-            {{--});--}}
-            {{--$('input.images').on('change', function () {--}}
-                {{--readURL(this, function (fileList) {--}}
-                    {{--var curList = JSON.parse($('#images_json').val())--}}
-                    {{--var totallyNew = $('.thumb-image:not(.new)').length == 0 ? true : false--}}
-                    {{--curList = curList.filter((item) => typeof item.new === 'undefined')--}}
-
-                    {{--fileList.forEach((file) => {--}}
-                        {{--curList.push({--}}
-                            {{--url: file.src,--}}
-                            {{--alt: '',--}}
-                            {{--new: true,--}}
-                            {{--fileName: file.name--}}
-                        {{--})--}}
-                    {{--})--}}
-                    {{--var html = '',--}}
-                        {{--html_main = ''--}}
-                    {{--$('.product-images').find('.thumb-image.new').remove();--}}
-                    {{--curList.forEach((item, index) => {--}}
-                        {{--if (item.new) {--}}
-                            {{--html += `<div class="thumb-image new">--}}
-                        {{--<img class="" src="` + item.url + `" alt="` + item.alt + `">--}}
-                        {{--<div class="overlay">--}}
-                            {{--<div class="alter-button">Alt</div>--}}
-                            {{--<div class="remove-button"><i class="fa fa-trash"></i></div>--}}
-                        {{--</div>--}}
-                    {{--</div>`--}}
-                        {{--}--}}
-                        {{--if (index == 0) {--}}
-                            {{--html_main = `<div class="thumb-image new">--}}
-                        {{--<img class="" src="` + item.url + `" alt="` + item.alt + `">--}}
-                        {{--<div class="overlay">--}}
-                            {{--<div class="alter-button">Alt</div>--}}
-                            {{--<div class="remove-button"><i class="fa fa-trash"></i></div>--}}
-                        {{--</div>--}}
-                    {{--</div>`--}}
-                        {{--}--}}
-                    {{--})--}}
-                    {{--if (totallyNew) {--}}
-                        {{--$('.main-image').append(html_main)--}}
-                    {{--}--}}
-                    {{--$('.thumb-list').append(html)--}}
-                    {{--$('#images_json').val(JSON.stringify(curList))--}}
-                {{--});--}}
-            {{--})--}}
-        {{--})--}}
-    {{--</script>--}}
     <script>
         readURL = async function (input, callback) {
             var fileList = [];
@@ -492,8 +414,9 @@
 
             function updateImagesJSON() {
                 var list = [];
+                console.log('list',list);
+
                 $('.thumb-image').each(function (index, image) {
-                    console.log(123,image);
                     list.push({
                         position: index,
                         url: $(image).find('img').attr('data-image'),
@@ -512,6 +435,34 @@
                 $(this).closest('.thumb-image').remove()
                 updateImagesJSON()
             });
+
+
+            $(document).on('click','.clickModalUrl',function (e) {
+
+                $(e.target).find('#altText').val('')
+                $(e.target).find('.btn-primary').removeAttr('data-pos')
+
+                var alt = $(e.relatedTarget).closest('.thumb-image').find('img').attr('alt')
+                var pos = $(e.relatedTarget).closest('.thumb-image').index('.imagesUploadBox .thumb-image')
+                $(e.target).find('#altText').val(alt)
+                $(e.target).find('.btn-primary').attr('data-pos',pos)
+
+                $('#modal-url').modal('show');
+            })
+
+            $(document).on('click','.addUrl',function () {
+                let abc = $('#images_json').val()
+
+                console.log(888888888,abc);
+
+                var pos = $(this).attr('data-pos')
+                var value = $(this).closest('#modal-alt').find('#altText').val()
+                $('.imagesUploadBox .thumb-image').eq(pos).find('img').attr('alt',value)
+                $('#modal-alt').modal('hide')
+                updateImagesJSON()
+            })
+
+
             $('input.images').on('change', function () {
                 readURL(this, function (fileList) {
                     var curList = JSON.parse($('#images_json').val())
@@ -536,7 +487,8 @@
                             html += `<div class="thumb-image new">
                     <img class="" src="` + item.url + `" data-src="` + item.url + `" alt="` + item.alt + `" data-name="`+ item.fileName +`">
                     <div class="overlay">
-                        <div class="alter-button">Alt</div>
+                        <!--<div class="alter-button">Url</div>-->
+                        <div class="alter-button clickModalUrl">Url</div>
                         <div class="remove-button"><i class="fa fa-trash"></i></div>
                     </div>
                 </div>`
@@ -545,7 +497,8 @@
                             html_main = `<div class="thumb-image new">
                     <img class="" src="` + item.url + `"  data-src="` + item.url + `" alt="` + item.alt + `">
                     <div class="overlay">
-                        <div class="alter-button">Alt</div>
+                        <!--<div class="alter-button">Url</div>-->
+                        <div class="alter-button clickModalUrl">Url</div>
                         <div class="remove-button"><i class="fa fa-trash"></i></div>
                     </div>
                 </div>`
