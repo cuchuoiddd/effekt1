@@ -9,7 +9,7 @@
         </button>
         <div class="dropdown-menu" x-placement="bottom-start"
              style="position: absolute; transform: translate3d(0px, 48px, 0px); top: 0px; left: 7px; will-change: transform;display: none;">
-            <a class="dropdown-item" href="{{ App\Helpers\Functions::linkLanguage('') }}">
+            <a class="dropdown-item" href="{{ App\Helpers\Functions::linkLanguage('vi') }}">
                 <img class=" lazyloaded" src="{{asset('images/flag-vietnam.png')}}" width="30" height="60">
             </a>
             <a class="dropdown-item" href="{{ App\Helpers\Functions::linkLanguage('en') }}">
@@ -20,22 +20,22 @@
 </li>
 @if(App::isLocale('vi'))
     <li class="{{$active_menu == 'news' ? 'active':''}}" >
-        <a href="/news" >Câu chuyện</a>
+        <a href="/vi/news" >Câu chuyện</a>
     </li>
     <li class="{{$active_menu == 'work' ? 'active':''}}" >
-        <a href="/work">Dự án</a>
+        <a href="/vi/work">Dự án</a>
     </li>
     <li class="{{$active_menu == 'office' ? 'active':''}}" >
-        <a href="/office">Văn phòng</a>
+        <a href="/vi/office">Văn phòng</a>
     </li>
 @else
     <li class="{{$active_menu == 'news' ? 'active':''}}">
-        <a  href="/en/news">Story</a>
+        <a  href="/news">Story</a>
     </li>
     <li class="{{$active_menu == 'work' ? 'active':''}}">
-        <a  href="/en/work">Work</a>
+        <a  href="/work">Work</a>
     </li>
     <li class="{{$active_menu == 'office' ? 'active':''}}">
-        <a href="/en/office">Office</a>
+        <a href="/office">Office</a>
     </li>
 @endif

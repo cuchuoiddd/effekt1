@@ -152,14 +152,16 @@ class Functions
         $domain = request()->root();
         $lang = \Request::segment(1);
         $segment_2 = \Request::segment(2);
-        if ($lang && $locale != $lang) {
 
-            if ($lang != 'en') {
+
+        if ($lang && $locale != $lang) {
+            if ($lang != 'vi') {
                 if($locale){
-                    $convert = 'en/';
-                    $url = str_replace($domain . '/' . $lang, $domain . '/' . $convert . $lang, $url);
+                    $convert = '/';
+                    $url = str_replace($domain . '/' . $lang, $domain . '/vi' . $convert . $lang, $url);
                 }
-            } else {
+            }
+            else {
                 $convert = '';
                 if ($segment_2) {
                     $lang .= '/';
@@ -167,7 +169,7 @@ class Functions
                 $url = str_replace($domain . '/' . $lang, $domain . '/' . $convert, $url);
             }
         } elseif ($lang == null) {
-            $convert = '/en';
+            $convert = '/vi';
             $url .= $convert;
         }
 //        dd($locale, $lang, $url, 222);

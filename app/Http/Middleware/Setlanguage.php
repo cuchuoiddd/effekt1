@@ -15,16 +15,12 @@ class Setlanguage
      */
     public function handle($request, Closure $next)
     {
-        if (request()->segment(1) == 'en') {
-            $language = 'en';
-        } else {
+        if(request()->segment(1) == 'vi'){
             $language = 'vi';
-        }
-        if(!request()->segment(1)){
-            \App::setLocale('en');
         } else {
-            \App::setLocale($language);
+            $language = 'en';
         }
+        \App::setLocale($language);
         return $next($request);
     }
 }

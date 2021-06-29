@@ -15,10 +15,10 @@
 Auth::routes();
 
 $checkLang = request()->segment(1);
-if ($checkLang == 'en') {
-    $language = 'en';
-} else {
+if ($checkLang != 'vi') {
     $language = '';
+} else {
+    $language = 'vi';
 }
 Route::group(['prefix' => $language,'middleware' => 'set_locale'],function (){
     Route::get('/', 'HomeController@index')->name('home');
