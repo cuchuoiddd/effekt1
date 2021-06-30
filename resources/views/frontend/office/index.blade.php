@@ -648,7 +648,7 @@
                                                     <div class="slide" data-type="image" data-animation-role="image">
                                                         <div class="margin-wrapper">
 
-                                                            <a href="" class=" image-slide-anchor content-fit">
+                                                            <a href="{{$item->link}}" class=" image-slide-anchor content-fit">
                                                                 <img class="thumb-image"
                                                                      data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO.$item->url}}"
                                                                      data-image="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO.$item->url}}"

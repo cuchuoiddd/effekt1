@@ -135,7 +135,6 @@ class OfficeController extends Controller
     {
 
         $data = $request->all();
-        dd($data['images_json']);
         $office = Office::find($id);
 
         $images_json = json_decode($request->images_json);

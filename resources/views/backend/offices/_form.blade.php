@@ -319,6 +319,7 @@
                                                             @foreach($images as $k => $image)
                                                                 <div class="thumb-image">
                                                                     <img class=""
+                                                                         data-link="{{$image->link}}"
                                                                          data-image="{{$image->url}}"
                                                                          data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO.$image->url}}"
                                                                          src="{{url(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO.$image->url)}}">
@@ -420,7 +421,7 @@
                     list.push({
                         position: index,
                         url: $(image).find('img').attr('data-image'),
-                        alt: $(image).find('img').attr('alt'),
+                        link: $(image).find('img').attr('data-link'),
                         fileName: $(image).find('img').attr('data-name')
                     })
                 })
@@ -437,28 +438,17 @@
             });
 
 
+            var current_image = null;
             $(document).on('click','.clickModalUrl',function (e) {
-
-                $(e.target).find('#altText').val('')
-                $(e.target).find('.btn-primary').removeAttr('data-pos')
-
-                var alt = $(e.relatedTarget).closest('.thumb-image').find('img').attr('alt')
-                var pos = $(e.relatedTarget).closest('.thumb-image').index('.imagesUploadBox .thumb-image')
-                $(e.target).find('#altText').val(alt)
-                $(e.target).find('.btn-primary').attr('data-pos',pos)
-
+                current_image = $(this).closest('.thumb-image').find('img');
+                $('.add-url').val(current_image.data('link'));
                 $('#modal-url').modal('show');
             })
 
             $(document).on('click','.addUrl',function () {
-                let abc = $('#images_json').val()
-
-                console.log(888888888,abc);
-
-                var pos = $(this).attr('data-pos')
-                var value = $(this).closest('#modal-alt').find('#altText').val()
-                $('.imagesUploadBox .thumb-image').eq(pos).find('img').attr('alt',value)
-                $('#modal-alt').modal('hide')
+                let value = $('.add-url').val();
+                current_image.attr('data-link',value);
+                $('#modal-url').modal('hide')
                 updateImagesJSON()
             })
 
@@ -474,7 +464,7 @@
                         curList.push({
                             position: ++last_position,
                             url: file.src,
-                            alt: '',
+                            link: '',
                             new: true,
                             fileName: file.name
                         })
@@ -485,7 +475,7 @@
                     curList.forEach((item, index) => {
                         if (item.new) {
                             html += `<div class="thumb-image new">
-                    <img class="" src="` + item.url + `" data-src="` + item.url + `" alt="` + item.alt + `" data-name="`+ item.fileName +`">
+                    <img class="" src="` + item.url + `" data-src="` + item.url + `" alt="` + item.alt + `" data-name="`+ item.fileName +`" data-link=`+item.link+`>
                     <div class="overlay">
                         <!--<div class="alter-button">Url</div>-->
                         <div class="alter-button clickModalUrl">Url</div>
