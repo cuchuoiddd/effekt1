@@ -101,8 +101,7 @@
                 <div class="col sqs-col-12 span-12">
                     <div class="sqs-block html-block sqs-block-html" data-block-type="2"
                          id="block-04f6434df3a15da7abb7">
-                        <div class="sqs-block-content"><p class="text-align-center">Copyright © 2018&nbsp; | &nbsp;All
-                                rights reserved &nbsp;|&nbsp; <a href="">Privacy Policy</a></p>
+                        <div class="sqs-block-content"><p class="text-align-center">&nbsp;Design by <a href="https://themeforest.net/">Themeforest</a></p>
                         </div>
                     </div>
                     <div class="sqs-block socialaccountlinks-v2-block sqs-block-socialaccountlinks-v2"
