@@ -114,6 +114,7 @@ class ProductController extends Controller
         if($request->has('design_team')){
             $data['design_team'] = json_encode($request->design_team);
         }
+        $data['category_id'] = json_encode($request->category_id);
         $data = Arr::except($data, 'images_json');
         Product::create($data);
         return redirect('/admin/work/products');
@@ -138,7 +139,6 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-//        dd($id);
         $product = Product::find($id);
         $product->design_team = $product->design_team ? json_decode($product->design_team) : [];
         $categories = Category::all();
@@ -155,9 +155,34 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $rules = [
+            'category_id' => 'required',
+            'title_vn' => 'required',
+            'title_vn' => 'required',
+            'title_en' => 'required',
+            'content_vn' => 'required',
+            'content_en' => 'required',
+            'slug' => 'required',
+        ];
+        $messages = [
+            'category_id.required' => 'Danh mục không được bỏ trống',
+            'title_vn.required' => 'Tiêu đề VN không được bỏ trống',
+            'title_en.required' => 'Tiêu đề EN không được bỏ trống',
+            'content_vn.required' => 'Nội dung VN không được bỏ trống',
+            'content_en.required' => 'Nội dung EN không được bỏ trống',
+            'slug.required' => 'Slug không được bỏ trống',
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
         $data = $request->all();
         $product = Product::find($id);
 
+        $data['category_id'] = json_encode($request->category_id);
         $images_json = json_decode($request->images_json);
         $images = $request->images;
 
@@ -182,6 +207,9 @@ class ProductController extends Controller
             }
         }
         $data = Arr::except($data, ['images_json','images_delete']);
+        if($request->has('design_team')){
+            $data['design_team'] = json_encode($request->design_team);
+        }
         $product->update($data);
         return redirect('/admin/work/products');
     }

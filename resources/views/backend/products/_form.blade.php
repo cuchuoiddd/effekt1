@@ -33,8 +33,8 @@
                                         <div class="col-6 form-group">
                                             <label for="squareText" class="required">Danh mục</label>
                                             {{--<input type="text" id="category_id" name="category_id" class="form-control square">--}}
-                                            <select name="category_id" class="select2 form-control" id=""
-                                                    data-placeholder="--chọn danh mục--">
+                                            <select name="category_id[]" class="select2 form-control" id=""
+                                                    data-placeholder="--chọn danh mục--" multiple>
                                                 <option></option>
                                                 @if(count($categories))
                                                     @foreach($categories as $item)

@@ -18,7 +18,8 @@
             @foreach($products as $k=>$item)
                 <tr>
                     <td class="text-center">{{$k+1}}</td>
-                    <td class="text-center">{{@$item->category->title_vn}}</td>
+                    <td class="text-center">{{@$item->category_text['category_vn']}}</td>
+
                     <td class="text-center">
                         @if($item->images != "[]")
                             <img src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.json_decode($item->images)[0]->url}}" alt="" style="width: 50px;height: 50px;">
