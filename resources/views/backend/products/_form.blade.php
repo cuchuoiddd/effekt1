@@ -32,8 +32,8 @@
                                     <div class="row mt-2">
                                         <div class="col-6 form-group">
                                             <label for="squareText" class="required">Danh mục</label>
-                                            {{--<input type="text" id="category_id" name="category_id" class="form-control square">--}}
-                                            <select name="category_id[]" class="select2 form-control" id=""
+                                            <input type="hidden" class="categoryValue" value="{{isset($product) ? $product->category_id : ''}}">
+                                            <select name="category_id[]" class="select2 form-control categoryId" id=""
                                                     data-placeholder="--chọn danh mục--" multiple>
                                                 <option></option>
                                                 @if(count($categories))
@@ -259,6 +259,17 @@
     @include('backend.layouts.script')
     <script src="{{asset('backend/plugins/ckeditor/ckeditor.js')}}"></script>
     <script>
+
+        $(document).ready(function () {
+            let abc = $('.categoryValue').val();
+            if(abc){
+                let bcd = JSON.parse(abc);
+                $('.categoryId').val(bcd).trigger('change');
+            }
+        })
+
+        $('#mySelect2').val(['1', '2']).trigger('change')
+
         $("#myFormId").validate({
             rules: {
                 category_id: "required",
