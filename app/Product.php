@@ -49,4 +49,16 @@ class Product extends Model
             return $data;
         }
     }
+
+    public function getCategoryClassAttribute(){
+        if($this->category_id){
+            $category_en = Category::select('title_en')->whereIn('id',json_decode($this->category_id))->get()->map(function ($m){
+                $m->title_en = 'category-'.$m->title_en;
+                return $m;
+            });
+            $category_en = $category_en->pluck('title_en')->toArray();
+            $data['category_en'] = implode(' ',$category_en);
+            return $data;
+        }
+    }
 }

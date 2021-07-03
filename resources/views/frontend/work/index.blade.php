@@ -68,7 +68,7 @@
                     @if(App::isLocale('vi'))
                         @foreach($works as $item)
                             <div
-                                    class="gallery-item iso-item hentry category-{{$item->category->title_en}} author-lucrezia-biasutti post-type-image article-index-1">
+                                    class="gallery-item iso-item hentry {{$item->CategoryClass['category_en']}} author-lucrezia-biasutti post-type-image article-index-1">
                                 <a href="work/{{$item->slug}}" title="Rosenhøj Youth Housing">
                                     <div class="iso-image img-wrap cover">
                                         @if(count($item->images))
@@ -95,7 +95,7 @@
 
 
                                             <p>{{$item->year}}</p>
-                                            <p>{{$item->category->title_vn}}</p>
+                                            <p>{{$item->CategoryText['category_vn']}}</p>
 
                                         </div>
                                     </div>
@@ -103,9 +103,9 @@
                             </div>
                         @endforeach
                     @else
-                        @foreach($works as $item)
+                        @foreach($works as $key=>$item)
                             <div
-                                    class="gallery-item iso-item hentry category-{{$item->category->title_en}} author-lucrezia-biasutti post-type-image article-index-1">
+                                    class="gallery-item iso-item hentry {{$item->CategoryClass['category_en']}} author-lucrezia-biasutti post-type-image article-index-1">
                                 <a href="work/{{$item->slug}}" title="Rosenhøj Youth Housing">
                                     <div class="iso-image img-wrap cover">
 
@@ -132,7 +132,7 @@
 
 
                                             <p>{{$item->year}}</p>
-                                            <p>{{$item->category->title_en}}</p>
+                                            <p>{{$item->CategoryText['category_en']}}</p>
 
                                         </div>
                                     </div>
