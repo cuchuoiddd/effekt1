@@ -69,7 +69,7 @@
                         @foreach($works as $item)
                             <div
                                     class="gallery-item iso-item hentry {{$item->CategoryClass['category_en']}} author-lucrezia-biasutti post-type-image article-index-1">
-                                <a href="work/{{$item->slug}}" title="Rosenhøj Youth Housing">
+                                <a href="work/{{$item->slug}}">
                                     <div class="iso-image img-wrap cover">
                                         @if(count($item->images))
                                         <img alt="{{$item->title_vn}}" data-sizes="auto" data-srcset="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=100w 100w,
@@ -106,7 +106,7 @@
                         @foreach($works as $key=>$item)
                             <div
                                     class="gallery-item iso-item hentry {{$item->CategoryClass['category_en']}} author-lucrezia-biasutti post-type-image article-index-1">
-                                <a href="work/{{$item->slug}}" title="Rosenhøj Youth Housing">
+                                <a href="work/{{$item->slug}}">
                                     <div class="iso-image img-wrap cover">
 
                                         @if(count($item->images))

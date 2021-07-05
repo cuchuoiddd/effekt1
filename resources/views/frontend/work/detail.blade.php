@@ -167,7 +167,7 @@
                                     <div class="project-image img-wrap cover p-ratio">
                                         <img alt="{{$work->title_vn}}" data-sizes="auto"
                                              data-srcset="
-	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT_THUMB.$item->url}}?format=750w 750w,
+	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}?format=750w 750w,
       {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}?format=2500w 2500w"
                                              class="lazyload"/>
                                     </div>
