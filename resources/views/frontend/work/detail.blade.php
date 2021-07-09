@@ -44,9 +44,15 @@
                                 <div class="img-wrap cover p-ratio">
 
                                     @if(\App\Helpers\Functions::getFileName(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url) == 'mp4')
-                                        <video class="swiper-lazy autoPlayVideo" loop>
+
+                                        <video class="swiper-lazy autoPlayVideo checkMedia" loop>
                                             <source src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}" type="video/mp4">
                                         </video>
+                                        <img alt="{{$work->title_vn}}" data-sizes="auto"
+                                             data-srcset="
+            {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT_THUMB.$item->url}}?format=750w 750w,
+          {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}?format=2500w 2500w"
+                                             class="swiper-lazy checkMedia"/>
                                     @else
                                         <img alt="{{$work->title_vn}}" data-sizes="auto"
                                              data-srcset="
@@ -175,9 +181,14 @@
                                 <div class="project-item">
                                     <div class="project-image img-wrap cover p-ratio">
                                         @if(\App\Helpers\Functions::getFileName(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url) == 'mp4')
-                                            <video class="swiper-lazy autoPlayVideo" loop>
+                                            <video class="swiper-lazy autoPlayVideo checkMedia" loop>
                                                 <source src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}" type="video/mp4">
                                             </video>
+                                            <img alt="{{$work->title_vn}}" data-sizes="auto"
+                                                 data-srcset="
+            {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT_THUMB.$item->url}}?format=750w 750w,
+          {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}?format=2500w 2500w"
+                                                 class="swiper-lazy checkMedia"/>
                                         @else
                                             <img alt="{{$work->title_vn}}" data-sizes="auto"
                                                  data-srcset="

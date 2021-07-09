@@ -15,6 +15,18 @@
     .dropdown-menu.show {
         position: absolute;
     }
+
+    @media (max-width: 769px) {
+        video.checkMedia{
+            display: none;
+        }
+    }
+
+    @media (min-width: 769px) {
+        img.checkMedia{
+            display: none;
+        }
+    }
 </style>
 <script src="{{asset('js/jquery.min.js')}}"></script>
 

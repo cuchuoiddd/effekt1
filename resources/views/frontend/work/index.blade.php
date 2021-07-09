@@ -73,9 +73,22 @@
                                     <div class="iso-image img-wrap cover">
                                         @if(count($item->images))
                                             @if(\App\Helpers\Functions::getFileName(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url) == 'mp4')
-                                                <video class="autoPlayVideo" loop>
+                                                <video class="autoPlayVideo checkMedia" loop>
                                                     <source src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}" type="video/mp4">
                                                 </video>
+                                                <img alt="{{$item->title_en}}" data-sizes="auto" data-srcset="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=100w 100w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=300w 300w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=500w 500w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=750w 750w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=1000w 1000w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=1500w 1500w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=2500w 2500w" class="lazyautosizes ls-is-cached lazyloaded checkMedia" sizes="434px" srcset="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=100w 100w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=300w 300w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=500w 500w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=750w 750w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=1000w 1000w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=1500w 1500w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=2500w 2500w">
                                             @else
                                                 <img alt="{{$item->title_en}}" data-sizes="auto" data-srcset="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=100w 100w,
                                                 {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=300w 300w,
@@ -117,9 +130,22 @@
 
                                         @if(count($item->images))
                                             @if(\App\Helpers\Functions::getFileName(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url) == 'mp4')
-                                                <video class="autoPlayVideo" loop>
+                                                <video class="autoPlayVideo checkMedia" loop>
                                                     <source src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}" type="video/mp4">
                                                 </video>
+                                                <img alt="{{$item->title_en}}" data-sizes="auto" data-srcset="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=100w 100w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=300w 300w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=500w 500w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=750w 750w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=1000w 1000w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=1500w 1500w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=2500w 2500w" class="lazyautosizes ls-is-cached lazyloaded checkMedia" sizes="434px" srcset="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=100w 100w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=300w 300w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=500w 500w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=750w 750w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=1000w 1000w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=1500w 1500w,
+                                                {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=2500w 2500w">
                                             @else
                                                 <img alt="{{$item->title_en}}" data-sizes="auto" data-srcset="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=100w 100w,
                                                 {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}?format=300w 300w,
