@@ -42,11 +42,20 @@
                         @foreach(json_decode($work->images) as $item)
                             <div class="slide swiper-slide">
                                 <div class="img-wrap cover p-ratio">
-                                    <img alt="{{$work->title_vn}}" data-sizes="auto"
-                                         data-srcset="
-	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT_THUMB.$item->url}}?format=750w 750w,
-      {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}?format=2500w 2500w"
-                                         class="swiper-lazy"/>
+
+                                    @if(\App\Helpers\Functions::getFileName(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url) == 'mp4')
+                                        <video class="swiper-lazy">
+                                            <source src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}" type="video/mp4">
+                                        </video>
+                                    @else
+                                        <img alt="{{$work->title_vn}}" data-sizes="auto"
+                                             data-srcset="
+            {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT_THUMB.$item->url}}?format=750w 750w,
+          {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}?format=2500w 2500w"
+                                             class="swiper-lazy"/>
+                                    @endif
+
+
                                     <div class="slide-meta"></div>
                                 </div>
                             </div>
@@ -165,11 +174,17 @@
                             @foreach(json_decode($work->images) as $item)
                                 <div class="project-item">
                                     <div class="project-image img-wrap cover p-ratio">
-                                        <img alt="{{$work->title_vn}}" data-sizes="auto"
-                                             data-srcset="
-	    {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}?format=750w 750w,
-      {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}?format=2500w 2500w"
-                                             class="lazyload"/>
+                                        @if(\App\Helpers\Functions::getFileName(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url) == 'mp4')
+                                            <video class="swiper-lazy">
+                                                <source src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}" type="video/mp4">
+                                            </video>
+                                        @else
+                                            <img alt="{{$work->title_vn}}" data-sizes="auto"
+                                                 data-srcset="
+            {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT_THUMB.$item->url}}?format=750w 750w,
+          {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}?format=2500w 2500w"
+                                                 class="swiper-lazy"/>
+                                        @endif
                                     </div>
                                 </div>
                             @endforeach

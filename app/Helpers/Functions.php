@@ -181,4 +181,9 @@ class Functions
         return $setting;
     }
 
+    public static function getFileName($str){
+        $abc = explode(".", $str);
+        return $abc[1];
+    }
+
 }
