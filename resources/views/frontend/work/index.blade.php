@@ -73,7 +73,7 @@
                                     <div class="iso-image img-wrap cover">
                                         @if(count($item->images))
                                             @if(\App\Helpers\Functions::getFileName(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url) == 'mp4')
-                                                <video>
+                                                <video class="autoPlayVideo" loop>
                                                     <source src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}" type="video/mp4">
                                                 </video>
                                             @else
@@ -117,7 +117,7 @@
 
                                         @if(count($item->images))
                                             @if(\App\Helpers\Functions::getFileName(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url) == 'mp4')
-                                                <video>
+                                                <video class="autoPlayVideo" loop>
                                                     <source src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}" type="video/mp4">
                                                 </video>
                                             @else
@@ -157,4 +157,15 @@
 
             </div>
         </main>
+        <script>
+            var video = document.getElementsByClassName("autoPlayVideo");
+            if(video.length > 0) {
+                console.log(222,video);
+                Array.prototype.forEach.call(video,element => {
+                    console.log(1111,element);
+                    element.volume = 0;
+                    element.play();
+                });
+            }
+        </script>
     @endsection

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+]>
+<svg version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 566.93 566.93"
+	 style="enable-background:new 0 0 566.93 566.93;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#000000;stroke-width:0.8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st2{fill:none;stroke:#000000;stroke-width:0.15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st3{stroke:#000000;stroke-width:0.8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+</style>
+<switch>
+	<foreignObject requiredExtensions="&ns_ai;" x="0" y="0" width="1" height="1">
+		<i:aipgfRef  xlink:href="#adobe_illustrator_pgf">
+		</i:aipgfRef>
+	</foreignObject>
+	<g i:extraneous="self">
+		<g id="LWPOLYLINE_819_">
+			<path class="st0" d="M278.66,277.55v-1.1h2.2v11.02h-2.2v-1.1c-1.96,1.47-4.65,1.47-6.61,0c-2.43-1.83-2.93-5.28-1.1-7.71
+				C272.77,276.22,276.23,275.73,278.66,277.55z"/>
+		</g>
+		<g id="LWPOLYLINE_818_">
+			<rect x="284.81" y="276.45" class="st0" width="2.2" height="11.02"/>
+		</g>
+		<g>
+			<path class="st0" d="M300.36,278.06c-1.94-1.93-5-2.15-7.19-0.5v-1.1h-1.94c-0.15,0-0.26,0.12-0.26,0.26v10.76h2.2l0-5.29
+				c0-0.78,0.19-1.58,0.66-2.2c1.19-1.57,3.39-1.75,4.81-0.53c0.1,0.09,0.25,0.09,0.35-0.01L300.36,278.06L300.36,278.06z"/>
+		</g>
+		<g id="LINE_379_">
+			<line class="st1" x1="293.17" y1="287.47" x2="290.96" y2="287.47"/>
+		</g>
+		<g id="LWPOLYLINE_816_">
+			<rect x="298.4" y="285.82" class="st0" width="1.65" height="1.66"/>
+		</g>
+		<g id="LWPOLYLINE_814_">
+			<path class="st2" d="M284.84,292.44l-0.19-0.19c-0.32,0.32-0.85,0.32-1.17,0c-0.32-0.32-0.32-0.85,0-1.17s0.85-0.32,1.17,0
+				l0.19-0.19c-0.43-0.43-1.13-0.43-1.56,0c-0.43,0.43-0.43,1.13,0,1.56C283.71,292.87,284.41,292.87,284.84,292.44z"/>
+		</g>
+		<g id="CIRCLE_229_">
+			<path class="st2" d="M285.7,291.66c0-0.61,0.49-1.1,1.1-1.1c0.61,0,1.1,0.49,1.1,1.1c0,0.61-0.49,1.1-1.1,1.1
+				C286.2,292.76,285.7,292.27,285.7,291.66L285.7,291.66z"/>
+		</g>
+		<g id="CIRCLE_228_">
+			<path class="st2" d="M285.98,291.66c0-0.46,0.37-0.83,0.83-0.83s0.83,0.37,0.83,0.83c0,0.46-0.37,0.83-0.83,0.83
+				S285.98,292.12,285.98,291.66L285.98,291.66z"/>
+		</g>
+		<g id="ARC_226_">
+			<path class="st2" d="M290.28,291.66c0-0.46-0.37-0.83-0.83-0.83s-0.83,0.37-0.83,0.83"/>
+		</g>
+		<g id="ARC_225_">
+			<path class="st2" d="M290.56,291.66c0-0.61-0.49-1.1-1.1-1.1c-0.61,0-1.1,0.49-1.1,1.1"/>
+		</g>
+		<g id="LWPOLYLINE_813_">
+			<polyline class="st2" points="288.35,291.66 288.35,292.76 288.63,292.76 288.63,291.66 			"/>
+		</g>
+		<g id="LWPOLYLINE_812_">
+			<polyline class="st2" points="290.56,291.66 290.56,292.76 290.28,292.76 290.28,291.66 			"/>
+		</g>
+		<g id="LWPOLYLINE_811_">
+			<path class="st2" d="M292.92,292.44l-0.19-0.19c-0.32,0.32-0.85,0.32-1.17,0c-0.32-0.32-0.32-0.85,0-1.17
+				c0.32-0.32,0.85-0.32,1.17,0l0.19-0.19c-0.43-0.43-1.13-0.43-1.56,0c-0.43,0.43-0.43,1.13,0,1.56
+				C291.79,292.87,292.49,292.87,292.92,292.44z"/>
+		</g>
+		<g id="CIRCLE_227_">
+			<path class="st2" d="M296.7,291.66c0-0.46,0.37-0.83,0.83-0.83s0.83,0.37,0.83,0.83c0,0.46-0.37,0.83-0.83,0.83
+				S296.7,292.12,296.7,291.66L296.7,291.66z"/>
+		</g>
+		<g id="ARC_224_">
+			<path class="st2" d="M296.7,292.39c0.4,0.46,1.1,0.5,1.56,0.1c0.46-0.4,0.5-1.1,0.1-1.56c-0.4-0.46-1.1-0.5-1.56-0.1
+				c-0.24,0.21-0.37,0.51-0.37,0.83"/>
+		</g>
+		<g id="LWPOLYLINE_810_">
+			<line class="st2" x1="296.43" y1="291.66" x2="296.43" y2="293.77"/>
+		</g>
+		<g id="LWPOLYLINE_809_">
+			<line class="st2" x1="296.7" y1="293.77" x2="296.7" y2="292.39"/>
+		</g>
+		<g id="ARC_223_">
+			<path class="st2" d="M299.12,291.66c0,0.61,0.49,1.1,1.1,1.1c0.29,0,0.57-0.12,0.78-0.32"/>
+		</g>
+		<g id="ARC_222_">
+			<path class="st2" d="M299.39,291.66c0,0.46,0.37,0.83,0.83,0.83c0.22,0,0.43-0.09,0.58-0.24"/>
+		</g>
+		<g id="LWPOLYLINE_808_">
+			<polyline class="st2" points="299.12,291.66 299.12,289.43 299.39,289.43 299.39,290.28 			"/>
+		</g>
+		<g id="LWPOLYLINE_807_">
+			<line class="st2" x1="299.39" y1="290.56" x2="299.39" y2="291.66"/>
+		</g>
+		<g id="LWPOLYLINE_806_">
+			<polyline class="st2" points="299.39,290.28 300.22,290.28 300.22,290.56 299.39,290.56 			"/>
+		</g>
+		<g id="LWPOLYLINE_805_">
+			<line class="st2" x1="300.81" y1="292.25" x2="301" y2="292.44"/>
+		</g>
+		<g id="LWPOLYLINE_804_">
+			<path class="st2" d="M295.61,292.44l-0.19-0.19c-0.15,0.16-0.37,0.24-0.58,0.24c-0.46,0-0.83-0.37-0.83-0.83h1.93
+				c0-0.61-0.49-1.1-1.1-1.1c-0.61,0-1.1,0.49-1.1,1.1c0,0.61,0.49,1.1,1.1,1.1C295.13,292.76,295.41,292.65,295.61,292.44
+				c-0.43,0.43-1.13,0.43-1.56,0c-0.43-0.43-0.43-1.13,0-1.56c0.43-0.43,1.13-0.43,1.56,0"/>
+		</g>
+		<g id="LWPOLYLINE_803_">
+			<path class="st2" d="M294.05,291.39h1.56c-0.15-0.43-0.62-0.66-1.05-0.5C294.32,290.97,294.14,291.15,294.05,291.39z"/>
+		</g>
+		<g id="LWPOLYLINE_802_">
+			<line class="st2" x1="296.7" y1="293.77" x2="296.43" y2="293.77"/>
+		</g>
+		<path class="st3" d="M265.56,286.97l-5.01-4.96l5.01-4.96c-0.45,1.01-1.17,2.94-1.06,5.45
+			C264.58,284.49,265.14,286.04,265.56,286.97z"/>
+		<path class="st3" d="M305.51,277.05l5.01,4.96l-5.01,4.96c0.45-1.01,1.17-2.94,1.06-5.45
+			C306.5,279.54,305.94,277.99,305.51,277.05z"/>
+		<path class="st3" d="M267.5,281.5"/>
+	</g>
+</switch>
+</svg>

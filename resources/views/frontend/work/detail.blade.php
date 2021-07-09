@@ -44,7 +44,7 @@
                                 <div class="img-wrap cover p-ratio">
 
                                     @if(\App\Helpers\Functions::getFileName(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url) == 'mp4')
-                                        <video class="swiper-lazy">
+                                        <video class="swiper-lazy autoPlayVideo" loop>
                                             <source src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}" type="video/mp4">
                                         </video>
                                     @else
@@ -175,7 +175,7 @@
                                 <div class="project-item">
                                     <div class="project-image img-wrap cover p-ratio">
                                         @if(\App\Helpers\Functions::getFileName(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url) == 'mp4')
-                                            <video class="swiper-lazy">
+                                            <video class="swiper-lazy autoPlayVideo" loop>
                                                 <source src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}" type="video/mp4">
                                             </video>
                                         @else
@@ -357,5 +357,15 @@
                     $('.next').click();
                 }
             });
+
+            var video = document.getElementsByClassName("autoPlayVideo");
+            if(video.length > 0) {
+                console.log(222,video);
+                Array.prototype.forEach.call(video,element => {
+                    console.log(1111,element);
+                    element.volume = 0;
+                    element.play();
+                });
+            }
         </script>
 @endsection
