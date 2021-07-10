@@ -49,13 +49,13 @@
                                             <source src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}" type="video/mp4">
                                         </video>
                                         <img alt="{{$work->title_vn}}" data-sizes="auto"
-                                             data-srcset="
+                                             srcset="
             {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT_THUMB.$item->url}}?format=750w 750w,
           {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}?format=2500w 2500w"
                                              class="swiper-lazy checkMedia"/>
                                     @else
                                         <img alt="{{$work->title_vn}}" data-sizes="auto"
-                                             data-srcset="
+                                             srcset="
             {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT_THUMB.$item->url}}?format=750w 750w,
           {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}?format=2500w 2500w"
                                              class="swiper-lazy"/>
@@ -185,16 +185,16 @@
                                                 <source src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}" type="video/mp4">
                                             </video>
                                             <img alt="{{$work->title_vn}}" data-sizes="auto"
-                                                 data-srcset="
+                                                 srcset="
             {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT_THUMB.$item->url}}?format=750w 750w,
           {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}?format=2500w 2500w"
-                                                 class="swiper-lazy checkMedia"/>
+                                                 class="swiper-lazy checkMedia" />
                                         @else
                                             <img alt="{{$work->title_vn}}" data-sizes="auto"
-                                                 data-srcset="
+                                                 srcset="
             {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT_THUMB.$item->url}}?format=750w 750w,
           {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->url}}?format=2500w 2500w"
-                                                 class="swiper-lazy"/>
+                                                 class="swiper-lazy" />
                                         @endif
                                     </div>
                                 </div>

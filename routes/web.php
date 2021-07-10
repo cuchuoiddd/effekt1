@@ -35,6 +35,7 @@ Route::group(['middleware'=>'auth','namespace' => 'Backend','prefix'=>'admin', '
     Route::resource('news','NewsController');
     Route::resource('slide','SlideController');
     Route::resource('work/categories','CategoryController');
+    Route::resource('news-categories','CategoryNewController');
     Route::resource('work/products','ProductController');
     Route::resource('offices/contents','OfficeController');
     Route::resource('offices/people','PeopleController');

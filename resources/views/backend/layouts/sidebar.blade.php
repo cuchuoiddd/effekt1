@@ -5,10 +5,20 @@
                                    data-original-title="General"></i>
         </li>
 
-        <li class="nav-item {{ \Request::is('admin/news*') ? 'open' : '' }}">
-            <a class="menu-item bold" href="/admin/news"><i class="ft-home"></i>
+        <li class="nav-item {{ \Request::is('admin/news*') ? 'open active' : '' }}">
+            <a class="menu-item bold" href="#"><i class="ft-home"></i>
                 <span class="menu-title" data-i18n="">1. News</span>
             </a>
+
+            <ul class="menu-content">
+                <li class="{{ \Request::is('admin/news') ? 'active' : '' }}">
+                    <a class="menu-item" href="/admin/news">1.1 News</a>
+                </li>
+                <li class="{{ \Request::is('admin/news/products*') ? 'active' : '' }}">
+                    <a class="menu-item" href="/admin/news-categories">1.2 Category</a>
+                </li>
+
+            </ul>
         </li>
         <li class="nav-item {{ \Request::is('admin/work*') ? 'open active' : '' }}">
             <a class="menu-item bold" href="#">
