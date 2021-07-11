@@ -45,11 +45,11 @@
                         <div class="slide swiper-slide">
                             <a href="{{$item->url}}">
                                 <div class="img-wrap cover">
-                                    @if(\App\Helpers\Functions::getFileName(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image) == 'mp4')
-                                        <video class="autoPlayVideo checkMedia" loop>
-                                            <source src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}" type="video/mp4">
-                                        </video>
-                                    <img
+{{--                                    @if(\App\Helpers\Functions::getFileName(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image) == 'mp4')--}}
+{{--                                        <video class="autoPlayVideo checkMedia" loop>--}}
+{{--                                            <source src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}" type="video/mp4">--}}
+{{--                                        </video>--}}
+                                        <img
                                             alt="air.concept"
                                             data-sizes="auto"
                                             data-srcset="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=750w 750w,
@@ -57,7 +57,7 @@
                                                 {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=1500w 1500w,
                                                 {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=2500w 2500w"
                                             class="swiper-lazy checkMedia" />
-                                        @endif
+{{--                                        @endif--}}
                                 </div>
                             </a>
                         </div>
