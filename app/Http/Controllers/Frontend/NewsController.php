@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\CategoryNew;
 use App\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -28,7 +29,26 @@ class NewsController extends Controller
             $m['year'] = $m['year']->year;
             return $m;
         });
-        return view('frontend.news.index',compact('news'));
+        $categories = CategoryNew::all();
+        return view('frontend.news.index',compact('news','categories'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getCategory($id)
+    {
+        $news = News::where('category_new_id','like','%'.$id.'%')->orderByDesc('date')->get();
+        $news = $news->map(function ($m){
+            $m['year'] = \Carbon\Carbon::parse($m->date);
+            $m['year'] = $m['year']->year;
+            return $m;
+        });
+        $categories = CategoryNew::all();
+        $current_id = $id;
+        return view('frontend.news.index',compact('news','categories','current_id'));
     }
 
     /**

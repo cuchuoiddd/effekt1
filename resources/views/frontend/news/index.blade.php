@@ -23,7 +23,8 @@
 @endif
 
 @section('body')
-    <body class="product-list-titles-overlay product-list-alignment-center product-item-size-11-square product-image-auto-crop product-gallery-size-11-square product-gallery-auto-crop show-product-price show-product-item-nav product-social-sharing tweak-v1-related-products-image-aspect-ratio-11-square tweak-v1-related-products-details-alignment-center newsletter-style-dark hide-opentable-icons opentable-style-light small-button-style-solid small-button-shape-square medium-button-style-solid medium-button-shape-square large-button-style-solid large-button-shape-square image-block-poster-text-alignment-center image-block-card-dynamic-font-sizing image-block-card-content-position-center image-block-card-text-alignment-left image-block-overlap-dynamic-font-sizing image-block-overlap-content-position-center image-block-overlap-text-alignment-left image-block-collage-dynamic-font-sizing image-block-collage-content-position-top image-block-collage-text-alignment-left image-block-stack-dynamic-font-sizing image-block-stack-text-alignment-left button-style-outline button-corner-style-square tweak-product-quick-view-button-style-floating tweak-product-quick-view-button-position-bottom tweak-product-quick-view-lightbox-excerpt-display-truncate tweak-product-quick-view-lightbox-show-arrows tweak-product-quick-view-lightbox-show-close-button tweak-product-quick-view-lightbox-controls-weight-light product-list-titles-overlay product-list-alignment-center product-item-size-11-square product-image-auto-crop product-gallery-size-11-square product-gallery-auto-crop show-product-price show-product-item-nav product-social-sharing tweak-v1-related-products-image-aspect-ratio-11-square tweak-v1-related-products-details-alignment-center native-currency-code-usd collection-59f053c6dc2b4a28571da96c collection-type-blog collection-layout-default view-list">
+    <body
+        class="product-list-titles-overlay product-list-alignment-center product-item-size-11-square product-image-auto-crop product-gallery-size-11-square product-gallery-auto-crop show-product-price show-product-item-nav product-social-sharing tweak-v1-related-products-image-aspect-ratio-11-square tweak-v1-related-products-details-alignment-center newsletter-style-dark hide-opentable-icons opentable-style-light small-button-style-solid small-button-shape-square medium-button-style-solid medium-button-shape-square large-button-style-solid large-button-shape-square image-block-poster-text-alignment-center image-block-card-dynamic-font-sizing image-block-card-content-position-center image-block-card-text-alignment-left image-block-overlap-dynamic-font-sizing image-block-overlap-content-position-center image-block-overlap-text-alignment-left image-block-collage-dynamic-font-sizing image-block-collage-content-position-top image-block-collage-text-alignment-left image-block-stack-dynamic-font-sizing image-block-stack-text-alignment-left button-style-outline button-corner-style-square tweak-product-quick-view-button-style-floating tweak-product-quick-view-button-position-bottom tweak-product-quick-view-lightbox-excerpt-display-truncate tweak-product-quick-view-lightbox-show-arrows tweak-product-quick-view-lightbox-show-close-button tweak-product-quick-view-lightbox-controls-weight-light product-list-titles-overlay product-list-alignment-center product-item-size-11-square product-image-auto-crop product-gallery-size-11-square product-gallery-auto-crop show-product-price show-product-item-nav product-social-sharing tweak-v1-related-products-image-aspect-ratio-11-square tweak-v1-related-products-details-alignment-center native-currency-code-usd collection-59f053c6dc2b4a28571da96c collection-type-blog collection-layout-default view-list">
     @endsection
     @section('trans-nav')
         <nav class="trans-nav" style="padding-bottom: 0">
@@ -35,10 +36,27 @@
         <nav class="trans-nav">
             <div class="trans-nav-wrapper">
                 <ul class="anchor-nav">
-                    <li class="active"><a class="anchor-btn" title="2021">2021</a></li>
-                    <li><a class="anchor-btn"  title="2020">2020</a></li>
-                    <li><a class="anchor-btn"  title="2019">2019</a></li>
-                    <li><a class="anchor-btn" title="2018">2018</a></li>
+                    @if(count($categories))
+                        @if(App::isLocale('vi'))
+                            <li class="{{isset($current_id) ? '' : 'active'}}">
+                                <a href="/vi/news" class="iso-btn" title="All">Tất cả</a>
+                            </li>
+                            @foreach($categories as $item)
+                                <li class="{{isset($current_id) && $current_id == $item->id  ? 'active' : ''}}">
+                                    <a href="/vi/news/category/{{$item->id}}" class="iso-btn" title="{{$item->title_vn}}">{{$item->title_vn}}</a>
+                                </li>
+                            @endforeach
+                        @else
+                            <li class="{{isset($current_id) ? '' : 'active'}}">
+                                <a href="/news" class="iso-btn" title="All">All</a>
+                            </li>
+                            @foreach($categories as $item)
+                                <li class="{{isset($current_id) && $current_id == $item->id  ? 'active' : ''}}">
+                                    <a href="/news/category/{{$item->id}}" class="iso-btn" title="{{$item->title_en}}">{{$item->title_en}}</a>
+                                </li>
+                            @endforeach
+                        @endif
+                    @endif
                 </ul>
             </div>
         </nav>
@@ -52,9 +70,9 @@
                     @foreach($news as $item)
                         @if(App::isLocale('vi'))
                             <article
-                                    class="blog-item hentry tag-2020 author-lucrezia-biasutti post-type-text article-index-1"
-                                    data-ao="{{$item->year}}">
-                                <a href="news/{{$item->slug}}"
+                                class="blog-item hentry tag-2020 author-lucrezia-biasutti post-type-text article-index-1"
+                                data-ao="{{$item->year}}">
+                                <a href="/vi/news/{{$item->slug}}"
                                    title="{{$item->title_vn}}">
                                     <div class="blog-image img-wrap cover">
 
@@ -87,9 +105,9 @@
                             </article>
                         @else
                             <article
-                                    class="blog-item hentry tag-2020 author-lucrezia-biasutti post-type-text article-index-1"
-                                    data-ao="{{$item->year}}">
-                                <a href="news/{{$item->slug}}"
+                                class="blog-item hentry tag-2020 author-lucrezia-biasutti post-type-text article-index-1"
+                                data-ao="{{$item->year}}">
+                                <a href="/news/{{$item->slug}}"
                                    title="{{$item->title_en}}">
                                     <div class="blog-image img-wrap cover">
 

@@ -30,6 +30,22 @@
                             <div class="card-content collapse show">
                                 <div class="card-body">
                                     <div class="row mt-2">
+                                        <div class="col-6 form-group">
+                                            <label for="squareText" class="required">Danh mục</label>
+                                            <input type="hidden" class="categoryValue" value="{{isset($news) ? $news->category_new_id : ''}}">
+                                            <select name="category_new_id[]" class="select2 form-control categoryId" id=""
+                                                    data-placeholder="--chọn danh mục--" multiple>
+                                                <option></option>
+                                                @if(count($categories))
+                                                    @foreach($categories as $item)
+                                                        <option {{isset($news) && $news->category_new_id == $item->id ? 'selected' : '' }} value="{{$item->id}}">{{$item->title_vn}}</option>
+                                                        @endforeach
+                                                    @endif
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-1">
                                         <div class="col-6 form-group {{ $errors->has('title_vn') ? 'has-error' : '' }}">
                                             <label for="squareText" class="required">Tiêu đề VN</label>
                                             <input type="text" id="title_vn" name="title_vn"
@@ -117,6 +133,13 @@
     <script src="/js/file_upload.js"></script>
     <script src="{{asset('backend/plugins/ckeditor/ckeditor.js')}}"></script>
     <script>
+        $(document).ready(function () {
+            let abc = $('.categoryValue').val();
+            if(abc){
+                let bcd = JSON.parse(abc);
+                $('.categoryId').val(bcd).trigger('change');
+            }
+        })
 
         CKEDITOR.replace('content_vn');
         CKEDITOR.replace('content_en');

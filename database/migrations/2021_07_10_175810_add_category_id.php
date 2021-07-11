@@ -14,7 +14,7 @@ class AddCategoryId extends Migration
     public function up()
     {
         Schema::table('news', function (Blueprint $table) {
-            $table->integer('category_new_id')->after('slug')->nullable();
+            $table->string('category_new_id')->after('slug')->nullable();
         });
     }
 

@@ -23,6 +23,7 @@ if ($checkLang != 'vi') {
 Route::group(['prefix' => $language,'middleware' => 'set_locale'],function (){
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('news', 'Frontend\NewsController@index');
+    Route::get('news/category/{id}', 'Frontend\NewsController@getCategory');
     Route::get('news/{slug}', 'Frontend\NewsController@show');
     Route::get('work', 'Frontend\WorkController@index');
     Route::get('work/{slug}', 'Frontend\WorkController@show');

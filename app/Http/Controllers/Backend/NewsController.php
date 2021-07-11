@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\CategoryNew;
 use App\Constants\DirectoryConstant;
 use App\Constants\StatusCode;
 use App\Helpers\Functions;
@@ -49,7 +50,9 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return view('backend.news._form');
+        $categories = CategoryNew::all();
+
+        return view('backend.news._form',compact('categories'));
     }
 
     /**
@@ -85,6 +88,10 @@ class NewsController extends Controller
                 $request->image);
             $data['image'] = $url_thumb;
         }
+//        dd($request->category_new_id);
+        if(!empty($request->category_new_id)){
+            $data['category_new_id'] = json_encode($request->category_new_id);
+        }
         News::create($data);
         return redirect('/admin/news');
     }
@@ -109,7 +116,9 @@ class NewsController extends Controller
     public function edit($id)
     {
         $news = News::find($id);
-        return view('backend.news._form',compact('news'));
+        $categories = CategoryNew::all();
+
+        return view('backend.news._form',compact('news','categories'));
     }
 
     /**
@@ -146,6 +155,12 @@ class NewsController extends Controller
         } else {
             unset($data['image']);
         }
+        if(!empty($request->category_new_id)){
+            $data['category_new_id'] = json_encode($request->category_new_id);
+        } else {
+            $data['category_new_id'] = NULL;
+        }
+
         $news->update($data);
         return redirect('/admin/news');
     }
