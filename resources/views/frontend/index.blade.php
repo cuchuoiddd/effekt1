@@ -57,7 +57,7 @@
                                                 {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=1000w 1000w,
                                                 {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=1500w 1500w,
                                                 {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=2500w 2500w"
-                                            class="swiper-lazy checkMedia"/>
+                                            class="swiper-lazy"/>
                                     </div>
                                 </a>
                             </div>
