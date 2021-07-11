@@ -16,13 +16,13 @@
         position: absolute;
     }
 
-    @media (max-width: 769px) {
+    @media (max-width: 1199px) {
         video.checkMedia{
             display: none;
         }
     }
 
-    @media (min-width: 769px) {
+    @media (min-width: 1200px) {
         img.checkMedia{
             display: none;
         }

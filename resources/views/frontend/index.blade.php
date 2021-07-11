@@ -45,6 +45,10 @@
                         <div class="slide swiper-slide">
                             <a href="{{$item->url}}">
                                 <div class="img-wrap cover">
+                                    @if(\App\Helpers\Functions::getFileName(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image) == 'mp4')
+                                        <video class="autoPlayVideo checkMedia" loop>
+                                            <source src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}" type="video/mp4">
+                                        </video>
                                     <img
                                             alt="air.concept"
                                             data-sizes="auto"
@@ -52,7 +56,8 @@
                                                 {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=1000w 1000w,
                                                 {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=1500w 1500w,
                                                 {{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_SLIDE.$item->image}}?format=2500w 2500w"
-                                            class="swiper-lazy" />
+                                            class="swiper-lazy checkMedia" />
+                                        @endif
                                 </div>
                             </a>
                         </div>
@@ -94,4 +99,15 @@
          attribution=setup_tool
          page_id="{{isset(\App\Helpers\Functions::getSetting()->fanpage_id)?\App\Helpers\Functions::getSetting()->fanpage_id:'104351897844'}}">
     </div>
+    <script>
+        var video = document.getElementsByClassName("autoPlayVideo");
+        if(video.length > 0) {
+            console.log(222,video);
+            Array.prototype.forEach.call(video,element => {
+                console.log(1111,element);
+                element.volume = 0;
+                element.play();
+            });
+        }
+    </script>
     @endsection
