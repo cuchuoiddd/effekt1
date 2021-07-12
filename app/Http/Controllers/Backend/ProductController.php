@@ -66,7 +66,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
         $rules = [
             'category_id' => 'required',
             'title_vn' => 'required',
@@ -93,10 +92,23 @@ class ProductController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
+
+
         $data = $request->all();
         $images_json = json_decode($request->input('images_json'));
         $images = $request->images;
         if ($images && count($images)) {
+
+            foreach ($images as $key => $item) {
+                $request->merge(['file' => $item]);
+                $validator = Validator::make($request->all(), ['file' => 'max:10240'], ['file.max' => 'File không quá 10MB']);
+                if ($validator->fails()) {
+                    return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+                }
+            }
+
             foreach ($images as $key => $item) {
                 $name=$item->getClientOriginalName();
                 $url = $this->fileUpload->uploadImage(DirectoryConstant::UPLOAD_FOLDER_PRODUCT, $item);
@@ -187,6 +199,17 @@ class ProductController extends Controller
         $images = $request->images;
 
         if ($images && count($images)) {
+
+            foreach ($images as $key => $item) {
+                $request->merge(['file' => $item]);
+                $validator = Validator::make($request->all(), ['file' => 'max:10240'], ['file.max' => 'File không quá 10MB']);
+                if ($validator->fails()) {
+                    return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+                }
+            }
+
             foreach ($images as $key => $item) {
                 $name=$item->getClientOriginalName();
                 $url = $this->fileUpload->uploadImage(DirectoryConstant::UPLOAD_FOLDER_PRODUCT, $item);

@@ -6,8 +6,11 @@ use App\Constants\DirectoryConstant;
 use App\Helpers\Functions;
 use App\Services\UploadService;
 use App\Setting;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Arr;
+
 
 class SettingController extends Controller
 {
@@ -52,7 +55,7 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+//        dd($request->all());
         $data = $request->except('_token');
         if ($request->logo != "null") {
             $url_thumb = $this->fileUpload->uploadImage1(DirectoryConstant::UPLOAD_FOLDER_LOGO,
@@ -101,6 +104,7 @@ class SettingController extends Controller
     {
         $setting = Setting::find($id);
         $data = $request->all();
+//        dd($data);
         if ($request->hasFile('logo')) {
             $url_thumb = $this->fileUpload->uploadImage1(DirectoryConstant::UPLOAD_FOLDER_LOGO,
                 $request->logo);
@@ -118,6 +122,43 @@ class SettingController extends Controller
         } else {
             unset($data['favicon']);
         }
+
+        $images_json = json_decode($request->images_json);
+        $images = $request->images;
+
+        if ($images && count($images)) {
+
+            foreach ($images as $key => $item) {
+                $request->merge(['file' => $item]);
+                $validator = Validator::make($request->all(), ['file' => 'mimes:jpeg,jpg,png,gif|max:2048'], ['file.max' => 'File không quá 2MB']);
+                if ($validator->fails()) {
+                    return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+                }
+            }
+
+            foreach ($images as $key => $item) {
+                $name=$item->getClientOriginalName();
+                $url = $this->fileUpload->uploadImage(DirectoryConstant::UPLOAD_FOLDER_LINK, $item);
+                foreach($images_json as $image){
+                    if(isset($image->fileName) && $image->fileName == $name){
+                        $image->url = $url;
+                        $image->new = false;
+                    }
+                }
+            }
+        }
+        $data['link_custom'] = json_encode($images_json);
+        dd($request->all());
+        if(isset($request->images_delete)){
+            $images_delete = json_decode($request->images_delete);
+            foreach ($images_delete as $item) {
+                Functions::unlinkUpload(DirectoryConstant::UPLOAD_FOLDER_LINK ,$item);
+            }
+        }
+        $data = Arr::except($data, ['images_json','images_delete','images']);
+
         $setting->update($data);
         return redirect('/admin/setting');
     }

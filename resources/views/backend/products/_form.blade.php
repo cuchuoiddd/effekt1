@@ -6,6 +6,15 @@
         }
     </style>
     <div class="content-body">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <!-- card actions section start -->
         <section id="card-actions">
             <div class="row">
@@ -315,7 +324,6 @@
             function updateImagesJSON() {
                 var list = [];
                 $('.thumb-image').each(function (index, image) {
-                    console.log(123,image);
                     list.push({
                         position: index,
                         url: $(image).find('img').attr('data-image'),
