@@ -151,7 +151,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 @php
-                                                    $images = isset($office) && isset($office->image_client_logo) && $office->image_client_logo !='' ? json_decode($office->image_client_logo) : json_decode('[]');
+                                                    $images = isset($setting) && isset($setting->link_custom) && $setting->link_custom !='' ? json_decode($setting->link_custom) : json_decode('[]');
                                                 @endphp
                                                 <label for="images"
                                                        class="control-label alt-flex"><span>Ảnh dự án</span><a
@@ -161,6 +161,9 @@
                                                        name="images[]">
                                                 <input type="hidden" id="images_json" name="images_json"
                                                        value="{{json_encode($images)}}">
+                                                @if(isset($setting))
+                                                    <input type="hidden" id="images_delete" name="images_delete">
+                                                @endif
                                                 <div class="" style="overflow: scroll">
                                                     <div class="imagesUploadBox product-images">
                                                         <div class="thumb-list product-photo-grid__item" id="sortable">
@@ -169,8 +172,8 @@
                                                                     <img class=""
                                                                          data-link="{{$image->link}}"
                                                                          data-image="{{$image->url}}"
-                                                                         data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO.$image->url}}"
-                                                                         src="{{url(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO.$image->url)}}">
+                                                                         data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LINK.$image->url}}"
+                                                                         src="{{url(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_LINK.$image->url)}}">
                                                                     <div class="overlay">
                                                                         <div class="alter-button clickModalUrl">Url
                                                                         </div>
