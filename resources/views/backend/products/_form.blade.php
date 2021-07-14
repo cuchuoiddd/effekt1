@@ -58,7 +58,7 @@
                                                     $images = isset($product) && isset($product->images) && $product->images !='' ? json_decode($product->images) : json_decode('[]');
                                                 @endphp
                                                 <label for="images"
-                                                       class="control-label alt-flex"><span>Ảnh dự án</span><a
+                                                       class="control-label alt-flex required"><span>Ảnh dự án</span><a
                                                             class="addImages"><i class="fa fa-plus"></i> Upload
                                                         ảnh</a></label>
                                                 <input type="file" class="hidden images" multiple="multiple" id="images"
@@ -157,9 +157,23 @@
                                     <div class="row">
                                         <div class="col-md-12 col-xs-12 listen-address form-group">
                                             <label class="control-label">Địa chỉ</label>
-                                            <input class="form-control location square" id="address" type="text"
+                                            <input class="form-control location square"  type="text"
                                                    size="50" name="address"
                                                    value="{{ $product->address ?? old('address') }}">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 form-group">
+                                            <label class="control-label">Vị trí Lat</label>
+                                            <input class="form-control location square"  type="text"
+                                                   size="50" name="lat"
+                                                   value="{{ $product->lat ?? old('lat') }}">
+                                        </div>
+                                        <div class="col-6 form-group">
+                                            <label class="control-label">Vị trí Long</label>
+                                            <input class="form-control location square"  type="text"
+                                                   size="50" name="long"
+                                                   value="{{ $product->long ?? old('long') }}">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -432,26 +446,25 @@
             document.getElementById('slug').value = slug;
         }
     </script>
-    {{--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&key=AIzaSyAOYTBGlUxFOO0am9ZAsM3-q3Fv2GBWxys"></script>--}}
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&key=AIzaSyDDJIXIfj6TBPv3YI5P4lHOzg3sS1Mjbwk"></script>
-    {{--<script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async defer></script>--}}
 
-    <script>
-        function init() {
-            var autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"));
-            console.log(autocomplete, 'complate  ');
-            google.maps.event.addListener(autocomplete, 'place_changed', function () {
-                var place = autocomplete.getPlace();
-                var address = place.formatted_address;
-                var lat = place.geometry.location.lat();
-                var long = place.geometry.location.lng();
-                var input = '<input type="hidden" name="lat" value="' + lat + '"> <input type="hidden" name="long" value="' + long + '">';
-                $('.listen-address').prepend(input);
-                console.log(input, 'lat-long');
-            });
-        }
 
-        google.maps.event.addDomListener(window, 'load', init);
+    {{--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&key=AIzaSyDDJIXIfj6TBPv3YI5P4lHOzg3sS1Mjbwk"></script>--}}
 
-    </script>
+    {{--<script>--}}
+        {{--function init() {--}}
+            {{--var autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"));--}}
+            {{--console.log(autocomplete, 'complate  ');--}}
+            {{--google.maps.event.addListener(autocomplete, 'place_changed', function () {--}}
+                {{--var place = autocomplete.getPlace();--}}
+                {{--var address = place.formatted_address;--}}
+                {{--var lat = place.geometry.location.lat();--}}
+                {{--var long = place.geometry.location.lng();--}}
+                {{--var input = '<input type="hidden" name="lat" value="' + lat + '"> <input type="hidden" name="long" value="' + long + '">';--}}
+                {{--$('.listen-address').prepend(input);--}}
+                {{--console.log(input, 'lat-long');--}}
+            {{--});--}}
+        {{--}--}}
+
+        {{--google.maps.event.addDomListener(window, 'load', init);--}}
+    {{--</script>--}}
 @endsection
