@@ -274,7 +274,7 @@
                                              data-block-json='&#123;"location":&#123;"mapLat":{{$work->lat}},"mapLng":{{$work->long}},"mapZoom":14,"markerLat":{{$work->lat}},"markerLng":{{$work->long}},"addressTitle":"AIR CONCEPT","addressLine1":"{{$work->address}}","addressLine2":"","addressCountry":""&#125;,"vSize":null,"style":4,"labels":true,"terrain":false,"controls":false,"hSize":null,"floatDir":null,"aspectRatio":42.391304347826086&#125;'
                                              data-block-type="4" id="block-yui_3_17_2_5_1509369643211_11245">
                                             <div class="sqs-block-content">&nbsp;</div>
-                                        </div
+                                        </div>
                                         <div class="sqs-block spacer-block sqs-block-spacer sized vsize-1"
                                              data-block-type="21"
                                              id="block-yui_3_17_2_3_1509370795243_23617">

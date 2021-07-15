@@ -169,8 +169,9 @@
                      id="page-59f727388e7b0f7a605c0d28">
                     <div class="row sqs-row">
                         <div class="col sqs-col-12 span-12">
-                            <div class="sqs-block map-block sqs-block-map" data-aspect-ratio="{{$office->contact_lat}}"
-                                 data-block-json="&#123;&quot;location&quot;:&#123;&quot;mapLat&quot;:{{$office->contact_lat}},&quot;mapLng&quot;:{{$office->contact_long}},&quot;mapZoom&quot;:14,&quot;markerLat&quot;:{{$office->contact_lat}},&quot;markerLng&quot;:{{$office->contact_long}},&quot;addressTitle&quot;:&quot;EFFEKT&quot;,&quot;addressLine1&quot;:&quot;{{$office->contact_lat}}, {{$office->contact_long}}. sal&quot;,&quot;addressLine2&quot;:&quot;{{$office->contact_address}}&quot;,&quot;addressCountry&quot;:&quot;{{$office->contact_address}}&quot;&#125;,&quot;vSize&quot;:null,&quot;style&quot;:4,&quot;labels&quot;:true,&quot;terrain&quot;:false,&quot;controls&quot;:false,&quot;hSize&quot;:null,&quot;floatDir&quot;:null,&quot;aspectRatio&quot;:{{$office->contact_lat}}&#125;"
+                            <div class="sqs-block map-block sqs-block-map"
+                                 data-aspect-ratio="42.391304347826086"
+                                 data-block-json='&#123;"location":&#123;"mapLat":{{$office->contact_lat}},"mapLng":{{$office->contact_long}},"mapZoom":14,"markerLat":{{$office->contact_lat}},"markerLng":{{$office->contact_long}},"addressTitle":"AIR CONCEPT","addressLine1":"{{$office->contact_address}}","addressLine2":"","addressCountry":""&#125;,"vSize":null,"style":4,"labels":true,"terrain":false,"controls":false,"hSize":null,"floatDir":null,"aspectRatio":42.391304347826086&#125;'
                                  data-block-type="4" id="block-yui_3_17_2_5_1509369643211_11245">
                                 <div class="sqs-block-content">&nbsp;</div>
                             </div>

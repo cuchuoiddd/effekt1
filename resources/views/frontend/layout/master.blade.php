@@ -27,6 +27,9 @@
                 max-height: 30px;
             }
         }
+        body{
+            cursor: url({{url('images/cursor/AIR_CURSOR_MAIN.png')}}), auto;
+        }
     </style>
 </head>
 
@@ -144,6 +147,17 @@
                                     <a href="{{isset(\App\Helpers\Functions::getSetting()->link_instagram) && \App\Helpers\Functions::getSetting()->link_instagram ? \App\Helpers\Functions::getSetting()->link_instagram : '#' }}"
                                        target="_blank"
                                        class="sqs-svg-icon--wrapper instagram" aria-label="EFFEKT Architects">
+                                        <div>
+                                            <svg class="sqs-svg-icon--social" viewBox="0 0 64 64">
+                                                <use class="sqs-use--icon" xlink:href="#instagram-icon"></use>
+                                                <use class="sqs-use--mask" xlink:href="#instagram-mask"></use>
+                                            </svg>
+                                        </div>
+                                    </a>
+
+                                    <a href="{{isset(\App\Helpers\Functions::getSetting()->link_custom) && \App\Helpers\Functions::getSetting()->link_custom ? \App\Helpers\Functions::getSetting()->link_custom : '#' }}"
+                                       target="_blank"
+                                       class="sqs-svg-icon--wrapper" aria-label="EFFEKT Architects">
                                         <div>
                                             <svg class="sqs-svg-icon--social" viewBox="0 0 64 64">
                                                 <use class="sqs-use--icon" xlink:href="#instagram-icon"></use>

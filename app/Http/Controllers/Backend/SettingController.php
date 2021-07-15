@@ -55,7 +55,6 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->all());
         $data = $request->except('_token');
         if ($request->logo != "null") {
             $url_thumb = $this->fileUpload->uploadImage1(DirectoryConstant::UPLOAD_FOLDER_LOGO,
@@ -104,7 +103,6 @@ class SettingController extends Controller
     {
         $setting = Setting::find($id);
         $data = $request->all();
-//        dd($data);
         if ($request->hasFile('logo')) {
             $url_thumb = $this->fileUpload->uploadImage1(DirectoryConstant::UPLOAD_FOLDER_LOGO,
                 $request->logo);
@@ -149,8 +147,6 @@ class SettingController extends Controller
                 }
             }
         }
-        $data['link_custom'] = json_encode($images_json);
-        dd($request->all());
         if(isset($request->images_delete)){
             $images_delete = json_decode($request->images_delete);
             foreach ($images_delete as $item) {
