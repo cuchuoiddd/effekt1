@@ -8,6 +8,7 @@ use App\Constants\DirectoryConstant;
 use App\Services\UploadService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class SlideController extends Controller
 {
@@ -53,6 +54,13 @@ class SlideController extends Controller
     {
         $data = $request->all();
         if (!empty($request->image)) {
+            $validator = Validator::make($request->all(), ['image' => 'max:10240'], ['file.max' => 'File không quá 10MB']);
+            if ($validator->fails()) {
+                return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
             $url_thumb = $this->fileUpload->uploadImage(DirectoryConstant::UPLOAD_FOLDER_SLIDE,
                 $request->image);
             $data['image'] = $url_thumb;

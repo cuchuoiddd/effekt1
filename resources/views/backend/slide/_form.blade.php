@@ -7,6 +7,15 @@
     </style>
     <div class="content-body">
         <!-- card actions section start -->
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <section id="card-actions">
             <div class="row">
                 <div class="col-12">
