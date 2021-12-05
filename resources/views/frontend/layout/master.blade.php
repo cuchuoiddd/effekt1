@@ -27,8 +27,11 @@
                 max-height: 30px;
             }
         }
-        body{
+        /* body{
             cursor: url({{url('images/cursor/AIR_CURSOR_MAIN.png')}}), auto;
+        } */
+        body{
+            cursor: pointer;
         }
     </style>
 </head>
@@ -174,6 +177,8 @@
         </div>
     </div>
 </footer>
+<div class="cursor"></div>
+<div class="cursor2"></div>
 
 
 <script src="{{asset('frontend/js/uikit.min.js')}}"></script>
@@ -221,6 +226,13 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOYTBGlUxFOO0am9ZAsM3-q3Fv2GBWxys&callback=myMap"></script>
 
 @yield('script')
+<script>
+    var cursor = document.querySelector(".cursor");
+    var cursor2 = document.querySelector(".cursor2");
+    document.addEventListener("mousemove",function(e){
+      cursor.style.cssText = cursor2.style.cssText = "left: " + e.clientX + "px; top: " + e.clientY + "px;";
+    });
+  </script>
 </body>
 
 </html>
