@@ -335,10 +335,10 @@
                                                             @foreach($images as $k => $image)
                                                                 <div class="thumb-image">
                                                                     <img class=""
-                                                                         data-link="{{$image->link}}"
-                                                                         data-image="{{$image->url}}"
-                                                                         data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO.$image->url}}"
-                                                                         src="{{url(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO.$image->url)}}">
+                                                                         data-link="{{@$image->link}}"
+                                                                         data-image="{{@$image->url}}"
+                                                                         data-src="{{@\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO.$image->url}}"
+                                                                         src="{{url(@\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO.$image->url)}}">
                                                                     <div class="overlay">
                                                                         <div class="alter-button clickModalUrl">Url
                                                                         </div>
