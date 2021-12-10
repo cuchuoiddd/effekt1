@@ -333,19 +333,21 @@
                                                     <div class="imagesUploadBox product-images">
                                                         <div class="thumb-list product-photo-grid__item" id="sortable">
                                                             @foreach($images as $k => $image)
-                                                                <div class="thumb-image">
-                                                                    <img class=""
-                                                                         data-link="{{@$image->link}}"
-                                                                         data-image="{{@$image->url}}"
-                                                                         data-src="{{@\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO.$image->url}}"
-                                                                         src="{{url(@\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO.$image->url)}}">
-                                                                    <div class="overlay">
-                                                                        <div class="alter-button clickModalUrl">Url
+                                                                @if(isset($image->url))
+                                                                    <div class="thumb-image">
+                                                                        <img class=""
+                                                                             data-link="{{$image->link}}"
+                                                                             data-image="{{$image->url}}"
+                                                                             data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO.$image->url}}"
+                                                                             src="{{url(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO.$image->url)}}">
+                                                                        <div class="overlay">
+                                                                            <div class="alter-button clickModalUrl">Url
+                                                                            </div>
+                                                                            <div class="remove-button"><i
+                                                                                        class="fa fa-trash"></i></div>
                                                                         </div>
-                                                                        <div class="remove-button"><i
-                                                                                    class="fa fa-trash"></i></div>
                                                                     </div>
-                                                                </div>
+                                                                @endif
                                                             @endforeach
                                                         </div>
                                                     </div>
@@ -493,7 +495,6 @@
                             html += `<div class="thumb-image new">
                     <img class="" src="` + item.url + `" data-src="` + item.url + `" alt="` + item.alt + `" data-name="`+ item.fileName +`" data-link=`+item.link+`>
                     <div class="overlay">
-                        <!--<div class="alter-button">Url</div>-->
                         <div class="alter-button clickModalUrl">Url</div>
                         <div class="remove-button"><i class="fa fa-trash"></i></div>
                     </div>
@@ -503,7 +504,6 @@
                             html_main = `<div class="thumb-image new">
                     <img class="" src="` + item.url + `"  data-src="` + item.url + `" alt="` + item.alt + `">
                     <div class="overlay">
-                        <!--<div class="alter-button">Url</div>-->
                         <div class="alter-button clickModalUrl">Url</div>
                         <div class="remove-button"><i class="fa fa-trash"></i></div>
                     </div>

@@ -648,8 +648,8 @@
                                                 @foreach($office->image_client_logo as $item)
                                                     <div class="slide" data-type="image" data-animation-role="image">
                                                         <div class="margin-wrapper">
-
                                                             <a href="{{$item->link}}" class=" image-slide-anchor content-fit">
+                                                                @if(isset($item->url))
                                                                 <img class="thumb-image"
                                                                      data-src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO.$item->url}}"
                                                                      data-image="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_OFFICE_LOGO.$item->url}}"
@@ -658,6 +658,7 @@
                                                                      data-type="image"
                                                                      alt="office"
                                                                 />
+                                                                    @endif
                                                             </a>
 
                                                         </div>
