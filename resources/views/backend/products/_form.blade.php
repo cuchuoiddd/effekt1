@@ -72,6 +72,7 @@
                                                     <div class="imagesUploadBox product-images">
                                                         <div class="thumb-list product-photo-grid__item" id="sortable">
                                                             @foreach($images as $k => $image)
+                                                                @if(isset($image->url))
                                                                 <div class="thumb-image">
                                                                     <img class=""
                                                                          data-image="{{$image->url}}"
@@ -85,6 +86,7 @@
                                                                                     class="fa fa-trash"></i></div>
                                                                     </div>
                                                                 </div>
+                                                                @endif
                                                             @endforeach
                                                         </div>
                                                     </div>

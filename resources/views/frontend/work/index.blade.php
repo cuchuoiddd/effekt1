@@ -71,7 +71,7 @@
                                     class="gallery-item iso-item hentry {{$item->CategoryClass['category_en']}} author-lucrezia-biasutti post-type-image article-index-1">
                                 <a href="work/{{$item->slug}}">
                                     <div class="iso-image img-wrap cover">
-                                        @if(count($item->images))
+                                        @if(count($item->images) && $item->images[0]->url)
                                             @if(\App\Helpers\Functions::getFileName(\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url) == 'mp4')
                                                 <video class="autoPlayVideo checkMedia" loop>
                                                     <source src="{{\App\Constants\DirectoryConstant::UPLOAD_FOLDER_PRODUCT.$item->images[0]->url}}" type="video/mp4">
